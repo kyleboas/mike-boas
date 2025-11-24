@@ -269,23 +269,29 @@
                  <div className="flex flex-wrap justify-center gap-12 opacity-80">
                    {[
                      {
-                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0927.png",
+                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/main/uploads/logos/astrazeneca.png",
                        alt: "AstraZeneca",
                      },
                      {
-                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0922.gif",
+                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/main/uploads/logos/aingens.png",
                        alt: "Aingens",
                      },
                      {
-                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0926.png",
+                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/main/uploads/logos/thestem.png",
                        alt: "The Stem",
-                     },
+                     }
                    ].map((logo, idx) => (
                      <img
                        key={idx}
                        src={logo.src}
                        alt={logo.alt}
-                       className="h-12 w-auto object-contain drop-shadow-lg"
+                       className="
+                         h-12 w-auto object-contain drop-shadow-lg
+                         filter grayscale opacity-60
+                         hover:grayscale-0 hover:opacity-100
+                         hover:-translate-y-1
+                         transition duration-300 ease-out
+                       "
                      />
                    ))}
                  </div>
