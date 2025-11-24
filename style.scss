@@ -116,12 +116,9 @@ body {
    HERO SECTION
    ======================================================================== */
 
-/* In your CSS styles */
-.hero-section::before {
-    opacity: var(--sunrise-opacity, 1); 
-}
-
+/* 1. The Container (The "Day" Background) */
 .hero-section {
+  position: relative; /* IMPORTANT: Anchors the ::before element */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -129,6 +126,8 @@ body {
   align-items: center;
   text-align: center;
   overflow: hidden;
+  
+  /* The "Daytime" / Bright Gradient */
   background: linear-gradient(
     150deg,
     #830051 0%,
@@ -137,6 +136,20 @@ body {
     #edceaa 80%,
     #fff6e8 94%
   ); 
+}
+
+/* 2. The Overlay (The "Night" Background) */
+.hero-section::before {
+  content: ''; 
+  position: absolute;
+  inset: 0;
+  z-index: 1; 
+  pointer-events: none;
+
+  background: linear-gradient(180deg, #1a0010 0%, #3a0024 100%);
+  
+  /* The Logic: Controlled by JS */
+  opacity: var(--sunrise-opacity, 1); 
 }
 
 .hero-arch {
