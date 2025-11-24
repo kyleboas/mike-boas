@@ -390,7 +390,9 @@ body {
 img.muted-grey {
   filter: grayscale(1) brightness(0) invert(1);
   mix-blend-mode: multiply;
-  opacity: 0.6; /* adjust to taste */
+  opacity: 0.6;
+  height: 18px;
+  width: auto;
 }
 
 
