@@ -124,7 +124,14 @@ body {
   align-items: center;
   text-align: center;
   overflow: hidden;
-  color: var(--primary);
+  background: linear-gradient(
+    150deg,
+    #830051 0%,
+    #6d0043 40%,
+    #d98a75 70%,
+    #edceaa 80%,
+    #fff6e8 94%
+  ); 
 }
 
 .hero-arch {
