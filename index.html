@@ -371,48 +371,46 @@
 
               {/* Timeline */}
               <div
-                className="absolute w-full max-w-3xl transition-all duration-700"
-                style={{ opacity: getSectionOpacity(0.62, 0.1) }}
-              >
-                <h3 className="text-4xl font-bold mb-10 drop-shadow-lg">
-                  35+ Years of Excellence
-                </h3>
-                <div className="relative border-l-2 border-white/30 ml-6 md:ml-0 md:pl-8 space-y-8 text-left">
-                  {[
-                    {
-                      year: "2020 - Present",
-                      role: "Strategic Advisor",
-                      desc: "Leading AI transformations for top pharma."
-                    },
-                    {
-                      year: "2010 - 2020",
-                      role: "VP of Global Marketing",
-                      desc: "Directed launch strategies for 5 blockbuster drugs."
-                    },
-                    {
-                      year: "1995 - 2010",
-                      role: "Medical Director",
-                      desc:
-                        "Built bridges between clinical R&D and commercial teams."
-                    },
-                    {
-                      year: "1991 - 1996",
-                      role: "CV Sales Representative"
-                    }
-                  ].map((item, i) => (
-                    <div key={i} className="relative pl-8 md:pl-0">
-                      <div className="absolute -left-[9px] md:-left-[41px] top-1 w-4 h-4 bg-yellow-400 rounded-full shadow-lg border-2 border-white/50" />
-                      <h4 className="text-2xl font-bold text-yellow-200">
-                        {item.year}
-                      </h4>
-                      <h5 className="text-xl font-semibold mb-1">
-                        {item.role}
-                      </h5>
-                      <p className="opacity-80">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+  className="absolute w-full max-w-3xl transition-all duration-700"
+  style={{ opacity: getSectionOpacity(0.62, 0.1) }}
+>
+               <div className="bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/20">
+                   <h3 className="text-4xl font-bold mb-10 drop-shadow-lg">
+                     35+ Years of Excellence
+                   </h3>
+
+                   <div className="relative border-l-2 border-white/30 ml-6 md:ml-0 md:pl-8 space-y-8 text-left">
+                     {[
+                       {
+                         year: "2020 - Present",
+                         role: "Strategic Advisor",
+                         desc: "Leading AI transformations for top pharma.",
+                       },
+                       {
+                         year: "2010 - 2020",
+                         role: "VP of Global Marketing",
+                         desc: "Directed launch strategies for 5 blockbuster drugs.",
+                       },
+                       {
+                         year: "1995 - 2010",
+                         role: "Medical Director",
+                         desc: "Built bridges between clinical R&D and commercial teams.",
+                       },
+                       {
+                         year: "1991 - 1996",
+                         role: "CV Sales Representative",
+                       },
+                     ].map((item, i) => (
+                       <div key={i} className="relative pl-8 md:pl-0">
+                         <div className="absolute -left-[9px] md:-left-[41px] top-1 w-4 h-4 bg-yellow-400 rounded-full shadow-lg border-2 border-white/50" />
+                         <h4 className="text-2xl font-bold text-yellow-200">{item.year}</h4>
+                         <h5 className="text-xl font-semibold mb-1">{item.role}</h5>
+                         <p className="opacity-80">{item.desc}</p>
+                       </div>
+                     ))}
+                   </div>
+                 </div>
+               </div>
 
               {/* Testimonial */}
               <div
