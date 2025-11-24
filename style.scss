@@ -116,6 +116,11 @@ body {
    HERO SECTION
    ======================================================================== */
 
+/* In your CSS styles */
+.hero-section::before {
+    opacity: var(--sunrise-opacity, 1); 
+}
+
 .hero-section {
   min-height: 100vh;
   display: flex;

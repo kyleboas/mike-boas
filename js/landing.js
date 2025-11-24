@@ -217,3 +217,28 @@
   init();
 
 })();
+
+  /* ========================================================================
+     HERO SUNRISE
+     ======================================================================== */
+
+window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero-section');
+    if (!hero) return;
+    
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+    
+    // We want the darkness to fully disappear (opacity 0)
+    // by the time we scroll about 60% of the hero height
+    const fadeDistance = heroHeight * 0.6;
+    
+    // Opacity starts at 1 (Top of page) and decreases to 0 (Scrolled down)
+    let newOpacity = 1 - (scrollY / fadeDistance);
+    
+    // Clamp values between 0 and 1 so it doesn't go negative
+    newOpacity = Math.max(0, Math.min(1, newOpacity));
+    
+    // Update the CSS variable
+    hero.style.setProperty('--sunrise-opacity', newOpacity);
+});
