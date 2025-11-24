@@ -1,52 +1,497 @@
 ---
-layout: default
+layout: landing
+title: Home
 ---
 
-<section class="gallery" aria-label="Work">
-  {% for post in site.posts %}
+<div class="landing-page">
 
-    {% if post.image %}
-      <!-- Image card -->
-      <div class="post-link has-image">
-        <a href="{{ post.url | relative_url }}">
-          <img class="cake-shot"
-               src="{{ post.image | relative_url }}"
-               alt="{{ post.title }}">
-        </a>
-      </div>
+  <!-- HERO SECTION -->
+  <section class="hero-section">
 
-    {% else %}
-      <!-- Text fallback card -->
-      <article class="post-link no-image">
-        <h1 class="post-title">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h1>
+    <!-- Top Left Yellow Curve -->
+    <div class="hero-curve"></div>
 
-        <p class="post-date">
-          {{ post.date | date: "%d %B %Y" }}
+    <div class="hero-content">
+
+        <!-- "Poster" Style Text Stack -->
+        <div class="hero-text-stack">
+
+            <div class="hero-you">YOU</div>
+
+            <div class="hero-plus">+</div>
+
+            <h1 class="hero-name">MIKE BOAS</h1>
+
+            <div class="hero-equals">=</div>
+
+            <div class="hero-results">RESULTS</div>
+
+        </div>
+
+        <!-- Slogan -->
+        <h2 class="hero-slogan">PEOPLE BEFORE PROJECTS</h2>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+            Strategic Advisor & Leadership Partner for Medical, Marketing, AI Solutions
         </p>
 
-        <div class="post-description">
-          {% assign ex = post.excerpt
-            | replace: "\n", " "
-            | replace: "\r", " "
-            | strip_html
-            | strip_newlines
-            | truncatewords: 40, "" %}
-
-          {% assign ex = ex | strip %}
-
-          {% assign last = ex | slice: -1, 1 %}
-
-          {% if last == "." or last == "," or last == "?" or last == "!" %}
-            {% assign new_len = ex.size | minus: 1 %}
-            {% assign ex = ex | slice: 0, new_len %}
-          {% endif %}
-
-          {{ ex }}...
+        <!-- Email Capture Row -->
+        <div class="hero-email-form">
+            <input
+                type="email"
+                placeholder="your@email.com"
+                class="hero-email-input"
+            />
+            <button class="hero-email-button">
+                Stay in Touch
+            </button>
         </div>
-      </article>
-    {% endif %}
 
-  {% endfor %}
-</section>
+        <!-- 3D Button -->
+        <div class="button-3d-wrapper">
+            <div class="button-3d-shadow"></div>
+            <button class="button-3d">
+                Talk to an Expert
+            </button>
+        </div>
+
+    </div>
+  </section>
+
+  <!-- LOGO MARQUEE -->
+  <section class="logo-marquee-section">
+    <div class="marquee-wrapper">
+      <div class="marquee-content" id="logoMarquee">
+        <!-- Icons will be repeated via JS -->
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <span class="marquee-text">MedTech Co</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="marquee-text">Global Pharma</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span class="marquee-text">Energy AI</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="22"></line>
+          </svg>
+          <span class="marquee-text">Neural Systems</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+          <span class="marquee-text">Growth Inc</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span class="marquee-text">People First</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Expertise Redefined</h2>
+        <p class="section-subtitle">
+          Delivering cross-functional impact across the three pillars of modern healthcare success.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="flashlight-card" data-flashlight>
+          <div class="flashlight-glow"></div>
+          <div class="flashlight-border"></div>
+
+          <div class="flashlight-content">
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="service-title">Medical Leadership</h3>
+            <p class="service-description">
+              Advising on clinical trial design, regulatory pathways, and patient safety protocols. Ensuring scientific rigor meets commercial viability.
+            </p>
+          </div>
+        </div>
+
+        <div class="flashlight-card" data-flashlight>
+          <div class="flashlight-glow"></div>
+          <div class="flashlight-border"></div>
+
+          <div class="flashlight-content">
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Marketing Strategy</h3>
+            <p class="service-description">
+              Crafting narratives that resonate with providers and patients. Omnichannel launch strategies for drugs and devices in competitive markets.
+            </p>
+          </div>
+        </div>
+
+        <div class="flashlight-card" data-flashlight>
+          <div class="flashlight-glow"></div>
+          <div class="flashlight-border"></div>
+
+          <div class="flashlight-content">
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="22"></line>
+              </svg>
+            </div>
+            <h3 class="service-title">AI Solutions</h3>
+            <p class="service-description">
+              Implementing LLMs and Computer Vision for diagnostics, operational efficiency, and personalized patient engagement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT SECTION -->
+  <section class="impact-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Impact in Action</h2>
+            <p class="section-subtitle">Select case studies and strategic wins.</p>
+        </div>
+
+        <div class="impact-grid">
+            <div class="impact-card" data-animate>
+                <div class="impact-bg-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                </div>
+
+                <div class="impact-content">
+                    <div class="impact-metric">+45% YoY Growth</div>
+
+                    <h3 class="impact-title">Market Expansion Strategy</h3>
+
+                    <p class="impact-description">
+                        Architected a go-to-market strategy for a Series B MedTech startup, integrating AI-driven patient analytics to identify underserved demographics.
+                    </p>
+
+                    <div class="impact-tags">
+                        <span class="impact-tag">Strategy</span>
+                        <span class="impact-tag">MedTech</span>
+                        <span class="impact-tag">Growth</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-card" data-animate>
+                <div class="impact-bg-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                </div>
+
+                <div class="impact-content">
+                    <div class="impact-metric">99.8% Accuracy</div>
+
+                    <h3 class="impact-title">AI Diagnostic Implementation</h3>
+
+                    <p class="impact-description">
+                        Led the deployment of computer vision models in clinical workflows, reducing diagnostic wait times by 60% while maintaining regulatory compliance.
+                    </p>
+
+                    <div class="impact-tags">
+                        <span class="impact-tag">AI/ML</span>
+                        <span class="impact-tag">Operations</span>
+                        <span class="impact-tag">Clinical</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-card" data-animate>
+                <div class="impact-bg-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                </div>
+
+                <div class="impact-content">
+                    <div class="impact-metric">3x Engagement</div>
+
+                    <h3 class="impact-title">Brand Revitalization</h3>
+
+                    <p class="impact-description">
+                        Rebranded a legacy pharmaceutical provider, pivoting towards digital-first engagement and personalized care pathways.
+                    </p>
+
+                    <div class="impact-tags">
+                        <span class="impact-tag">Marketing</span>
+                        <span class="impact-tag">Branding</span>
+                        <span class="impact-tag">Digital</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <div class="container-narrow">
+      <div class="section-header">
+        <h2 class="section-title">The Journey</h2>
+      </div>
+
+      <div class="timeline">
+        <!-- Center Line -->
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item timeline-left" data-animate>
+          <div class="timeline-content">
+            <div class="timeline-image">
+              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" alt="Chief Medical Officer" />
+            </div>
+            <div class="timeline-year">2024</div>
+            <h4 class="timeline-title">Chief Medical Officer (Interim)</h4>
+            <p class="timeline-description">
+              Led a team of 40 clinicians and data scientists at a Series C HealthTech. Spearheaded the integration of generative AI into EMR workflows.
+            </p>
+          </div>
+          <div class="timeline-node"></div>
+          <div class="timeline-spacer"></div>
+        </div>
+
+        <div class="timeline-item timeline-right" data-animate>
+          <div class="timeline-spacer"></div>
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <div class="timeline-image">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Global VP of Marketing" />
+            </div>
+            <div class="timeline-year">2022</div>
+            <h4 class="timeline-title">Global VP of Marketing</h4>
+            <p class="timeline-description">
+              Oversaw a $50M marketing budget for a leading pharma launch. Achieved 120% of sales targets in the first 3 quarters.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-left" data-animate>
+          <div class="timeline-content">
+            <div class="timeline-year">2019</div>
+            <h4 class="timeline-title">Strategic Advisor - AI Ops</h4>
+            <p class="timeline-description">
+              Consulted for Fortune 500 hospital networks on operational efficiency using predictive modeling for patient flow.
+            </p>
+          </div>
+          <div class="timeline-node"></div>
+          <div class="timeline-spacer"></div>
+        </div>
+
+        <div class="timeline-item timeline-right" data-animate>
+          <div class="timeline-spacer"></div>
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <div class="timeline-image">
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600" alt="MD / MBA Graduation" />
+            </div>
+            <div class="timeline-year">2015</div>
+            <h4 class="timeline-title">MD / MBA Graduation</h4>
+            <p class="timeline-description">
+              Dual degree completion with honors. Specialized in internal medicine and healthcare economics.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title center">Trusted by Leaders</h2>
+        <button id="marqueeToggle" class="marquee-toggle">
+            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <svg class="pause-icon hidden" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+            <span class="toggle-text">Pause</span>
+        </button>
+    </div>
+
+    <div class="testimonials-marquee-wrapper">
+        <div class="testimonials-marquee" id="testimonialsMarquee">
+            <div class="testimonial-card">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                </svg>
+
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Sarah&backgroundColor=b6e3f4" alt="Dr. Sarah Chen" />
+                    </div>
+                    <div>
+                        <h4 class="testimonial-name">Dr. Sarah Chen</h4>
+                        <p class="testimonial-role">CMO at NeuralHealth</p>
+                    </div>
+                </div>
+
+                <p class="testimonial-text">
+                    "Revolutionized our patient intake workflow using AI. The strategic insight saved us years of development time."
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                </svg>
+
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede" alt="Marcus Thorne" />
+                    </div>
+                    <div>
+                        <h4 class="testimonial-name">Marcus Thorne</h4>
+                        <p class="testimonial-role">VP Marketing, BioGlobal</p>
+                    </div>
+                </div>
+
+                <p class="testimonial-text">
+                    "The marketing overhaul drove a 200% increase in lead qualification. A true partner in growth."
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                </svg>
+
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Elena&backgroundColor=ffdfbf" alt="Elena Rodriguez" />
+                    </div>
+                    <div>
+                        <h4 class="testimonial-name">Elena Rodriguez</h4>
+                        <p class="testimonial-role">Founder, CareSync</p>
+                    </div>
+                </div>
+
+                <p class="testimonial-text">
+                    "A visionary leader who understands the intersection of code and cure. Highly recommended."
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                </svg>
+
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=James&backgroundColor=d1d4f9" alt="James Wilson" />
+                    </div>
+                    <div>
+                        <h4 class="testimonial-name">James Wilson</h4>
+                        <p class="testimonial-role">Director, MedVenture</p>
+                    </div>
+                </div>
+
+                <p class="testimonial-text">
+                    "Helped us navigate complex regulatory hurdles while keeping the product user-centric."
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                </svg>
+
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Anita&backgroundColor=ffd5dc" alt="Anita Patel" />
+                    </div>
+                    <div>
+                        <h4 class="testimonial-name">Anita Patel</h4>
+                        <p class="testimonial-role">CEO, FuturePharma</p>
+                    </div>
+                </div>
+
+                <p class="testimonial-text">
+                    "The bridge between technical feasibility and clinical reality. Invaluable for our Series B raise."
+                </p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container-narrow footer-content">
+        <h2 class="footer-title">Ready to Scale?</h2>
+        <p class="footer-subtitle">
+            Let's discuss how we can align your medical authority, marketing voice, and technological capability.
+        </p>
+
+        <div class="button-3d-wrapper">
+            <div class="button-3d-shadow"></div>
+            <button class="button-3d">
+                Talk to an Expert
+            </button>
+        </div>
+
+        <div class="footer-links">
+            <a href="#" class="footer-link">LinkedIn</a>
+            <a href="#" class="footer-link">Twitter</a>
+            <a href="#" class="footer-link">Email</a>
+        </div>
+
+        <p class="footer-copyright">
+            © 2025 Strategic Profile. All Rights Reserved.
+        </p>
+    </div>
+  </footer>
+</div>
