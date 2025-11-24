@@ -129,11 +129,12 @@ body {
 
 .hero-arch {
   position: absolute;
-  top: -60px;
-  left: 0;
-  width: 100%;
+  top: -50px;
+  left: -20px;
+  width: 120%;
   z-index: 0;   /* behind everything */
   pointer-events: none;
+  transform: rotate(-8deg);
 }
 
 .hero-arch svg {
