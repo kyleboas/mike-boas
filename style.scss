@@ -135,25 +135,28 @@ body {
   );
 }
 
-.hero-curve {
+.hero-arch {
   position: absolute;
-  top: -180px;
-  left: -120px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;   /* behind everything */
+  pointer-events: none;
+}
 
-  width: 900px;      /* large ellipse width */
-  height: 350px;     /* large ellipse height */
+.hero-arch svg {
+  display: block;
+  width: 100%;
+  height: 180px; /* matches your screenshot height */
+}
 
-  background: linear-gradient(
-    90deg,
-    #EFAB00 0%,
-    #FFCB47 100%
-  );
+/* Colors from your existing palette */
+.arch-bg {
+  fill: var(--primary-darker);
+}
 
-  border-radius: 50%;
-  transform: rotate(-8deg);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-
-  z-index: 1;
+.arch-band {
+  fill: var(--accent);
 }
 
 .hero-content {
