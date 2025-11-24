@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      {% if page.title %}{{ page.title }} - Erin Boas{% else %}Erin Boas{% endif %}
+    </title>
+
+    {% include favicon.html %}
+    {% if site.tags != "" %}{% include collecttags.html %}{% endif %}
+    {% include meta.html %}
+    {% include json-ld.html %}
+    
+    <script>
+      document.documentElement.classList.add("reveal-ready");
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
+  </head>
+
+  <body>
+    <main class="page">
+
+      <aside class="sidebar">
+        {% include top.html %}
+        
+        <div class="subscribe">
+          <form action="https://buttondown.com/api/emails/embed-subscribe/ErinBoas" 
+                method="post" 
+                target="_blank"
+                id="subscribeForm">
+            <div class="form-container">
+              <input type="email" name="email" id="email" placeholder="Enter your email to subscribe..." required>
+              <button type="submit" id="subscribeButton">
+                <svg width="15" height="15" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 50 L40 80 L90 20" stroke="black" stroke-width="15" fill="none"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      
+        <div class="nav">
+          <a href="{{ site.baseurl }}/" class="all">All</a>
+          <span class="sep">•</span>
+          <a href="{{ site.baseurl }}/bakes/" class="bakes">Bakes</a>
+          <span class="sep">•</span>
+          <a href="{{ site.baseurl }}/travels" class="travels">Travels</a>
+          <span class="sep">•</span>
+          <a href="{{ site.baseurl }}/cooks" class="cooks">Cooks</a>
+          <span class="sep">•</span>
+          <a href="{{ site.baseurl }}/writes" class="reads">Writes</a>
+        </div>
+      </aside>
+
+      <section class="main">
+        {{ content }}
+      </section>
+      
+      <div class="hero">
+        {% include bottom.html %}
+      </div>
+      <div class="footer">
+        <p>Made by <a href="https://kyleboas.com">Kyle Boas</a>. Copyright © 2025 Erin Boas</p>
+      </div>
+    
+    </main>
+    
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const images = Array.from(document.querySelectorAll(".gallery .cake-shot"));
+    if (!images.length) return;
+
+    // first image: no transition, show immediately
+    const first = images[0];
+    first.classList.add("is-visible", "no-transition");
+
+    // reduced motion: show everything, no observer
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      images.forEach(img => img.classList.add("is-visible"));
+      return;
+    }
+
+    const rest = images.slice(1);
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -5% 0px" });
+
+    rest.forEach(img => observer.observe(img));
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const name = document.querySelector(".name-swap");
+    if (!name) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    name.classList.add("run");
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const messageInput = document.getElementById("message");
+  const modal = document.getElementById("messageModal");
+  const modalText = document.getElementById("messageModalText");
+  const sendBtn = document.getElementById("messageModalSend");
+  let lastFocused = null;
+
+  if (!messageInput || !modal) return;
+
+  function openModal() {
+    lastFocused = document.activeElement;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    modalText.value = messageInput.value || "";
+    modalText.focus();
+    modalText.setSelectionRange(modalText.value.length, modalText.value.length);
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    if (lastFocused) lastFocused.focus();
+  }
+
+  // Only open if Full Name + Email are filled
+  function tryOpenModal(e) {
+    const form = messageInput.closest("form");
+    const nameInput = form ? form.querySelector("#fullName") : null;
+    const emailInput = form ? form.querySelector("#email") : null;
+
+    if (nameInput && !nameInput.value.trim()) {
+      e.preventDefault();
+      nameInput.focus();
+      if (nameInput.reportValidity) nameInput.reportValidity();
+      return;
+    }
+
+    if (emailInput && !emailInput.value.trim()) {
+      e.preventDefault();
+      emailInput.focus();
+      if (emailInput.reportValidity) emailInput.reportValidity();
+      return;
+    }
+
+    e.preventDefault();
+    openModal();
+  }
+
+  // Open on click or focus (guarded)
+  messageInput.addEventListener("focus", tryOpenModal);
+  messageInput.addEventListener("click", tryOpenModal);
+
+  // Close on X or backdrop (delegated)
+  modal.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close]")) {
+      closeModal();
+    }
+  });
+
+  // Esc closes
+  document.addEventListener("keydown", (e) => {
+    if (modal.classList.contains("is-open") && e.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  // Send copies value back + submits form
+  sendBtn.addEventListener("click", () => {
+    messageInput.value = modalText.value.trim();
+    closeModal();
+
+    const form = messageInput.closest("form");
+    if (form && messageInput.value) {
+      if (form.requestSubmit) form.requestSubmit();
+      else form.submit();
+    }
+  });
+});
+</script>
+
+<!-- Message modal (add once near end of body) -->
+<div class="message-modal" id="messageModal" aria-hidden="true">
+  <div class="message-modal__backdrop" data-close></div>
+
+  <div class="message-modal__panel"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="messageModalTitle">
+    <div class="message-modal__header">
+      <h2 id="messageModalTitle" class="message-modal__title">Message</h2>
+      <button type="button"
+        class="message-modal__close"
+        aria-label="Close"
+        data-close>
+      ✕
+    </button>
+    </div>
+
+    <textarea id="messageModalText"
+              class="message-modal__textarea"
+              placeholder="Type your message…"></textarea>
+
+    <div class="message-modal__footer">
+      <button type="button" class="message-modal__send" id="messageModalSend">
+        Send
+      </button>
+    </div>
+  </div>
+</div>
+  </body>
+</html>

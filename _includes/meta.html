@@ -1,0 +1,50 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#ffffff">
+<html lang="{{ site.lang | default: 'en' }}">
+
+{% if page.excerpt %}
+<meta name="description" content="{{ page.excerpt | strip_html }}" />
+<meta property="og:description" content="{{ page.excerpt | strip_html }}" />
+<meta property="twitter:description" content="{{ page.excerpt | strip_html }}" />
+{% else %}
+<meta name="description" content="Homemade cakes by Erin Boas.">
+<meta property="og:description" content="Homemade cakes by Erin Boas."/>
+<meta property="twitter:description" content="Homemade cakes by Erin Boas."/>
+{% endif %}
+
+<meta name="author" content="Erin Boas" />
+
+{% if page.title %}
+<meta property="og:title" content="{{ page.title }}" />
+<meta property="twitter:title" content="{{ page.title }}" />
+{% else %}
+<meta property="og:title" content="Erin Boas" />
+<meta property="twitter:title" content="Erin Boas" />
+{% endif %}
+
+{% if page.url %}
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="twitter:url" content="{{ page.url | absolute_url }}" />
+{% else %}
+<meta property="og:url" content="{{ site.url }}" />
+<meta property="twitter:url" content="{{ site.url }}" />
+{% endif %}
+
+{% if site.logo %}
+<meta property="og:image" content="https://raw.githubusercontent.com/kyleboas/Erin-Boas/refs/heads/main/_assets/IMG_0894.jpeg" />
+{% endif %}
+
+{% if page.image %}
+<meta property="twitter:card" content="summary_large_image">
+<meta property="og:image" content="{{ page.image }}" />
+<meta property="twitter:image" content="{{ page.image }}">
+{% else %}
+<meta property="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://raw.githubusercontent.com/kyleboas/Erin-Boas/refs/heads/main/_assets/IMG_0894.jpeg" />
+<meta property="twitter:image" content="https://raw.githubusercontent.com/kyleboas/Erin-Boas/refs/heads/main/_assets/IMG_0894.jpeg">
+{% endif %}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ page.url | absolute_url }}" />

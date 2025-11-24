@@ -1,0 +1,92 @@
+<section class="top">
+  <!-- LEFT -->
+  <div class="left">
+    <div class="profile">
+      <div class="avatar">
+        <a href="{{ site.baseurl }}/" class="site-avatar">
+          <img src="{{ site.avatar }}" />
+          <img src="https://raw.githubusercontent.com/kyleboas/Erin-Boas/refs/heads/main/_assets/IMG_0849.png"
+               alt="Erin profile photo" />
+        </a>
+      </div>
+
+      <div class="profile-text">
+        <h1 class="name name-swap {% if page.category %}solo-{{ page.category }}{% endif %}">
+          Erin
+          <span class="last-wrap" aria-live="polite">
+            {% if page.category == "bakes" %}
+              <span class="last last-bakes accent">Bakes</span>
+            {% elsif page.category == "travels" %}
+              <span class="last last-travels accent">Travels</span>
+            {% elsif page.category == "cooks" %}
+              <span class="last last-cooks accent">Cooks</span>
+            {% elsif page.category == "writes" %}
+              <span class="last last-writes accent">Writes</span>
+            {% else %}
+              <span class="last last-boas">Boas</span>
+              <span class="last last-bakes accent">Bakes</span>
+              <span class="last last-travels accent">Travels</span>
+              <span class="last last-cooks accent">Cooks</span>
+              <span class="last last-writes accent">Writes</span>
+            {% endif %}
+          </span>
+        </h1>
+
+        <div class="location">WASHINGTON, DC</div>
+      </div>
+    </div>
+
+    <p class="blurb">
+      {% if page.category == "bakes" %}
+        Baking homemade cakes and treats for events. Contact me if you want me to make you something for your next special occasion.
+      {% elsif page.category == "travels" %}
+        Favorite place to escape to: Nantucket--salt air, slow afternoons, and that perfect mix of charming and laid-back.
+      {% elsif page.category == "cooks" %}
+        Cooking is how I unwind. I’m always testing recipes, tweaking flavors, and trying to make everyday meals feel a little special.
+      {% elsif page.category == "writes" %}
+        Reading to learn, escape, and sharpen ideas--fiction, non-fiction, anything beautifully written. Always open to recomendations.
+      {% else %}
+        Associate at Spencer Stuart, discovering and developing leadership for a better future within the Education and Social Impact practice.
+      {% endif %}
+    </p>
+  </div>
+
+  <!-- RIGHT -->
+    <form class="contact"
+          action="https://formsubmit.co/kyle@tacticsjournal.com"
+          method="POST">
+
+      <input type="hidden" name="_subject" value="New Erin Boas site contact" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="basic" />
+      <input type="hidden" name="_next" value="{{ site.baseurl }}/message-received/">
+
+      <div class="field">
+        <label class="label" for="fullName">Full Name</label>
+        <input class="input" id="fullName" name="fullName" type="text" autocomplete="name" required />
+      </div>
+
+      <div class="field">
+        <label class="label" for="email">Email Address</label>
+        <input class="input" id="email" name="email" type="email" autocomplete="email" required />
+      </div>
+
+      <div class="field">
+        {% if page.category == "bakes" %}
+          <label class="label" for="message">Date &amp; Venue</label>
+          <input class="input" id="message" name="message" type="text" />
+        {% elsif page.category == "travels" %}
+           <label class="label" for="message">Location</label>
+          <input class="input" id="message" name="message" type="text" />
+        {% elsif page.category == "cooks" %}
+           <label class="label" for="message">Recipe</label>
+          <input class="input" id="message" name="message" type="text" />
+        {% else %}
+          <label class="label" for="message">Message</label>
+          <input class="input" id="message" name="message" type="text" />
+        {% endif %}
+      </div>
+
+      <button type="submit" hidden aria-hidden="true" tabindex="-1"></button>
+    </form>
+</section>

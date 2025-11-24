@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<section class="gallery" aria-label="Work">
+  {% for post in site.posts %}
+
+    {% if post.image %}
+      <!-- Image card -->
+      <div class="post-link has-image">
+        <a href="{{ post.url | relative_url }}">
+          <img class="cake-shot"
+               src="{{ post.image | relative_url }}"
+               alt="{{ post.title }}">
+        </a>
+      </div>
+
+    {% else %}
+      <!-- Text fallback card -->
+      <article class="post-link no-image">
+        <h1 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h1>
+
+        <p class="post-date">
+          {{ post.date | date: "%d %B %Y" }}
+        </p>
+
+        <div class="post-description">
+          {% assign ex = post.excerpt
+            | replace: "\n", " "
+            | replace: "\r", " "
+            | strip_html
+            | strip_newlines
+            | truncatewords: 40, "" %}
+
+          {% assign ex = ex | strip %}
+
+          {% assign last = ex | slice: -1, 1 %}
+
+          {% if last == "." or last == "," or last == "?" or last == "!" %}
+            {% assign new_len = ex.size | minus: 1 %}
+            {% assign ex = ex | slice: 0, new_len %}
+          {% endif %}
+
+          {{ ex }}...
+        </div>
+      </article>
+    {% endif %}
+
+  {% endfor %}
+</section>
