@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>John Doe – The Bridge Builder</title>
+  <title>Mike Boas – The Bridge Builder</title>
 
   <!-- Tailwind CSS (OK for this prototype) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -234,7 +234,7 @@
                 }}
               >
                 <h1 className="text-6xl font-bold mb-4 tracking-tight drop-shadow-lg">
-                  John Doe
+                  Mike Boas
                 </h1>
                 <h2 className="text-4xl font-light mb-6 text-blue-100 drop-shadow-md">
                   The Bridge Builder
@@ -258,26 +258,38 @@
               </div>
 
               {/* Logos */}
-              <div
-                className="absolute w-full max-w-5xl transition-all duration-700"
-                style={{ opacity: getSectionOpacity(0.18, 0.08) }}
-              >
-                <h3 className="text-2xl font-light mb-8 uppercase tracking-widest drop-shadow-md">
-                  Trusted By Industry Leaders
-                </h3>
-                <div className="flex flex-wrap justify-center gap-12 opacity-80">
-                  {["Pfizer", "J&J", "Moderna", "Novartis", "Merck"].map(
-                    (logo, idx) => (
-                      <div
-                        key={idx}
-                        className="text-3xl font-serif font-bold drop-shadow-lg"
-                      >
-                        {logo}
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
+               <div
+                 className="absolute w-full max-w-5xl transition-all duration-700"
+                 style={{ opacity: getSectionOpacity(0.18, 0.08) }}
+               >
+                 <h3 className="text-2xl font-light mb-8 uppercase tracking-widest drop-shadow-md">
+                   Trusted By Industry Leaders
+                 </h3>
+
+                 <div className="flex flex-wrap justify-center gap-12 opacity-80">
+                   {[
+                     {
+                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0927.png",
+                       alt: "AstraZeneca",
+                     },
+                     {
+                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0922.gif",
+                       alt: "Aingens",
+                     },
+                     {
+                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0926.png",
+                       alt: "The Stem",
+                     },
+                   ].map((logo, idx) => (
+                     <img
+                       key={idx}
+                       src={logo.src}
+                       alt={logo.alt}
+                       className="h-12 w-auto object-contain drop-shadow-lg"
+                     />
+                   ))}
+                 </div>
+               </div>
 
               {/* Services */}
               <div
