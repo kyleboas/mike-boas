@@ -1,3 +1,7 @@
+---
+---
+
+{% raw %}
 const { useState, useEffect, useRef, useMemo } = React;
 const {
   Mail,
@@ -561,9 +565,6 @@ const BridgeLanding = () => {
             })}
 
             {/* The Deck */}
-            {/* Perspective Deck - wider at bottom (left) narrowing to right? 
-                Actually user said "Get closer to other side". 
-                Let's make it a straight heavy beam for stability. */}
             <path d="M-100,350 L1100,350" stroke="#333" strokeWidth="40" />
             <line
               x1="-100"
@@ -572,8 +573,7 @@ const BridgeLanding = () => {
               y2="335"
               stroke="#555"
               strokeWidth="5"
-            />{" "}
-            {/* Railing */}
+            />
             <line
               x1="-100"
               y1="370"
@@ -581,8 +581,7 @@ const BridgeLanding = () => {
               y2="370"
               stroke="#222"
               strokeWidth="10"
-            />{" "}
-            {/* Under structure */}
+            />
           </svg>
         </div>
       </div>
@@ -607,3 +606,4 @@ const BridgeLanding = () => {
 // Mount the component
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<BridgeLanding />);
+{% endraw %}
