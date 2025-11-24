@@ -117,22 +117,14 @@ body {
    ======================================================================== */
 
 .hero-section {
-  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 1.5rem;
   text-align: center;
   overflow: hidden;
-
-  background: linear-gradient(
-    180deg,
-    var(--primary) 0%,
-    var(--primary-dark) 40%,
-    var(--primary-darker) 100%
-  );
+  color: var(--primary);
 }
 
 .hero-arch {
