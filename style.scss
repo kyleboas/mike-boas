@@ -157,6 +157,7 @@ body {
   max-width: 56rem;
   margin: 40px auto;
   width: 100%;
+  animation: fadeIn 1s ease-out;
 }
 
 .hero-text-stack {
@@ -165,7 +166,6 @@ body {
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 2rem;
-  animation: fadeIn 2s ease-out;
   line-height: 0.7;
 }
 
