@@ -555,94 +555,61 @@
               </svg>
 
               {/* Built bridge */}
-              <svg
-                className="absolute bottom-0 left-0 w-full h-full"
-                viewBox="0 0 1000 400"
-                preserveAspectRatio="none"
-                style={{ opacity: builtOpacity }}
-              >
-                <path
-                  d="M-50,60 Q250,360 500,160 T1050,60"
-                  fill="none"
-                  stroke="#5d1a1a"
-                  strokeWidth="4"
-                />
-                <rect x="180" y="50" width="40" height="350" fill="#7b2222" />
-                <rect x="190" y="60" width="20" height="300" fill="#963333" />
-                <line
-                  x1="180"
-                  y1="120"
-                  x2="220"
-                  y2="120"
-                  stroke="#5d1a1a"
-                  strokeWidth="5"
-                />
-                <line
-                  x1="180"
-                  y1="220"
-                  x2="220"
-                  y2="220"
-                  stroke="#5d1a1a"
-                  strokeWidth="5"
-                />
-                <rect x="780" y="50" width="40" height="350" fill="#7b2222" />
-                <rect x="790" y="60" width="20" height="300" fill="#963333" />
-                <line
-                  x1="780"
-                  y1="120"
-                  x2="820"
-                  y2="120"
-                  stroke="#5d1a1a"
-                  strokeWidth="5"
-                />
-                <line
-                  x1="780"
-                  y1="220"
-                  x2="820"
-                  y2="220"
-                  stroke="#5d1a1a"
-                  strokeWidth="5"
-                />
-                <path
-                  d="M-50,50 Q250,350 500,150 T1050,50"
-                  fill="none"
-                  stroke="#963333"
-                  strokeWidth="6"
-                />
-                {[...Array(25)].map((_, i) => {
-                  const x = 50 + i * 38;
-                  const distFromCenter = Math.abs(x - 500) / 500;
-                  const cableY = 150 + 200 * distFromCenter * distFromCenter;
-                  return (
-                    <line
-                      key={i}
-                      x1={x}
-                      y1="350"
-                      x2={x}
-                      y2={cableY}
-                      stroke="#7b2222"
-                      strokeWidth="2"
-                    />
-                  );
-                })}
-                <path d="M-100,350 L1100,350" stroke="#333" strokeWidth="40" />
-                <line
-                  x1="-100"
-                  y1="335"
-                  x2="1100"
-                  y2="335"
-                  stroke="#555"
-                  strokeWidth="5"
-                />
-                <line
-                  x1="-100"
-                  y1="370"
-                  x2="1100"
-                  y2="370"
-                  stroke="#222"
-                  strokeWidth="10"
-                />
-              </svg>
+               <svg
+                 className="absolute bottom-0 left-0 w-full h-full"
+                 viewBox="0 0 1000 400"
+                 preserveAspectRatio="none"
+                 style={{ opacity: builtOpacity }}
+               >
+                 {/* dark back cable */}
+                 <path
+                   d="M200,60 Q350,340 500,160 T800,60"
+                   fill="none"
+                   stroke="#5d1a1a"
+                   strokeWidth="4"
+                   strokeLinecap="round"
+                 />
+
+                 <rect x="180" y="50" width="40" height="350" fill="#7b2222" />
+                 <rect x="190" y="60" width="20" height="300" fill="#963333" />
+                 <line x1="180" y1="120" x2="220" y2="120" stroke="#5d1a1a" strokeWidth="5" />
+                 <line x1="180" y1="220" x2="220" y2="220" stroke="#5d1a1a" strokeWidth="5" />
+
+                 <rect x="780" y="50" width="40" height="350" fill="#7b2222" />
+                 <rect x="790" y="60" width="20" height="300" fill="#963333" />
+                 <line x1="780" y1="120" x2="820" y2="120" stroke="#5d1a1a" strokeWidth="5" />
+                 <line x1="780" y1="220" x2="820" y2="220" stroke="#5d1a1a" strokeWidth="5" />
+
+                 {/* front cable */}
+                 <path
+                   d="M200,50 Q350,330 500,150 T800,50"
+                   fill="none"
+                   stroke="#963333"
+                   strokeWidth="6"
+                   strokeLinecap="round"
+                 />
+
+                 {[...Array(25)].map((_, i) => {
+                   const x = 50 + i * 38;
+                   const distFromCenter = Math.abs(x - 500) / 500;
+                   const cableY = 150 + 200 * distFromCenter * distFromCenter;
+                   return (
+                     <line
+                       key={i}
+                       x1={x}
+                       y1="350"
+                       x2={x}
+                       y2={cableY}
+                       stroke="#7b2222"
+                       strokeWidth="2"
+                     />
+                   );
+                 })}
+
+                 <path d="M-100,350 L1100,350" stroke="#333" strokeWidth="40" />
+                 <line x1="-100" y1="335" x2="1100" y2="335" stroke="#555" strokeWidth="5" />
+                 <line x1="-100" y1="370" x2="1100" y2="370" stroke="#222" strokeWidth="10" />
+               </svg>
             </div>
           </div>
 
