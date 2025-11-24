@@ -1,0 +1,41 @@
+---
+layout: null
+permalink: /landing/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bridge Landing - John Doe</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- React & ReactDOM (UMD builds) -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+  <!-- Lucide React (UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide-react@latest/dist/umd/lucide-react.min.js"></script>
+
+  <!-- Babel Standalone for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Your own CSS -->
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/bridge-landing.css' | relative_url }}"
+  />
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Your JSX file (Babel will transpile this in the browser) -->
+  <script
+    type="text/babel"
+    src="{{ '/assets/js/bridge-landing.jsx' | relative_url }}"
+  ></script>
+</body>
+</html>
