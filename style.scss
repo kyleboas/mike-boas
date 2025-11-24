@@ -272,6 +272,18 @@ body {
   transform: translateY(-1px);
 }
 
+/* remove mobile stacking */
+@media (max-width: 640px) {
+  .hero-email-form {
+    flex-direction: row; /* force horizontal */
+  }
+
+  .hero-email-input,
+  .hero-email-button {
+    border-radius: 4px; /* optional: prevents awkward clipping on tiny screens */
+  }
+}
+
 /* 3D Button */
 .button-3d-wrapper {
   position: relative;
