@@ -555,64 +555,77 @@
               </svg>
 
               {/* Built bridge */}
-               <svg
-                 className="absolute bottom-0 left-0 w-full h-full"
-                 viewBox="0 0 1000 400"
-                 preserveAspectRatio="none"
-                 style={{ opacity: builtOpacity }}
-               >
-                 {/* dark back cable */}
-                 <path
-                   d="M200,60 Q350,340 500,160 T800,60"
-                   fill="none"
-                   stroke="#5d1a1a"
-                   strokeWidth="4"
-                   strokeLinecap="round"
-                 />
+<svg
+  className="absolute bottom-0 left-0 w-full h-full"
+  viewBox="0 0 1000 400"
+  preserveAspectRatio="none"
+  style={{ opacity: builtOpacity }}
+>
+  {/* BACK MAIN CABLE (behind towers/verticals) */}
+  <path
+    d="M-100,200 C150,80 350,60 500,80 C650,100 850,80 1100,200"
+    fill="none"
+    stroke="#5d1a1a"
+    strokeWidth="4"
+  />
 
-                 <rect x="180" y="50" width="40" height="350" fill="#7b2222" />
-                 <rect x="190" y="60" width="20" height="300" fill="#963333" />
-                 <line x1="180" y1="120" x2="220" y2="120" stroke="#5d1a1a" strokeWidth="5" />
-                 <line x1="180" y1="220" x2="220" y2="220" stroke="#5d1a1a" strokeWidth="5" />
+  {/* TOWERS */}
+  {/* Left tower */}
+  <rect x="180" y="50" width="40" height="350" fill="#7b2222" />
+  <rect x="190" y="60" width="20" height="300" fill="#963333" />
+  <line x1="180" y1="120" x2="220" y2="120" stroke="#5d1a1a" strokeWidth="5" />
+  <line x1="180" y1="220" x2="220" y2="220" stroke="#5d1a1a" strokeWidth="5" />
 
-                 <rect x="780" y="50" width="40" height="350" fill="#7b2222" />
-                 <rect x="790" y="60" width="20" height="300" fill="#963333" />
-                 <line x1="780" y1="120" x2="820" y2="120" stroke="#5d1a1a" strokeWidth="5" />
-                 <line x1="780" y1="220" x2="820" y2="220" stroke="#5d1a1a" strokeWidth="5" />
+  {/* Right tower */}
+  <rect x="780" y="50" width="40" height="350" fill="#7b2222" />
+  <rect x="790" y="60" width="20" height="300" fill="#963333" />
+  <line x1="780" y1="120" x2="820" y2="120" stroke="#5d1a1a" strokeWidth="5" />
+  <line x1="780" y1="220" x2="820" y2="220" stroke="#5d1a1a" strokeWidth="5" />
 
-                 {/* front cable */}
-                 <path
-                   d="M200,50 Q350,330 500,150 T800,50"
-                   fill="none"
-                   stroke="#963333"
-                   strokeWidth="6"
-                   strokeLinecap="round"
-                 />
+  {/* VERTICAL SUSPENDER CABLES */}
+  {(() => {
+    const lines = [];
+    const count = 25;           // number of verticals between towers
+    const startX = 200 + 20;    // just inside left tower
+    const endX = 800 - 20;      // just inside right tower
+    const step = (endX - startX) / (count - 1);
 
-                 {[...Array(25)].map((_, i) => {
-                   const x = 50 + i * 38;
-                   const distFromCenter = Math.abs(x - 500) / 500;
-                   const cableY = 150 + 200 * distFromCenter * distFromCenter;
-                   return (
-                     <line
-                       key={i}
-                       x1={x}
-                       y1="350"
-                       x2={x}
-                       y2={cableY}
-                       stroke="#7b2222"
-                       strokeWidth="2"
-                     />
-                   );
-                 })}
+    for (let i = 0; i < count; i++) {
+      const x = startX + i * step;
+      const t = (x - startX) / (endX - startX); // 0 → 1 across span
 
-                 <path d="M-100,350 L1100,350" stroke="#333" strokeWidth="40" />
-                 <line x1="-100" y1="335" x2="1100" y2="335" stroke="#555" strokeWidth="5" />
-                 <line x1="-100" y1="370" x2="1100" y2="370" stroke="#222" strokeWidth="10" />
-               </svg>
-            </div>
-          </div>
+      // Suspension-style sag: highest at towers, lowest in the middle
+      const cableY = 150 + 60 * Math.sin(Math.PI * t); // ~150 at towers, ~210 center
 
+      lines.push(
+        <line
+          key={i}
+          x1={x}
+          y1="350"      // deck level
+          x2={x}
+          y2={cableY}  // attach to main cable
+          stroke="#7b2222"
+          strokeWidth="2"
+        />
+      );
+    }
+    return lines;
+  })()}
+
+  {/* FRONT MAIN CABLE (on top of verticals) */}
+  <path
+    d="M200,150 Q350,230 500,210 T800,150"
+    fill="none"
+    stroke="#963333"
+    strokeWidth="6"
+    strokeLinecap="round"
+  />
+
+  {/* ROAD / DECK */}
+  <path d="M-100,350 L1100,350" stroke="#333" strokeWidth="40" />
+  <line x1="-100" y1="335" x2="1100" y2="335" stroke="#555" strokeWidth="5" />
+  <line x1="-100" y1="370" x2="1100" y2="370" stroke="#222" strokeWidth="10" />
+</svg>
           {/* Scroll helper */}
           <div
             className={
