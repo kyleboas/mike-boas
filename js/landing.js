@@ -221,6 +221,24 @@
   /* ========================================================================
      HERO SUNRISE
      ======================================================================== */
+     
+window.addEventListener('DOMContentLoaded', () => {
+  const hero = document.querySelector('.hero-section');
+  const content = document.querySelector('.hero-content');
+  if (!hero || !content) return;
+
+  // set starting states
+  hero.style.setProperty('--sunrise-opacity', 1);
+  content.style.opacity = 0;
+
+  requestAnimationFrame(() => {
+    hero.style.transition = '--sunrise-opacity 1.6s ease';
+    hero.style.setProperty('--sunrise-opacity', 0.70);
+
+    // fade in hero content
+    content.style.opacity = 1;
+  });
+});
 
 window.addEventListener('scroll', () => {
     const hero = document.querySelector('.hero-section');

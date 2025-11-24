@@ -152,31 +152,6 @@ body {
   opacity: var(--sunrise-opacity, 1); 
 }
 
-.hero-arch {
-  position: absolute;
-  top: -50px;
-  left: -20px;
-  width: 120%;
-  z-index: 0;   /* behind everything */
-  pointer-events: none;
-  transform: rotate(-8deg);
-}
-
-.hero-arch svg {
-  display: block;
-  width: 100%;
-  height: 180px; /* matches your screenshot height */
-}
-
-/* Colors from your existing palette */
-.arch-bg {
-  fill: var(--primary-darker);
-}
-
-.arch-band {
-  fill: var(--accent);
-}
-
 .hero-content {
   position: relative;
   z-index: 10;
@@ -186,7 +161,9 @@ body {
   max-width: 56rem;
   margin: 40px auto;
   width: 100%;
-  animation: fadeIn 1s ease-out;
+
+  opacity: 0;
+  transition: opacity 1.6s ease;
 }
 
 .hero-text-stack {
@@ -232,7 +209,6 @@ body {
 
 .hero-slogan {
   font-size: 1.5rem;
-  font-weight: 900;
   font-family: 'Avenir Black', 'Arial Black', sans-serif;
   color: var(--accent);
   text-transform: uppercase;
