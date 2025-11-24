@@ -17,15 +17,12 @@
 
   <!-- Babel Standalone for JSX -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <!-- Optional: your custom CSS for this page -->
-  <!-- <link rel="stylesheet" href="/assets/css/bridge-landing.css" /> -->
 </head>
 <body class="bg-slate-900">
   <div id="root"></div>
 
   <!-- React JSX code -->
-  <script type="text/babel">
+  <script type="text/babel" data-presets="env,react">
     const { useState, useEffect, useRef, useMemo } = React;
     const {
       Mail,
