@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      {% if page.title %}{{ page.title }} - Mike Boas{% else %}Mike Boas - Strategic Profile{% endif %}
+    </title>
+
+    {% include favicon.html %}
+    {% include meta.html %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
+  </head>
+
+  <body>
+    {{ content }}
+
+    <!-- Landing Page JavaScript -->
+    <script src="{{ site.baseurl }}/js/landing.js"></script>
+  </body>
+</html>
