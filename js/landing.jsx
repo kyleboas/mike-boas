@@ -81,7 +81,7 @@ const BridgeLanding = () => {
 
       // start at 170%, end at 100%
       const zoomStart = 170;
-      const zoomEnd = 100;
+      const zoomEnd = 70;
       const zoom = zoomStart - (zoomStart - zoomEnd) * (eased / maxZoomPoint);
 
       document.documentElement.style.setProperty("--bg-size", `${zoom}%`);
