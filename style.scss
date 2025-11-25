@@ -300,53 +300,6 @@ body {
   font-style: italic;
 }
 
-/* Impact section */
-
-.impact-section {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 64rem;
-  padding: 0 1rem;
-  transition: all 0.7s ease;
-  text-align: center;
-}
-
-.impact-heading {
-  font-size: 2.3rem;
-  font-weight: 700;
-  margin-bottom: 2.5rem;
-  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.8);
-}
-
-.impact-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-.impact-card {
-  text-align: center;
-}
-
-.impact-value {
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: #facc15; /* yellow-400 */
-  margin-bottom: 0.5rem;
-  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.9);
-}
-
-.impact-label {
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  opacity: 0.9;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-}
-
 /* Timeline */
 
 .timeline-section {
@@ -355,20 +308,17 @@ body {
   transform: translateX(-50%);
   width: 100%;
   max-width: 48rem;
-  padding: 0 1rem;
   transition: all 0.7s ease;
 }
 
 .timeline-card {
-  backdrop-filter: blur(12px);
-  padding: 2rem;
   text-align: left;
 }
 
 .timeline-heading {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 2.5rem;
+  margin-top: 0px;
   text-shadow: 0 6px 16px rgba(0, 0, 0, 0.8);
 }
 
@@ -387,7 +337,7 @@ body {
 
 .timeline-dot {
   position: absolute;
-  left: -2.15rem;
+  left: -2.6rem;
   top: 0.3rem;
   width: 1rem;
   height: 1rem;
@@ -422,9 +372,8 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
+  width: 85%;
   max-width: 56rem;
-  padding: 0 1rem;
   transition: all 0.7s ease;
   text-align: center;
 }
@@ -471,7 +420,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
+  width: 85%;
   max-width: 40rem;
   padding: 0 1rem;
   transition: all 0.7s ease;
@@ -492,7 +441,7 @@ body {
 }
 
 .cta-heading {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 1rem;
 }
@@ -510,7 +459,7 @@ body {
   border: none;
   background: #2563eb;
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -526,8 +475,6 @@ body {
 }
 
 .cta-footer {
-  border-top: 1px solid #e2e8f0;
-  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -535,7 +482,7 @@ body {
 }
 
 .cta-icons {
-  display: flex;
+  display: none;
   gap: 1.5rem;
 }
 
@@ -550,7 +497,7 @@ body {
 }
 
 .cta-credit {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   color: #94a3b8;
   margin: 0;
 }
