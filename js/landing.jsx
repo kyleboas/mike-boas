@@ -113,14 +113,6 @@ const BridgeLanding = () => {
         >
           <div className="hero-card">
             <div className="hero-header-row">
-              <div className="hero-logo-wrap">
-                <img
-                  src="https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0963.png"
-                  alt="Bridge logo"
-                  className="hero-logo"
-                />
-              </div>
-
               <div className="hero-text-block">
                 <h1 className="hero-title">MIKE BOAS</h1>
                 <h2 className="hero-subtitle">BRIDGE BUILDER</h2>
