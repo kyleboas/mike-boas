@@ -12,6 +12,10 @@
   />
 
   <style>
+    body {
+      min-height: 100dvh;
+    }
+
     .hero-title {
       letter-spacing: 0.12em;
     }
@@ -220,8 +224,11 @@
         >
           {/* Fixed viewport */}
           <div
-            className="fixed top-0 left-0 w-full h-screen overflow-hidden transition-colors duration-700"
-            style={{ background: getSkyBackground() }}
+            className="fixed top-0 left-0 w-full overflow-hidden transition-colors duration-700"
+            style={{
+              background: getSkyBackground(),
+              height: '100dvh',
+            }}
           >
             {/* Stars */}
             <div
@@ -257,7 +264,12 @@
             />
 
             {/* Floating content */}
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center text-white pointer-events-none">
+            <div
+              className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center text-white pointer-events-none"
+              style={{
+                paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))',
+              }}
+            >
             
               {/* Hero */}
               <div
