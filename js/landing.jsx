@@ -182,18 +182,6 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.3, 0.06),
-              }}
-            >
-              <h2 className="strategy-heading">
-                Why this work matters -- and how I make it happen.
-              </h2>
-            </div>
-
-            {/* 2 */}
-            <div
-              className="strategy-block"
-              style={{
                 opacity: getSectionOpacity(0.33, 0.06),
               }}
             >
@@ -208,7 +196,7 @@ const BridgeLanding = () => {
               </p>
             </div>
 
-            {/* 3 */}
+            {/* 2 */}
             <div
               className="strategy-block"
               style={{
