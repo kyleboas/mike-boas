@@ -390,18 +390,24 @@
                        alt: "The Stem",
                      },
                    ].map((logo, idx) => (
-                     <img
+                     <div
                        key={idx}
-                       src={logo.src}
-                       alt={logo.alt}
                        className="
-                         h-12 w-auto object-contain drop-shadow-lg
-                         filter grayscale opacity-60
-                         hover:grayscale-0 hover:opacity-100
-                         hover:-translate-y-1
-                         transition duration-300 ease-out
+                         p-4 rounded-xl transition duration-300
+                         hover:bg-white/10 hover:backdrop-blur-sm
                        "
-                     />
+                     >
+                       <img
+                         src={logo.src}
+                         alt={logo.alt}
+                         className="
+                           h-12 w-auto object-contain drop-shadow-lg
+                           filter grayscale opacity-60
+                           transition duration-300 ease-out
+                           hover:grayscale-0 hover:opacity-100 hover:-translate-y-1
+                         "
+                       />
+                     </div>
                    ))}
                  </div>
                </div>
