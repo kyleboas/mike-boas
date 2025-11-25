@@ -30,7 +30,7 @@ body {
 .overlay {
   position: fixed;
   inset: 0;
-  background-image: url("https://github.com/kyleboas/mike-boas/blob/main/_assets/ING_1015.jpeg?raw=true");
+  background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/ING_1015.png");
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: contain;   /* keep whole image visible */
@@ -218,6 +218,7 @@ body {
 .logo-card {
   padding: 1rem;
   border-radius: 0.75rem;
+  
   transition: background 0.3s ease, backdrop-filter 0.3s ease,
     transform 0.3s ease;
 }
@@ -234,6 +235,10 @@ body {
   filter: grayscale(1);
   opacity: 0.7;
   transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.invert-logo {
+  filter: invert(1) grayscale(1);
 }
 
 .logo-card:hover .logo-image {
@@ -597,7 +602,7 @@ body {
 @media (min-width: 769px) {
 
   .overlay {
-    background-image: url("https://github.com/kyleboas/mike-boas/blob/main/_assets/IMG_1007.jpeg?raw=true");
+    background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_1007.png");
   }
 
   .hero-header-row {
