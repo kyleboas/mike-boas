@@ -187,7 +187,7 @@ const BridgeLanding = () => {
             >
               <h3 className="strategy-subheading">My Purpose</h3>
               <p className="strategy-text">
-                To elevate human potential and amplify human impact,
+                To elevate human potential and amplify human impact
               </p>
               <p className="strategy-text strategy-text-italic">
                 Creating the space for people and organizations
@@ -204,7 +204,7 @@ const BridgeLanding = () => {
               }}
             >
               <h3 className="strategy-subheading">My Philosophy</h3>
-              <p className="strategy-text">People Before Projects,</p>
+              <p className="strategy-text">People Before Projects</p>
               <p className="strategy-text strategy-text-italic">
                 Because when people feel valued, belief builds,
                 <br />
