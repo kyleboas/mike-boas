@@ -423,48 +423,83 @@
                  className="absolute w-full max-w-6xl transition-all duration-700"
                  style={{ opacity: getSectionOpacity(0.32, 0.1) }}
                >
-                 <h3 className="text-4xl font-bold mb-12 drop-shadow-lg uppercase tracking-widest">
-                   Strategy
-                 </h3>
+                 <div
+                   className="
+                     relative mx-auto
+                     rounded-3xl
+                     bg-slate-950/80
+                     border border-white/15
+                     shadow-[0_32px_90px_rgba(0,0,0,0.9)]
+                     backdrop-blur-xl
+                     px-6 py-10 md:px-12 md:py-14
+                   "
+                 >
+                   {/* Header */}
+                   <div className="mb-10">
+                     <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1 text-[0.7rem] tracking-[0.22em] uppercase text-slate-200/80">
+                       <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.9)]" />
+                       <span>Strategy</span>
+                     </div>
 
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left md:text-center">
-
-                   {/* LEFT SIDE -- Why do I exist? */}
-                   <div className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 shadow-2xl">
-                     <h4 className="text-2xl italic font-semibold mb-6">
-                       Why do I exist?
-                     </h4>
-
-                     <p className="text-xl font-bold mb-6 leading-relaxed">
-                       To elevate human potential<br />
-                       and amplify human impact.
-                     </p>
-
-                     <p className="italic text-lg opacity-90 leading-relaxed">
-                       Creating the space for people<br />
-                       and organizations to achieve<br />
-                       extraordinary results.
-                     </p>
+                     <h3
+                       className="
+                         mt-4 text-3xl md:text-4xl font-semibold
+                         bg-gradient-to-r from-cyan-200 via-sky-300 to-blue-400
+                         bg-clip-text text-transparent
+                         drop-shadow-[0_8px_30px_rgba(15,23,42,0.9)]
+                       "
+                     >
+                       Why I do this work -- and how.
+                     </h3>
                    </div>
 
-                   {/* RIGHT SIDE -- What is my philosophy? */}
-                   <div className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 shadow-2xl">
-                     <h4 className="text-2xl italic font-semibold mb-6">
-                       What is my philosophy?
-                     </h4>
+                   {/* Two-column content */}
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 text-left text-slate-50">
 
-                     <p className="text-xl font-bold mb-6 leading-relaxed">
-                       People. Before. Projects.
-                     </p>
+                     {/* LEFT:  My purpose */}
+                     <div
+                       className="
+                         relative
+                         md:border-r md:border-white/10
+                         pr-1 md:pr-10
+                       "
+                     >
+                       <div className="absolute -left-0 top-0 h-10 w-[2px] bg-gradient-to-b from-cyan-400 via-sky-300 to-transparent hidden md:block" />
+                       <h4 className="text-xl md:text-2xl italic font-semibold mb-5 text-slate-50">
+                         My purpose
+                       </h4>
 
-                     <p className="italic text-lg opacity-90 leading-relaxed">
-                       Because when people feel<br />
-                       valued, belief builds, alignment<br />
-                       follows, and execution becomes<br />
-                       unstoppable.
-                     </p>
+                       <p className="text-lg md:text-xl font-semibold mb-5 leading-relaxed text-slate-50">
+                         To elevate human potential<br />
+                         and amplify human impact,
+                       </p>
+
+                       <p className="text-base md:text-lg italic leading-relaxed text-slate-200/90">
+                         Creating the space for people<br />
+                         and organizations to achieve<br />
+                         extraordinary results.
+                       </p>
+                     </div>
+
+                     {/* RIGHT: My philosophy */}
+                     <div className="md:pl-10">
+                       <div className="absolute right-0 top-0 h-10 w-[2px] bg-gradient-to-b from-cyan-400 via-sky-300 to-transparent hidden md:block" />
+                       <h4 className="text-xl md:text-2xl italic font-semibold mb-5 text-slate-50">
+                         My philosophy
+                       </h4>
+
+                       <p className="text-lg md:text-xl font-semibold mb-5 leading-relaxed text-slate-50">
+                         People Before Projects,
+                       </p>
+
+                       <p className="text-base md:text-lg italic leading-relaxed text-slate-200/90">
+                         Because when people feel<br />
+                         valued, belief builds, alignment<br />
+                         follows, and execution becomes<br />
+                         unstoppable.
+                       </p>
+                     </div>
                    </div>
-
                  </div>
                </div>
 
