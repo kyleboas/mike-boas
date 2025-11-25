@@ -57,7 +57,7 @@ const BridgeLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef(null);
 
-  const SCROLL_HEIGHT_MULTIPLIER = 8;
+  const SCROLL_HEIGHT_MULTIPLIER = 10;
 
   useEffect(() => {
     const handleScroll = () => {
