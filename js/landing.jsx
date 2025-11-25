@@ -190,9 +190,7 @@ const BridgeLanding = () => {
                 To elevate human potential and amplify human impact
               </p>
               <p className="strategy-text strategy-text-italic">
-                Creating the space for people and organizations
-                <br />
-                to achieve extraordinary results.
+                Creating the space for people and organizations to achieve extraordinary results.
               </p>
             </div>
 
@@ -206,9 +204,7 @@ const BridgeLanding = () => {
               <h3 className="strategy-subheading">My Philosophy</h3>
               <p className="strategy-text">People Before Projects</p>
               <p className="strategy-text strategy-text-italic">
-                Because when people feel valued, belief builds,
-                <br />
-                alignment follows, and execution becomes unstoppable.
+                Because when people feel valued, belief builds, alignment follows, and execution becomes unstoppable.
               </p>
             </div>
           </div>
@@ -266,9 +262,7 @@ const BridgeLanding = () => {
           <div className="testimonial-wrapper">
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "John isn't just a consultant; he's a true partner. He built
-                the bridge that allowed our R&D and Marketing teams to finally
-                speak the same language."
+                "Mike isn't just a consultant; he's a true partner. He built the bridge that allowed our R&D and Marketing teams to finally speak the same language."
               </p>
               <p className="testimonial-author">
                 -- Sarah J., VP of Oncology
