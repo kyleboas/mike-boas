@@ -72,13 +72,19 @@ const BridgeLanding = () => {
 
       setScrollProgress(progress);
 
-      // --- background zoom: 170% -> 100% as you scroll ---
-      const eased = progress * progress;       // ease-out feel
-      const zoom = 170 - 70 * eased;           // tweak 170 / 70 to taste
-      document.documentElement.style.setProperty(
-        "--bg-size",
-        `${zoom}%`
-      );
+      // Zoom only until logos appear (progress = 0.18)
+      const maxZoomPoint = 0.18;
+      const clamped = Math.min(progress, maxZoomPoint);
+
+      // ease-out curve
+      const eased = clamped * clamped;
+
+      // start at 170%, end at 100%
+      const zoomStart = 170;
+      const zoomEnd = 100;
+      const zoom = zoomStart - (zoomStart - zoomEnd) * (eased / maxZoomPoint);
+
+      document.documentElement.style.setProperty("--bg-size", `${zoom}%`);
     };
 
     window.addEventListener("scroll", handleScroll);
