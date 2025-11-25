@@ -361,12 +361,8 @@ body {
 }
 
 .timeline-card {
-  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
   padding: 2rem;
-  border-radius: 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
   text-align: left;
 }
 
@@ -615,6 +611,7 @@ body {
     border-radius: 1rem;
     backdrop-filter: blur(12px);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+    max-width: auto;
   }
 
 
