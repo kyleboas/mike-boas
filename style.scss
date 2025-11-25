@@ -200,9 +200,8 @@ body {
 }
 
 .section-label {
-  font-size: 1.25rem;
+  font-size: 0.8rem;
   font-weight: 300;
-  margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
@@ -212,7 +211,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 1.5rem;
   opacity: 0.9;
 }
 
@@ -230,7 +229,7 @@ body {
 }
 
 .logo-image {
-  height: 3rem;
+  height: 2rem;
   width: auto;
   object-fit: contain;
   filter: grayscale(1);
@@ -289,8 +288,7 @@ body {
 }
 
 .strategy-text {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 900;
   line-height: 1.5;
   color: rgba(241, 245, 249, 0.9);
   margin: 0.25rem 0;
@@ -298,6 +296,7 @@ body {
 }
 
 .strategy-text-italic {
+  font-weight: 500;
   font-style: italic;
 }
 
