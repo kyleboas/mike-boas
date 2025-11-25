@@ -19,21 +19,22 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: #ffffff;
-  background-image: url("https://github.com/kyleboas/mike-boas/blob/main/_assets/IMG_0997.jpeg?raw=true");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: contain; /* keep full image visible, no zoom */
+  /* plain fallback color only */
   background-color: #0f172a;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Dark overlay over background for readability */
+/* Full-screen fixed overlay that IS the background image */
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background-image: url("https://github.com/kyleboas/mike-boas/blob/main/_assets/IMG_0997.jpeg?raw=true");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;   /* keep whole image visible */
+  background-color: #0f172a;  /* behind transparent parts of image */
   pointer-events: none;
   z-index: -1;
 }
