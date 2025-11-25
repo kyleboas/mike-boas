@@ -419,29 +419,30 @@
                </div>
 
               {/* Strategy */}
-              {/* Purpose & Philosophy Cinematic Sequence */}
                <div
                  className="absolute w-full max-w-4xl mx-auto transition-all duration-700 text-center"
-                 style={{ opacity: getSectionOpacity(0.32, 0.12) }}
+                 style={{ opacity: getSectionOpacity(0.30, 0.12) }}  // after logos, before impact
                >
-
                  {/* Fade Sequence Wrapper */}
                  <div className="space-y-24">
 
                    {/* 1 -- Why this work matters */}
                    <div
                      style={{
-                       opacity: getSectionOpacity(0.32, 0.10),
-                       transition: "opacity 1s ease-out"
+                       // Shows first, right after logos
+                       opacity: getSectionOpacity(0.30, 0.06),
+                       transition: "opacity 1s ease-out",
                      }}
                      className="mx-auto"
                    >
-                     <h2 className="
-                       text-3xl md:text-4xl
-                       font-light tracking-wide
-                       text-slate-100
-                       leading-snug
-                     ">
+                     <h2
+                       className="
+                         text-3xl md:text-4xl
+                         font-light tracking-wide
+                         text-slate-100
+                         leading-snug
+                       "
+                     >
                        Why this work matters -- and how I make it happen.
                      </h2>
                    </div>
@@ -449,8 +450,9 @@
                    {/* 2 -- My Purpose */}
                    <div
                      style={{
-                       opacity: getSectionOpacity(0.40, 0.10),
-                       transition: "opacity 1s ease-out"
+                       // Appears after the first line fades, then fades before impact
+                       opacity: getSectionOpacity(0.33, 0.06),
+                       transition: "opacity 1s ease-out",
                      }}
                    >
                      <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-cyan-200">
@@ -467,11 +469,12 @@
                      </p>
                    </div>
 
-                   {/* 3 -- My Philosophy */}
+                   {/* 3 -- My Philosophy (People Before Projects) */}
                    <div
                      style={{
-                       opacity: getSectionOpacity(0.50, 0.10),
-                       transition: "opacity 1s ease-out"
+                       // Appears last, then fully gone before Impact comes in
+                       opacity: getSectionOpacity(0.36, 0.06),
+                       transition: "opacity 1s ease-out",
                      }}
                    >
                      <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-cyan-200">
@@ -487,7 +490,6 @@
                        alignment follows, and execution becomes unstoppable.
                      </p>
                    </div>
-
                  </div>
                </div>
 
