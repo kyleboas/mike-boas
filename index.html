@@ -246,124 +246,59 @@
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center text-white pointer-events-none">
             
               {/* Hero */}
-              <div
-               className="absolute w-full transition-all duration-700 transform"
-                 style={{
-                   maxWidth: "46rem",
-                   opacity: getSectionOpacity(0.02, 0.08),
-                   transform: `translateY(${
-                     getSectionOpacity(0.02, 0.08) === 0 ? "20px" : "0px"
-                   })`,
-                 }}
-               >
-                {/* Dark hero panel */}
-                <div
+              <div className="mt-4 md:mt-2 flex flex-col md:flex-row items-center md:items-start justify-center gap-8">
+                
+                {/* Logo left */}
+                <div className="flex-shrink-0">
+                  <img
+                    src="https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0963.png"
+                    alt="Bridge logo"
+                    className="w-[140px] md:w-[160px] h-auto object-contain"
+                  />
+                </div>
+
+                {/* Text stack right */}
+                <div className="text-center md:text-left">
+                  <h1
                     className="
-                      relative mx-auto pl-6 pr-6 py-10 md:py-12
-                      rounded-2xl
-                      border border-white/15
-                      shadow-[0_24px_60px_rgba(0,0,0,0.8)]
-                      hero-card-serif
+                      hero-title
+                      text-4xl md:text-5xl lg:text-6xl
+                      text-white
+                      font-normal
+                      mb-4
+                      uppercase
                     "
                   >
-                  {/* Logo top-left */}
-                  <div className="absolute -top-[5.5rem] left-[4rem] h-[14rem] w-auto">
-                  <img
-                      src="https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0963.png"
-                      alt="Bridge logo"
-                      className="h-16 w-auto object-contain"
-                      style={{ height: "160px" }}
-                    />
-                  </div>
+                    MIKE BOAS
+                  </h1>
 
-                  {/* Text stack */}
-                  <div className="mt-10 md:mt-6 text-center">
-                    <h1
-                      className="
-                        hero-title
-                        text-4xl md:text-5xl lg:text-6xl
-                        text-white
-                        font-normal
-                        mb-4
-                        uppercase
-                      "
-                    >
-                      MIKE BOAS
-                    </h1>
+                  <h2
+                    className="
+                      hero-subtitle
+                      text-xl md:text-2xl lg:text-3xl
+                      text-blue-100
+                      font-normal
+                      mb-6
+                      uppercase
+                    "
+                  >
+                    BRIDGE BUILDER
+                  </h2>
 
-                    <h2
-                      className="
-                        hero-subtitle
-                        text-xl md:text-2xl lg:text-3xl
-                        text-blue-100
-                        font-normal
-                        mb-6
-                        uppercase
-                      "
-                    >
-                      BRIDGE BUILDER
-                    </h2>
-
-                    <p
-                      className="
-                        hero-blurb
-                        text-sm md:text-base lg:text-lg
-                        text-slate-100/90
-                        max-w-xl mx-auto
-                      "
-                    >
-                      Strategic Advisor &amp; Leadership Partner
-                      <br className="hidden sm:block" />
-                      for Medical, Marketing, AI Solutions
-                    </p>
-                  </div>
-
-                  {/* Email card, matching the mockup */}
-                  <div className="mt-9 flex justify-center">
-                    <div
-                      className="
-                        bg-slate-900/95
-                        rounded-2xl
-                        px-6 py-5
-                        inline-block
-                        pointer-events-auto
-                        border border-white/15
-                        shadow-[0_22px_45px_rgba(0,0,0,0.85)]
-                      "
-                    >
-                      <div className="flex flex-col sm:flex-row gap-3">
-                        <input
-                          type="email"
-                          placeholder="your@email.com"
-                          className="
-                            px-4 py-2
-                            rounded-lg
-                            bg-slate-100
-                            text-gray-900
-                            placeholder-gray-500
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-blue-400
-                            w-64
-                          "
-                        />
-                        <button
-                          className="
-                            px-6 py-2
-                            bg-[#1e62ff]
-                            hover:bg-[#2b6fff]
-                            rounded-lg
-                            font-medium
-                            text-white
-                            transition-colors
-                          "
-                        >
-                          Stay in touch
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <p
+                    className="
+                      hero-blurb
+                      text-sm md:text-base lg:text-lg
+                      text-slate-100/90
+                      max-w-xl
+                    "
+                  >
+                    Strategic Advisor &amp; Leadership Partner
+                    <br className="hidden sm:block" />
+                    for Medical, Marketing, AI Solutions
+                  </p>
                 </div>
+
               </div>
 
               {/* Logos */}
