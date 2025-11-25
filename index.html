@@ -4,6 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mike Boas – The Bridge Builder</title>
+  
+    <!-- Serif display font for hero -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    .hero-card-serif {
+      font-family: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    .hero-title {
+      letter-spacing: 0.25em;   /* wide tracking like the mockup */
+    }
+
+    .hero-subtitle {
+      letter-spacing: 0.30em;
+    }
+
+    .hero-blurb {
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+    }
+  </style>
 
   <!-- Tailwind CSS (OK for this prototype) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -223,6 +248,7 @@
 
             {/* Floating content */}
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center text-white pointer-events-none">
+            
               {/* Hero */}
               <div
                 className="absolute w-full max-w-4xl transition-all duration-700 transform"
@@ -230,29 +256,115 @@
                   opacity: getSectionOpacity(0.02, 0.08),
                   transform: `translateY(${
                     getSectionOpacity(0.02, 0.08) === 0 ? "20px" : "0px"
-                  })`
+                  })`,
                 }}
               >
-                <h1 className="text-6xl font-bold mb-4 tracking-tight drop-shadow-lg">
-                  Mike Boas
-                </h1>
-                <h2 className="text-4xl font-light mb-6 text-blue-100 drop-shadow-md">
-                  Bridge Builder
-                </h2>
-                <p className="text-xl mb-8 opacity-90">
-                  People Before Projects
-                </p>
-
-                <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl inline-block pointer-events-auto border border-white/20 shadow-xl">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      className="px-4 py-2 rounded-lg bg-white/80 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 w-64"
+                {/* Dark hero panel */}
+                <div
+                  className="
+                    relative mx-auto px-6 py-10 md:py-12
+                    bg-slate-950/90
+                    rounded-2xl
+                    border border-white/15
+                    shadow-[0_24px_60px_rgba(0,0,0,0.8)]
+                    hero-card-serif
+                  "
+                >
+                  {/* Logo top-left */}
+                  <div className="absolute -top-10 left-6 h-16 w-auto">
+                    <img
+                      src="https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0963.png"
+                      alt="Bridge logo"
+                      className="h-16 w-auto object-contain"
                     />
-                    <button className="px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-medium transition-colors">
-                      Stay in touch
-                    </button>
+                  </div>
+
+                  {/* Text stack */}
+                  <div className="mt-10 md:mt-6 text-center">
+                    <h1
+                      className="
+                        hero-title
+                        text-4xl md:text-5xl lg:text-6xl
+                        text-white
+                        font-normal
+                        mb-4
+                        uppercase
+                      "
+                    >
+                      MIKE BOAS
+                    </h1>
+
+                    <h2
+                      className="
+                        hero-subtitle
+                        text-xl md:text-2xl lg:text-3xl
+                        text-blue-100
+                        font-normal
+                        mb-6
+                        uppercase
+                      "
+                    >
+                      BRIDGE BUILDER
+                    </h2>
+
+                    <p
+                      className="
+                        hero-blurb
+                        text-sm md:text-base lg:text-lg
+                        text-slate-100/90
+                        max-w-xl mx-auto
+                      "
+                    >
+                      Strategic Advisor &amp; Leadership Partner
+                      <br className="hidden sm:block" />
+                      for Medical, Marketing, AI Solutions
+                    </p>
+                  </div>
+
+                  {/* Email card, matching the mockup */}
+                  <div className="mt-9 flex justify-center">
+                    <div
+                      className="
+                        bg-slate-900/95
+                        rounded-2xl
+                        px-6 py-5
+                        inline-block
+                        pointer-events-auto
+                        border border-white/15
+                        shadow-[0_22px_45px_rgba(0,0,0,0.85)]
+                      "
+                    >
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <input
+                          type="email"
+                          placeholder="your@email.com"
+                          className="
+                            px-4 py-2
+                            rounded-lg
+                            bg-slate-100
+                            text-gray-900
+                            placeholder-gray-500
+                            focus:outline-none
+                            focus:ring-2
+                            focus:ring-blue-400
+                            w-64
+                          "
+                        />
+                        <button
+                          className="
+                            px-6 py-2
+                            bg-[#1e62ff]
+                            hover:bg-[#2b6fff]
+                            rounded-lg
+                            font-medium
+                            text-white
+                            transition-colors
+                          "
+                        >
+                          Stay in touch
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
