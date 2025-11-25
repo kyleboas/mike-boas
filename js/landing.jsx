@@ -214,26 +214,6 @@ const BridgeLanding = () => {
           </div>
         </div>
 
-        {/* Impact */}
-        <div
-          className="impact-section"
-          style={{ opacity: getSectionOpacity(0.48, 0.08) }}
-        >
-          <h3 className="impact-heading">Measurable Impact</h3>
-          <div className="impact-grid">
-            {[
-              { label: "Engagement Increase", val: "150%" },
-              { label: "YoY Growth", val: "45%" },
-              { label: "Strategic Accuracy", val: "99.9%" },
-            ].map((stat, i) => (
-              <div key={i} className="impact-card">
-                <div className="impact-value">{stat.val}</div>
-                <div className="impact-label">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Timeline */}
         <div
           className="timeline-section"
