@@ -32,7 +32,7 @@ body {
   inset: 0;
   background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/ING_1015.png");
   background-repeat: no-repeat;
-  background-size: var(--bg-size, 170%);  /* <-- start zoomed in */
+  background-size: cover; 
   background-position: right bottom;
   background-color: #0f172a;
   pointer-events: none;
@@ -603,8 +603,6 @@ body {
 
   .overlay {
     background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_1007.png");
-    background-size: var(--bg-size, 110%);
-    background-position: right bottom;
   }
 
   .hero-header-row {
