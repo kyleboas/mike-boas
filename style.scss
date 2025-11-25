@@ -32,9 +32,9 @@ body {
   inset: 0;
   background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/ING_1015.png");
   background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: contain;   /* keep whole image visible */
-  background-color: #0f172a;  /* behind transparent parts of image */
+  background-size: cover; 
+  background-position: right bottom;
+  background-color: #0f172a;
   pointer-events: none;
   z-index: -1;
 }
