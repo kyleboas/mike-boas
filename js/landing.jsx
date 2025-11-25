@@ -168,18 +168,21 @@ const BridgeLanding = () => {
               {
                 src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0927.png",
                 alt: "AstraZeneca",
+                class: "logo-image invert-logo",
               },
               {
                 src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0922.gif",
                 alt: "Aingens",
+                class: "logo-image invert-logo",
               },
               {
                 src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0926.png",
                 alt: "The Stem",
+                class: "logo-image",
               },
             ].map((logo, idx) => (
               <div key={idx} className="logo-card">
-                <img src={logo.src} alt={logo.alt} className="logo-image invert-logo" />
+                <img src={logo.src} alt={logo.alt} className={logo.class} />
               </div>
             ))}
           </div>
