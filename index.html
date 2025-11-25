@@ -12,10 +12,6 @@
   />
 
   <style>
-    .hero-card-serif {
-      font-family: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
-    }
-
     .hero-title {
       letter-spacing: 0.25em;   /* wide tracking like the mockup */
     }
@@ -251,27 +247,28 @@
             
               {/* Hero */}
               <div
-                className="absolute w-full max-w-4xl transition-all duration-700 transform"
-                style={{
-                  opacity: getSectionOpacity(0.02, 0.08),
-                  transform: `translateY(${
-                    getSectionOpacity(0.02, 0.08) === 0 ? "20px" : "0px"
-                  })`,
-                }}
-              >
+               className="absolute w-full transition-all duration-700 transform"
+                 style={{
+                   maxWidth: "46rem",
+                   opacity: getSectionOpacity(0.02, 0.08),
+                   transform: `translateY(${
+                     getSectionOpacity(0.02, 0.08) === 0 ? "20px" : "0px"
+                   })`,
+                 }}
+               >
                 {/* Dark hero panel */}
                 <div
-                  className="
-                    relative mx-auto px-6 py-10 md:py-12
-                    bg-slate-950/90
-                    rounded-2xl
-                    border border-white/15
-                    shadow-[0_24px_60px_rgba(0,0,0,0.8)]
-                    hero-card-serif
-                  "
-                >
+                  class="
+                      relative mx-auto pl-6 pr-6 py-10 md:py-12
+                      bg-slate-950/90
+                      rounded-2xl
+                      border border-white/15
+                      shadow-[0_24px_60px_rgba(0,0,0,0.8)]
+                      hero-card-serif
+                    "
+                  >
                   {/* Logo top-left */}
-                  <div className="absolute -top-10 left-6 h-16 w-auto">
+                  <div className="absolute -top-[-5.5rem] left-[4rem] h-16 w-auto">
                     <img
                       src="https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0963.png"
                       alt="Bridge logo"
