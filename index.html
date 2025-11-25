@@ -419,87 +419,75 @@
                </div>
 
               {/* Strategy */}
+              {/* Purpose & Philosophy Cinematic Sequence */}
                <div
-                 className="absolute w-full max-w-6xl transition-all duration-700"
-                 style={{ opacity: getSectionOpacity(0.32, 0.1) }}
+                 className="absolute w-full max-w-4xl mx-auto transition-all duration-700 text-center"
+                 style={{ opacity: getSectionOpacity(0.32, 0.12) }}
                >
-                 <div
-                   className="
-                     relative mx-auto
-                     rounded-3xl
-                     bg-slate-950/80
-                     border border-white/15
-                     shadow-[0_32px_90px_rgba(0,0,0,0.9)]
-                     backdrop-blur-xl
-                     px-6 py-10 md:px-12 md:py-14
-                   "
-                 >
-                   {/* Header */}
-                   <div className="mb-10">
-                     <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1 text-[0.7rem] tracking-[0.22em] uppercase text-slate-200/80">
-                       <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.9)]" />
-                       <span>Strategy</span>
-                     </div>
 
-                     <h3
-                       className="
-                         mt-4 text-3xl md:text-4xl font-semibold
-                         bg-gradient-to-r from-cyan-200 via-sky-300 to-blue-400
-                         bg-clip-text text-transparent
-                         drop-shadow-[0_8px_30px_rgba(15,23,42,0.9)]
-                       "
-                     >
-                       Why I do this work -- and how.
+                 {/* Fade Sequence Wrapper */}
+                 <div className="space-y-24">
+
+                   {/* 1 -- Why this work matters */}
+                   <div
+                     style={{
+                       opacity: getSectionOpacity(0.32, 0.10),
+                       transition: "opacity 1s ease-out"
+                     }}
+                     className="mx-auto"
+                   >
+                     <h2 className="
+                       text-3xl md:text-4xl
+                       font-light tracking-wide
+                       text-slate-100
+                       leading-snug
+                     ">
+                       Why this work matters -- and how I make it happen.
+                     </h2>
+                   </div>
+
+                   {/* 2 -- My Purpose */}
+                   <div
+                     style={{
+                       opacity: getSectionOpacity(0.40, 0.10),
+                       transition: "opacity 1s ease-out"
+                     }}
+                   >
+                     <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-cyan-200">
+                       My Purpose
                      </h3>
+
+                     <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-100/90">
+                       To elevate human potential and amplify human impact,
+                     </p>
+
+                     <p className="mt-3 text-lg md:text-xl italic leading-relaxed text-slate-200/90">
+                       Creating the space for people and organizations<br />
+                       to achieve extraordinary results.
+                     </p>
                    </div>
 
-                   {/* Two-column content */}
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 text-left text-slate-50">
+                   {/* 3 -- My Philosophy */}
+                   <div
+                     style={{
+                       opacity: getSectionOpacity(0.50, 0.10),
+                       transition: "opacity 1s ease-out"
+                     }}
+                   >
+                     <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-cyan-200">
+                       My Philosophy
+                     </h3>
 
-                     {/* LEFT:  My purpose */}
-                     <div
-                       className="
-                         relative
-                         md:border-r md:border-white/10
-                         pr-1 md:pr-10
-                       "
-                     >
-                       <div className="absolute -left-0 top-0 h-10 w-[2px] bg-gradient-to-b from-cyan-400 via-sky-300 to-transparent hidden md:block" />
-                       <h4 className="text-xl md:text-2xl italic font-semibold mb-5 text-slate-50">
-                         My purpose
-                       </h4>
+                     <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-100/90">
+                       People Before Projects,
+                     </p>
 
-                       <p className="text-lg md:text-xl font-semibold mb-5 leading-relaxed text-slate-50">
-                         To elevate human potential<br />
-                         and amplify human impact,
-                       </p>
-
-                       <p className="text-base md:text-lg italic leading-relaxed text-slate-200/90">
-                         Creating the space for people<br />
-                         and organizations to achieve<br />
-                         extraordinary results.
-                       </p>
-                     </div>
-
-                     {/* RIGHT: My philosophy */}
-                     <div className="md:pl-10">
-                       <div className="absolute right-0 top-0 h-10 w-[2px] bg-gradient-to-b from-cyan-400 via-sky-300 to-transparent hidden md:block" />
-                       <h4 className="text-xl md:text-2xl italic font-semibold mb-5 text-slate-50">
-                         My philosophy
-                       </h4>
-
-                       <p className="text-lg md:text-xl font-semibold mb-5 leading-relaxed text-slate-50">
-                         People Before Projects,
-                       </p>
-
-                       <p className="text-base md:text-lg italic leading-relaxed text-slate-200/90">
-                         Because when people feel<br />
-                         valued, belief builds, alignment<br />
-                         follows, and execution becomes<br />
-                         unstoppable.
-                       </p>
-                     </div>
+                     <p className="mt-3 text-lg md:text-xl italic leading-relaxed text-slate-200/90">
+                       Because when people feel valued, belief builds,<br />
+                       alignment follows, and execution becomes unstoppable.
+                     </p>
                    </div>
+
                  </div>
                </div>
 
