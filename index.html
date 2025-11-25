@@ -418,57 +418,55 @@
                  </div>
                </div>
 
-              {/* Services */}
-              <div
-                className="absolute w-full max-w-6xl transition-all duration-700"
-                style={{ opacity: getSectionOpacity(0.32, 0.1) }}
-              >
-                <h3 className="text-4xl font-bold mb-12 drop-shadow-lg">
-                  Connecting Your Team to Artificial Intelligence
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    {
-                      title: "Medical Affairs",
-                      icon: <Users width={32} height={32} />,
-                      desc:
-                        "Expert guidance on medical strategy and stakeholder engagement."
-                    },
-                    {
-                      title: "Marketing Strategy",
-                      icon: <Target width={32} height={32} />,
-                      desc:
-                        "Bridge the gap between product potential and market adoption."
-                    },
-                    {
-                      title: "AI Integration",
-                      icon: <TrendingUp width={32} height={32} />,
-                      desc:
-                        "Leveraging future-tech for pharmaceutical advancement."
-                    }
-                  ].map((service, i) => (
-                    <div
-                      key={i}
-                      className="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 shadow-2xl transition-all duration-500"
-                      style={{
-                        transform: `translateY(${
-                          scrollProgress < 0.32 ? "50px" : "0"
-                        })`,
-                        opacity: scrollProgress > 0.32 ? 1 : 0,
-                        transitionDelay: `${i * 100}ms`
-                      }}
-                    >
-                      <div className="mb-4 text-blue-300">{service.icon}</div>
-                      <h4 className="text-xl font-bold mb-3">
-                        {service.title}
-                      </h4>
-                      <p className="text-sm opacity-80 leading-relaxed">
-                        {service.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* Strategy */}
+               <div
+                 className="absolute w-full max-w-6xl transition-all duration-700"
+                 style={{ opacity: getSectionOpacity(0.32, 0.1) }}
+               >
+                 <h3 className="text-4xl font-bold mb-12 drop-shadow-lg uppercase tracking-widest">
+                   Strategy
+                 </h3>
+
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left md:text-center">
+
+                   {/* LEFT SIDE -- Why do I exist? */}
+                   <div className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 shadow-2xl">
+                     <h4 className="text-2xl italic font-semibold mb-6">
+                       Why do I exist?
+                     </h4>
+
+                     <p className="text-xl font-bold mb-6 leading-relaxed">
+                       To elevate human potential<br />
+                       and amplify human impact,
+                     </p>
+
+                     <p className="italic text-lg opacity-90 leading-relaxed">
+                       Creating the space for people<br />
+                       and organizations to achieve<br />
+                       extraordinary results.
+                     </p>
+                   </div>
+
+                   {/* RIGHT SIDE -- What is my philosophy? */}
+                   <div className="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20 shadow-2xl">
+                     <h4 className="text-2xl italic font-semibold mb-6">
+                       What is my philosophy?
+                     </h4>
+
+                     <p className="text-xl font-bold mb-6 leading-relaxed">
+                       People Before Projects,
+                     </p>
+
+                     <p className="italic text-lg opacity-90 leading-relaxed">
+                       Because when people feel<br />
+                       valued, belief builds, alignment<br />
+                       follows, and execution becomes<br />
+                       unstoppable.
+                     </p>
+                   </div>
+
+                 </div>
+               </div>
 
               {/* Impact */}
               <div
