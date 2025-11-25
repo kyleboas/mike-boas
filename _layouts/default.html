@@ -1,28 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-   <head>
-    <meta charset="utf-8" />
-    <title>
-      {% if page.title %}{{ page.title }} - Erin Boas{% else %}Erin Boas{% endif %}
-    </title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% if page.title %}{{ page.title }} - Mike Boas{% else %}Mike Boas{% endif %}</title>
 
-    {% include favicon.html %}
+  <!-- Serif display font for hero -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  
+  {% include favicon.html %}
     {% if site.tags != "" %}{% include collecttags.html %}{% endif %}
     {% include meta.html %}
-    {% include json-ld.html %}
-    
-    <script>
-      document.documentElement.classList.add("reveal-ready");
-    </script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Main stylesheet -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
-  </head>
 
-  <body>
-    {{ content }}
+  <!-- React & ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-    <!-- Landing Page JavaScript -->
-    <script src="{{ site.baseurl }}/js/landing.js"></script>
-  </body>
+  <!-- Babel Standalone -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <!-- Optional dark overlay (keeps text readable) -->
+  <div class="overlay"></div>
+
+  <div id="root"></div>
+  
+  {{ content }}
+  
+</body>
 </html>
