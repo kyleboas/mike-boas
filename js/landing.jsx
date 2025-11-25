@@ -64,11 +64,21 @@ const BridgeLanding = () => {
       const scrollTop = window.scrollY;
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
+
       const progress =
         docHeight > 0
           ? Math.max(0, Math.min(1, scrollTop / docHeight))
           : 0;
+
       setScrollProgress(progress);
+
+      // --- background zoom: 170% -> 100% as you scroll ---
+      const eased = progress * progress;       // ease-out feel
+      const zoom = 170 - 70 * eased;           // tweak 170 / 70 to taste
+      document.documentElement.style.setProperty(
+        "--bg-size",
+        `${zoom}%`
+      );
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -163,11 +173,7 @@ const BridgeLanding = () => {
               },
             ].map((logo, idx) => (
               <div key={idx} className="logo-card">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="logo-image"
-                />
+                <img src={logo.src} alt={logo.alt} className="logo-image invert-logo" />
               </div>
             ))}
           </div>
@@ -176,14 +182,14 @@ const BridgeLanding = () => {
         {/* Strategy */}
         <div
           className="strategy-section"
-          style={{ opacity: getSectionOpacity(0.30, 0.12) }}
+          style={{ opacity: getSectionOpacity(0.3, 0.12) }}
         >
           <div className="strategy-sequence">
             {/* 1 */}
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.30, 0.06),
+                opacity: getSectionOpacity(0.3, 0.06),
               }}
             >
               <h2 className="strategy-heading">
@@ -217,9 +223,7 @@ const BridgeLanding = () => {
               }}
             >
               <h3 className="strategy-subheading">My Philosophy</h3>
-              <p className="strategy-text">
-                People Before Projects,
-              </p>
+              <p className="strategy-text">People Before Projects,</p>
               <p className="strategy-text strategy-text-italic">
                 Because when people feel valued, belief builds,
                 <br />
