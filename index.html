@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mike Boas – The Bridge Builder</title>
   
-    <!-- Serif display font for hero -->
+  <!-- Serif display font for hero -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
     rel="stylesheet"
@@ -23,6 +23,20 @@
     .hero-blurb {
       letter-spacing: 0.06em;
       line-height: 1.5;
+    }
+
+    /* Mobile tightening */
+    @media (max-width: 480px) {
+      .hero-title {
+        letter-spacing: 0.08em;
+      }
+      .hero-subtitle {
+        letter-spacing: 0.15em;
+      }
+      .hero-blurb {
+        letter-spacing: 0.03em;
+        line-height: 1.4;
+      }
     }
   </style>
 
@@ -247,259 +261,279 @@
             
               {/* Hero */}
               <div
-  className="absolute w-full transition-all              duration-700 transform"
-                 style={{
-                   maxWidth: "46rem",
-                   opacity: getSectionOpacity(0.02, 0.08),
-                   transform: `translateY(${
-                     getSectionOpacity(0.02, 0.08) === 0 ? "20px" : "0px"
-                   })`,
-                 }}
-               >
-                 {/* Dark hero panel */}
-                 <div
-                   className="
-                     relative mx-auto pl-6 pr-6 py-10 md:py-12
-                     rounded-2xl
-                     border border-white/15
-                     shadow-[0_24px_60px_rgba(0,0,0,0.8)]
-                     hero-card-serif
-                   "
-                 >
+                className="
+                  absolute
+                  w-full
+                  px-4
+                  transition-all
+                  duration-700
+                "
+                style={{
+                  maxWidth: "46rem",
+                  left: "50%",
+                  transform: `translate(-50%, ${
+                    getSectionOpacity(0.02, 0.08) === 0 ? "20px" : "0px"
+                  })`,
+                  opacity: getSectionOpacity(0.02, 0.08),
+                }}
+              >
+                {/* Dark hero panel */}
+                <div
+                  className="
+                    relative mx-auto
+                    pl-6 pr-6 py-10 md:py-12
+                    rounded-2xl
+                    border border-white/15
+                    shadow-[0_24px_60px_rgba(0,0,0,0.8)]
+                    hero-card-serif
+                  "
+                >
 
-                   {/* NEW: Logo + Text side-by-side */}
-                   <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 mt-4 md:mt-2">
+                  {/* NEW: Logo + Text side-by-side */}
+                  <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 mt-4 md:mt-2">
 
-                     {/* Logo (left) */}
-                     <div className="flex-shrink-0">
-                       <img
-                         src="https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0963.png"
-                         alt="Bridge logo"
-                         className="w-[140px] md:w-[160px] h-auto object-contain"
-                       />
-                     </div>
+                    {/* Logo (left) */}
+                    <div className="flex-shrink-0">
+                      <img
+                        src="https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0963.png"
+                        alt="Bridge logo"
+                        className="w-[120px] sm:w-[140px] md:w-[160px] h-auto object-contain"
+                      />
+                    </div>
 
-                     {/* Text stack (right) */}
-                     <div className="text-center md:text-left">
-                       <h1
-                         className="
-                           hero-title
-                           text-4xl md:text-5xl lg:text-6xl
-                           text-white
-                           font-normal
-                           mb-4
-                           uppercase
-                         "
-                       >
-                         MIKE BOAS
-                       </h1>
+                    {/* Text stack (right) */}
+                    <div className="text-center md:text-left">
+                      <h1
+                        className="
+                          hero-title
+                          text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+                          text-white
+                          font-normal
+                          mb-4
+                          uppercase
+                        "
+                      >
+                        MIKE BOAS
+                      </h1>
 
-                       <h2
-                         className="
-                           hero-subtitle
-                           text-xl md:text-2xl lg:text-3xl
-                           text-blue-100
-                           font-normal
-                           mb-6
-                           uppercase
-                         "
-                       >
-                         BRIDGE BUILDER
-                       </h2>
+                      <h2
+                        className="
+                          hero-subtitle
+                          text-base sm:text-xl md:text-2xl lg:text-3xl
+                          text-blue-100
+                          font-normal
+                          mb-6
+                          uppercase
+                        "
+                      >
+                        BRIDGE BUILDER
+                      </h2>
 
-                       <p
-                         className="
-                           hero-blurb
-                           text-sm md:text-base lg:text-lg
-                           text-slate-100/90
-                           max-w-xl
-                         "
-                       >
-                         Strategic Advisor &amp; Leadership Partner
-                         <br className="hidden sm:block" />
-                         for Medical, Marketing, AI Solutions
-                       </p>
-                     </div>
+                      <p
+                        className="
+                          hero-blurb
+                          text-sm md:text-base lg:text-lg
+                          text-slate-100/90
+                          max-w-xl
+                          mx-auto md:mx-0
+                        "
+                      >
+                        Strategic Advisor &amp; Leadership Partner
+                        <br className="hidden sm:block" />
+                        for Medical, Marketing, AI Solutions
+                      </p>
+                    </div>
 
-                   </div>
+                  </div>
 
-                   {/* Email card */}
-                   <div className="mt-9 flex justify-center">
-                     <div
-                       className="
-                         bg-slate-900/95
-                         rounded-2xl
-                         px-6 py-5
-                         inline-block
-                         pointer-events-auto
-                         border border-white/15
-                         shadow-[0_22px_45px_rgba(0,0,0,0.85)]
-                       "
-                     >
-                       <div className="flex flex-col sm:flex-row gap-3">
-                         <input
-                           type="email"
-                           placeholder="your@email.com"
-                           className="
-                             px-4 py-2
-                             rounded-lg
-                             bg-slate-100
-                             text-gray-900
-                             placeholder-gray-500
-                             focus:outline-none
-                             focus:ring-2
-                             focus:ring-blue-400
-                             w-64
-                           "
-                         />
-                         <button
-                           className="
-                             px-6 py-2
-                             bg-[#1e62ff]
-                             hover:bg-[#2b6fff]
-                             rounded-lg
-                             font-medium
-                             text-white
-                             transition-colors
-                           "
-                         >
-                           Stay in touch
-                         </button>
-                       </div>
-                     </div>
-                   </div>
+                  {/* Email card */}
+                  <div className="mt-9 flex justify-center">
+                    <div
+                      className="
+                        bg-slate-900/95
+                        rounded-2xl
+                        px-6 py-5
+                        inline-block
+                        pointer-events-auto
+                        border border-white/15
+                        shadow-[0_22px_45px_rgba(0,0,0,0.85)]
+                      "
+                    >
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <input
+                          type="email"
+                          placeholder="your@email.com"
+                          className="
+                            px-4 py-2
+                            rounded-lg
+                            bg-slate-100
+                            text-gray-900
+                            placeholder-gray-500
+                            focus:outline-none
+                            focus:ring-2
+                            focus:ring-blue-400
+                            w-64
+                          "
+                        />
+                        <button
+                          className="
+                            px-6 py-2
+                            bg-[#1e62ff]
+                            hover:bg-[#2b6fff]
+                            rounded-lg
+                            font-medium
+                            text-white
+                            transition-colors
+                          "
+                        >
+                          Stay in touch
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
-                 </div>
-               </div>
+                </div>
+              </div>
 
               {/* Logos */}
-               <div
-                 className="absolute w-full max-w-5xl transition-all duration-700"
-                 style={{ opacity: getSectionOpacity(0.18, 0.08) }}
-               >
-                 <h3 className="text-2xl font-light mb-8 uppercase tracking-widest drop-shadow-md">
-                   Trusted By Industry Leaders
-                 </h3>
+              <div
+                className="
+                  absolute left-1/2 -translate-x-1/2
+                  w-full max-w-5xl
+                  px-4
+                  transition-all duration-700
+                "
+                style={{ opacity: getSectionOpacity(0.18, 0.08) }}
+              >
+                <h3 className="text-xl sm:text-2xl font-light mb-8 uppercase tracking-widest drop-shadow-md">
+                  Trusted By Industry Leaders
+                </h3>
 
-                 <div className="flex flex-wrap justify-center gap-12 opacity-80">
-                   {[
-                     {
-                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0927.png",
-                       alt: "AstraZeneca",
-                     },
-                     {
-                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0922.gif",
-                       alt: "Aingens",
-                     },
-                     {
-                       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0926.png",
-                       alt: "The Stem",
-                     },
-                   ].map((logo, idx) => (
-                     <div
-                       key={idx}
-                       className="
-                         p-4 rounded-xl transition duration-300
-                         hover:bg-white/10 hover:backdrop-blur-sm
-                       "
-                     >
-                       <img
-                         src={logo.src}
-                         alt={logo.alt}
-                         className="
-                           h-12 w-auto object-contain drop-shadow-lg
-                           filter grayscale opacity-60
-                           transition duration-300 ease-out
-                           hover:grayscale-0 hover:opacity-100 hover:-translate-y-1
-                         "
-                       />
-                     </div>
-                   ))}
-                 </div>
-               </div>
+                <div className="flex flex-wrap justify-center gap-8 sm:gap-12 opacity-80">
+                  {[
+                    {
+                      src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0927.png",
+                      alt: "AstraZeneca",
+                    },
+                    {
+                      src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0922.gif",
+                      alt: "Aingens",
+                    },
+                    {
+                      src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0926.png",
+                      alt: "The Stem",
+                    },
+                  ].map((logo, idx) => (
+                    <div
+                      key={idx}
+                      className="
+                        p-4 rounded-xl transition duration-300
+                        hover:bg-white/10 hover:backdrop-blur-sm
+                      "
+                    >
+                      <img
+                        src={logo.src}
+                        alt={logo.alt}
+                        className="
+                          h-10 sm:h-12 w-auto object-contain drop-shadow-lg
+                          filter grayscale opacity-60
+                          transition duration-300 ease-out
+                          hover:grayscale-0 hover:opacity-100 hover:-translate-y-1
+                        "
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               {/* Strategy */}
-               <div
-                 className="absolute w-full max-w-4xl mx-auto transition-all duration-700 text-center"
-                 style={{ opacity: getSectionOpacity(0.30, 0.12) }}  // after logos, before impact
-               >
-                 {/* Fade Sequence Wrapper */}
-                 <div className="space-y-24">
+              <div
+                className="
+                  absolute left-1/2 -translate-x-1/2
+                  w-full max-w-md sm:max-w-3xl
+                  px-4 mx-auto
+                  transition-all duration-700
+                  text-center
+                "
+                style={{ opacity: getSectionOpacity(0.30, 0.12) }}  // after logos, before impact
+              >
+                {/* Fade Sequence Wrapper */}
+                <div className="space-y-12 sm:space-y-24">
 
-                   {/* 1 -- Why this work matters */}
-                   <div
-                     style={{
-                       // Shows first, right after logos
-                       opacity: getSectionOpacity(0.30, 0.06),
-                       transition: "opacity 1s ease-out",
-                     }}
-                     className="mx-auto"
-                   >
-                     <h2
-                       className="
-                         text-3xl md:text-4xl
-                         font-light tracking-wide
-                         text-slate-100
-                         leading-snug
-                       "
-                     >
-                       Why this work matters -- and how I make it happen.
-                     </h2>
-                   </div>
+                  {/* 1 -- Why this work matters */}
+                  <div
+                    style={{
+                      opacity: getSectionOpacity(0.30, 0.06),
+                      transition: "opacity 1s ease-out",
+                    }}
+                    className="mx-auto"
+                  >
+                    <h2
+                      className="
+                        text-2xl sm:text-3xl md:text-4xl
+                        font-light tracking-wide
+                        text-slate-100
+                        leading-snug
+                      "
+                    >
+                      Why this work matters -- and how I make it happen.
+                    </h2>
+                  </div>
 
-                   {/* 2 -- My Purpose */}
-                   <div
-                     style={{
-                       // Appears after the first line fades, then fades before impact
-                       opacity: getSectionOpacity(0.33, 0.06),
-                       transition: "opacity 1s ease-out",
-                     }}
-                   >
-                     <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-cyan-200">
-                       My Purpose
-                     </h3>
+                  {/* 2 -- My Purpose */}
+                  <div
+                    style={{
+                      opacity: getSectionOpacity(0.33, 0.06),
+                      transition: "opacity 1s ease-out",
+                    }}
+                  >
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-cyan-200">
+                      My Purpose
+                    </h3>
 
-                     <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-100/90">
-                       To elevate human potential and amplify human impact,
-                     </p>
+                    <p className="text-base sm:text-lg md:text-xl font-medium leading-relaxed text-slate-100/90">
+                      To elevate human potential and amplify human impact,
+                    </p>
 
-                     <p className="mt-3 text-lg md:text-xl italic leading-relaxed text-slate-200/90">
-                       Creating the space for people and organizations<br />
-                       to achieve extraordinary results.
-                     </p>
-                   </div>
+                    <p className="mt-3 text-base sm:text-lg md:text-xl italic leading-relaxed text-slate-200/90">
+                      Creating the space for people and organizations<br />
+                      to achieve extraordinary results.
+                    </p>
+                  </div>
 
-                   {/* 3 -- My Philosophy (People Before Projects) */}
-                   <div
-                     style={{
-                       // Appears last, then fully gone before Impact comes in
-                       opacity: getSectionOpacity(0.36, 0.06),
-                       transition: "opacity 1s ease-out",
-                     }}
-                   >
-                     <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-cyan-200">
-                       My Philosophy
-                     </h3>
+                  {/* 3 -- My Philosophy (People Before Projects) */}
+                  <div
+                    style={{
+                      opacity: getSectionOpacity(0.36, 0.06),
+                      transition: "opacity 1s ease-out",
+                    }}
+                  >
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-cyan-200">
+                      My Philosophy
+                    </h3>
 
-                     <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-100/90">
-                       People Before Projects,
-                     </p>
+                    <p className="text-base sm:text-lg md:text-xl font-medium leading-relaxed text-slate-100/90">
+                      People Before Projects,
+                    </p>
 
-                     <p className="mt-3 text-lg md:text-xl italic leading-relaxed text-slate-200/90">
-                       Because when people feel valued, belief builds,<br />
-                       alignment follows, and execution becomes unstoppable.
-                     </p>
-                   </div>
-                 </div>
-               </div>
+                    <p className="mt-3 text-base sm:text-lg md:text-xl italic leading-relaxed text-slate-200/90">
+                      Because when people feel valued, belief builds,<br />
+                      alignment follows, and execution becomes unstoppable.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               {/* Impact */}
-              
               <div
-                className="absolute w-full max-w-5xl transition-all duration-700"
+                className="
+                  absolute left-1/2 -translate-x-1/2
+                  w-full max-w-5xl px-4
+                  transition-all duration-700
+                "
                 style={{ opacity: getSectionOpacity(0.48, 0.08) }}
               >
-                <h3 className="text-4xl font-bold mb-12 drop-shadow-lg">
+                <h3 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-12 drop-shadow-lg">
                   Measurable Impact
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -509,10 +543,10 @@
                     { label: "Strategic Accuracy", val: "99.9%" }
                   ].map((stat, i) => (
                     <div key={i} className="text-center">
-                      <div className="text-6xl font-black text-yellow-400 mb-2 drop-shadow-lg">
+                      <div className="text-4xl sm:text-5xl md:text-6xl font-black text-yellow-400 mb-2 drop-shadow-lg">
                         {stat.val}
                       </div>
-                      <div className="text-xl font-medium tracking-wide uppercase opacity-90">
+                      <div className="text-lg md:text-xl font-medium tracking-wide uppercase opacity-90">
                         {stat.label}
                       </div>
                     </div>
@@ -522,61 +556,71 @@
 
               {/* Timeline */}
               <div
-  className="absolute w-full max-w-3xl transition-all duration-700"
-  style={{ opacity: getSectionOpacity(0.62, 0.1) }}
->
-               <div className="bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/20">
-                   <h3 className="text-4xl font-bold mb-10 drop-shadow-lg">
-                     35+ Years of Excellence
-                   </h3>
+                className="
+                  absolute left-1/2 -translate-x-1/2
+                  w-full max-w-3xl px-4
+                  transition-all duration-700
+                "
+                style={{ opacity: getSectionOpacity(0.62, 0.1) }}
+              >
+                <div className="bg-black/40 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/20">
+                  <h3 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 drop-shadow-lg">
+                    35+ Years of Excellence
+                  </h3>
 
-                   <div className="relative border-l-2 border-white/30 ml-6 md:ml-0 md:pl-8 space-y-8 text-left">
-                     {[
-                       {
-                         year: "2020 - Present",
-                         role: "Strategic Advisor",
-                         desc: "Leading AI transformations for top pharma.",
-                       },
-                       {
-                         year: "2010 - 2020",
-                         role: "VP of Global Marketing",
-                         desc: "Directed launch strategies for 5 blockbuster drugs.",
-                       },
-                       {
-                         year: "1995 - 2010",
-                         role: "Medical Director",
-                         desc: "Built bridges between clinical R&D and commercial teams.",
-                       },
-                       {
-                         year: "1991 - 1996",
-                         role: "CV Sales Representative",
-                       },
-                     ].map((item, i) => (
-                       <div key={i} className="relative pl-8 md:pl-0">
-                         <div className="absolute -left-[9px] md:-left-[41px] top-1 w-4 h-4 bg-yellow-400 rounded-full shadow-lg border-2 border-white/50" />
-                         <h4 className="text-2xl font-bold text-yellow-200">{item.year}</h4>
-                         <h5 className="text-xl font-semibold mb-1">{item.role}</h5>
-                         <p className="opacity-80">{item.desc}</p>
-                       </div>
-                     ))}
-                   </div>
-                 </div>
-               </div>
+                  <div className="relative border-l-2 border-white/30 ml-4 sm:ml-6 md:ml-0 md:pl-8 space-y-6 sm:space-y-8 text-left">
+                    {[
+                      {
+                        year: "2020 - Present",
+                        role: "Strategic Advisor",
+                        desc: "Leading AI transformations for top pharma.",
+                      },
+                      {
+                        year: "2010 - 2020",
+                        role: "VP of Global Marketing",
+                        desc: "Directed launch strategies for 5 blockbuster drugs.",
+                      },
+                      {
+                        year: "1995 - 2010",
+                        role: "Medical Director",
+                        desc: "Built bridges between clinical R&D and commercial teams.",
+                      },
+                      {
+                        year: "1991 - 1996",
+                        role: "CV Sales Representative",
+                      },
+                    ].map((item, i) => (
+                      <div key={i} className="relative pl-6 sm:pl-8 md:pl-0">
+                        <div className="absolute -left-[11px] sm:-left-[13px] md:-left-[41px] top-1 w-4 h-4 bg-yellow-400 rounded-full shadow-lg border-2 border-white/50" />
+                        <h4 className="text-xl sm:text-2xl font-bold text-yellow-200">{item.year}</h4>
+                        <h5 className="text-lg sm:text-xl font-semibold mb-1">{item.role}</h5>
+                        {item.desc && (
+                          <p className="opacity-80 text-sm sm:text-base">{item.desc}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
               {/* Testimonial */}
               <div
-                className="absolute w-full max-w-4xl transition-all duration-700"
+                className="
+                  absolute left-1/2 -translate-x-1/2
+                  w-full max-w-4xl px-4
+                  transition-all duration-700
+                "
                 style={{ opacity: getSectionOpacity(0.76, 0.08) }}
               >
-                <Quote className="w-12 h-12 mb-6 mx-auto text-yellow-400 opacity-80" />
+                <Quote className="w-10 h-10 sm:w-12 sm:h-12 mb-6 mx-auto text-yellow-400 opacity-80" />
                 <div className="space-y-6">
-                  <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/10 shadow-2xl">
-                    <p className="text-2xl italic font-light leading-relaxed mb-4">
+                  <div className="bg-white/10 backdrop-blur-lg p-6 sm:p-8 rounded-2xl border border-white/10 shadow-2xl">
+                    <p className="text-xl sm:text-2xl italic font-light leading-relaxed mb-4">
                       "John isn't just a consultant; he's a true partner. He built
                       the bridge that allowed our R&D and Marketing teams to finally
                       speak the same language."
                     </p>
-                    <p className="font-bold text-lg">
+                    <p className="font-bold text-base sm:text-lg">
                       -- Sarah J., VP of Oncology
                     </p>
                   </div>
@@ -585,18 +629,22 @@
 
               {/* CTA */}
               <div
-                className="absolute w-full max-w-2xl transition-all duration-700"
+                className="
+                  absolute left-1/2 -translate-x-1/2
+                  w-full max-w-xl sm:max-w-2xl px-4
+                  transition-all duration-700
+                "
                 style={{ opacity: getSectionOpacity(0.9, 0.15) }}
               >
-                <div className="bg-white text-slate-900 p-10 rounded-2xl shadow-2xl pointer-events-auto transform transition-transform hover:scale-105 duration-300">
-                  <h2 className="text-4xl font-bold mb-4 text-slate-800">
+                <div className="bg-white text-slate-900 p-8 sm:p-10 rounded-2xl shadow-2xl pointer-events-auto transform transition-transform hover:scale-105 duration-300">
+                  <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-slate-800">
                     Ready to get to work?
                   </h2>
-                  <p className="text-lg text-slate-600 mb-8">
+                  <p className="text-base sm:text-lg text-slate-600 mb-8">
                     Let's build the bridge to your next success story.
                   </p>
 
-                  <button className="w-full bg-blue-600 text-white py-4 rounded-xl text-xl font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 mb-8">
+                  <button className="w-full bg-blue-600 text-white py-3 sm:py-4 rounded-xl text-lg sm:text-xl font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 mb-8">
                     <Calendar width={24} height={24} />
                     Schedule a Consultation
                   </button>
