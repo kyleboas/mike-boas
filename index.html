@@ -169,17 +169,14 @@
           style={{ height: `${SCROLL_HEIGHT_MULTIPLIER * 100}vh` }}
           className="relative w-full"
         >
-
-          <!-- EVERYTHING BELOW IS UNCHANGED -->
-
+          {/* Floating content */}
           <div
             className="fixed inset-0 z-20 flex flex-col items-center justify-center p-6 text-center text-white pointer-events-none"
             style={{
               paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))',
             }}
           >
-           
-            <!-- Hero Section -->
+            {/* Hero Section */}
             <div
               className="
                 absolute
@@ -197,7 +194,7 @@
                 opacity: getSectionOpacity(0.02, 0.08),
               }}
             >
-              <!-- Dark hero panel -->
+              {/* Dark hero panel */}
               <div
                 className="
                   relative mx-auto
@@ -208,11 +205,9 @@
                   shadow-[0_24px_60px_rgba(0,0,0,0.8)]
                 "
               >
-
-                <!-- Logo + Text side-by-side -->
+                {/* Logo + Text side-by-side */}
                 <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 mt-4 md:mt-2">
-
-                  <!-- Logo -->
+                  {/* Logo */}
                   <div className="flex-shrink-0">
                     <img
                       src="https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0963.png"
@@ -221,7 +216,7 @@
                     />
                   </div>
 
-                  <!-- Text -->
+                  {/* Text */}
                   <div className="text-center md:text-left">
                     <h1
                       className="
@@ -265,10 +260,9 @@
                       for Medical, Marketing, AI Solutions
                     </p>
                   </div>
-
                 </div>
 
-                <!-- Email card -->
+                {/* Email card */}
                 <div className="mt-9 flex justify-center">
                   <div
                     className="
@@ -313,11 +307,10 @@
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
 
-            <!-- Logos -->
+            {/* Logos */}
             <div
               className="
                 absolute left-1/2 -translate-x-1/2
@@ -368,7 +361,7 @@
               </div>
             </div>
 
-            <!-- Strategy -->
+            {/* Strategy */}
             <div
               className="
                 absolute left-1/2 -translate-x-1/2
@@ -379,10 +372,8 @@
               "
               style={{ opacity: getSectionOpacity(0.30, 0.12) }}
             >
-
               <div className="space-y-12 sm:space-y-24">
-
-                <!-- 1 -->
+                {/* 1 */}
                 <div
                   style={{
                     opacity: getSectionOpacity(0.30, 0.06),
@@ -403,7 +394,7 @@
                   </h2>
                 </div>
 
-                <!-- 2 -->
+                {/* 2 */}
                 <div
                   style={{
                     opacity: getSectionOpacity(0.33, 0.06),
@@ -424,7 +415,7 @@
                   </p>
                 </div>
 
-                <!-- 3 -->
+                {/* 3 */}
                 <div
                   style={{
                     opacity: getSectionOpacity(0.36, 0.06),
@@ -447,7 +438,7 @@
               </div>
             </div>
 
-            <!-- Impact -->
+            {/* Impact */}
             <div
               className="
                 absolute left-1/2 -translate-x-1/2
@@ -478,7 +469,7 @@
               </div>
             </div>
 
-            <!-- Timeline -->
+            {/* Timeline */}
             <div
               className="
                 absolute left-1/2 -translate-x-1/2
@@ -527,7 +518,7 @@
               </div>
             </div>
 
-            <!-- Testimonial -->
+            {/* Testimonial */}
             <div
               className="
                 absolute left-1/2 -translate-x-1/2
@@ -551,7 +542,7 @@
               </div>
             </div>
 
-            <!-- CTA -->
+            {/* CTA */}
             <div
               className="
                 absolute left-1/2 -translate-x-1/2
