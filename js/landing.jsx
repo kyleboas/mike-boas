@@ -42,13 +42,76 @@ const Linkedin = (props) => (
 );
 
 /* ------------------------------------------------------------------
+   Career timeline data
+------------------------------------------------------------------ */
+const careerTimeline = [
+  {
+    type: "education",
+    period: "1984 – 1988",
+    role: "BSc, Pharmacy",
+    org: "Example University",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/example-university.png",
+    summary:
+      "Major in Pharmaceutical Sciences with early focus on cardiovascular medicine.",
+    bullets: [
+      "Graduated magna cum laude",
+      "Led student clinical research group"
+    ],
+    featuredProject: {
+      title: "Senior Thesis – Optimizing CV Treatment Pathways",
+      description:
+        "Analyzed adherence data across hospital systems to propose new patient-support models."
+      // image: "optional-project-photo-url"
+    }
+  },
+  {
+    type: "role",
+    period: "1988 – 1991",
+    role: "CV Sales Representative",
+    org: "Company A",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/company-a.png",
+    summary:
+      "Front-line experience with cardiology customers across key U.S. territories.",
+    bullets: [
+      "Top-10% in national sales performance for 3 consecutive years",
+      "Partnered with MSLs to pilot coordinated field visits"
+    ]
+  },
+  // …add remaining roles here, in chronological order…
+  {
+    type: "role",
+    period: "2020 – Present",
+    role: "Strategic Advisor",
+    org: "Independent / Multiple Pharma Partners",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/consulting.png",
+    summary:
+      "Advising top pharma on AI-enabled medical and marketing transformations.",
+    bullets: [
+      "Designed global AI content strategy for 3 enterprise portfolios",
+      "Coached cross-functional leadership teams on digital ways of working"
+    ],
+    featuredProject: {
+      title: "Global AI Medical Information Platform",
+      description:
+        "Led the design of an omni-channel MI platform integrating generative AI, safety, and compliance workflows for 20+ markets.",
+      image:
+        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/projects/ai-mi-platform.png"
+    }
+  }
+];
+
+/* ------------------------------------------------------------------
    Main component
 ------------------------------------------------------------------ */
 const BridgeLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef(null);
-  
+
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const testimonials = [
     {
@@ -82,7 +145,7 @@ const BridgeLanding = () => {
 
   const currentTestimonial = testimonials[activeTestimonial];
 
-  const SCROLL_HEIGHT_MULTIPLIER = 10;
+  const SCROLL_HEIGHT_MULTIPLIER = 12;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,6 +163,17 @@ const BridgeLanding = () => {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveTestimonial((prev) =>
+        (prev + 1) % testimonials.length
+      );
+    }, 6000); // 6 seconds per slide
+
+    return () => clearInterval(interval);
+  }, [isPaused, testimonials.length]);
 
   const getSectionOpacity = (triggerPoint, duration = 0.08) => {
     const fadeInStart = triggerPoint - 0.04;
@@ -233,43 +307,79 @@ const BridgeLanding = () => {
           </div>
         </div>
 
-        {/* Timeline */}
+        {/* Timeline – from college to today */}
         <div
           className="timeline-section"
-          style={{ opacity: getSectionOpacity(0.62, 0.1) }}
+          style={{ opacity: getSectionOpacity(0.52, 0.26) }}
         >
           <div className="timeline-card">
-            <h3 className="timeline-heading">35+ Years of Excellence</h3>
+            <h3 className="timeline-heading">A Career Built on Bridges</h3>
+            <p className="timeline-subheading">
+              From pharmacy school to AI-enabled leadership across three global companies
+            </p>
 
             <div className="timeline-list">
-              {[
-                {
-                  year: "2020 - Present",
-                  role: "Strategic Advisor",
-                  desc: "Leading AI transformations for top pharma.",
-                },
-                {
-                  year: "2010 - 2020",
-                  role: "VP of Global Marketing",
-                  desc: "Directed launch strategies for 5 blockbuster drugs.",
-                },
-                {
-                  year: "1995 - 2010",
-                  role: "Medical Director",
-                  desc: "Built bridges between clinical R&D and commercial teams.",
-                },
-                {
-                  year: "1991 - 1996",
-                  role: "CV Sales Representative",
-                },
-              ].map((item, i) => (
-                <div key={i} className="timeline-item">
+              {careerTimeline.map((item, index) => (
+                <div key={index} className="timeline-item">
                   <div className="timeline-dot" />
-                  <h4 className="timeline-year">{item.year}</h4>
-                  <h5 className="timeline-role">{item.role}</h5>
-                  {item.desc && (
-                    <p className="timeline-desc">{item.desc}</p>
-                  )}
+
+                  <div className="timeline-logo-wrap">
+                    {item.logo && (
+                      <img
+                        src={item.logo}
+                        alt={item.org || "Organization logo"}
+                        className={
+                          "timeline-logo" +
+                          (item.type === "education" ? " timeline-logo-edu" : "")
+                        }
+                      />
+                    )}
+                  </div>
+
+                  <div className="timeline-content">
+                    <p className="timeline-period">{item.period}</p>
+
+                    <div className="timeline-title-row">
+                      <h4 className="timeline-role">{item.role}</h4>
+                      {item.org && (
+                        <span className="timeline-org">· {item.org}</span>
+                      )}
+                      {item.type === "education" && (
+                        <span className="timeline-tag">Education</span>
+                      )}
+                    </div>
+
+                    {item.summary && (
+                      <p className="timeline-summary">{item.summary}</p>
+                    )}
+
+                    {item.bullets && item.bullets.length > 0 && (
+                      <ul className="timeline-bullets">
+                        {item.bullets.map((point, idx) => (
+                          <li key={idx}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {item.featuredProject && (
+                      <div className="timeline-project">
+                        <p className="timeline-project-title">
+                          {item.featuredProject.title}
+                        </p>
+                        <p className="timeline-project-desc">
+                          {item.featuredProject.description}
+                        </p>
+                        {item.featuredProject.image && (
+                          <div className="timeline-project-media">
+                            <img
+                              src={item.featuredProject.image}
+                              alt={item.featuredProject.title}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -282,40 +392,83 @@ const BridgeLanding = () => {
           style={{ opacity: getSectionOpacity(0.76, 0.08) }}
         >
           <div className="testimonial-wrapper">
-            <div className="testimonial-card interactive-card">
-              <p className="testimonial-text">
-                "{currentTestimonial.quote}"
-              </p>
+            {/* Left arrow */}
+            <button
+              type="button"
+              className="testimonial-nav testimonial-nav-left"
+              onClick={() =>
+                setActiveTestimonial(
+                  (activeTestimonial - 1 + testimonials.length) % testimonials.length
+                )
+              }
+            >
+              ‹
+            </button>
 
-              <div className="testimonial-footer">
-                {currentTestimonial.avatar && (
-                  <img
-                    className="testimonial-avatar"
-                    src={currentTestimonial.avatar}
-                    alt={`Portrait of ${currentTestimonial.name}`}
-                  />
-                )}
-                <div className="testimonial-meta">
-                  <p className="testimonial-author">{currentTestimonial.name}</p>
-                  <p className="testimonial-title">{currentTestimonial.title}</p>
-                  <p className="testimonial-company">{currentTestimonial.company}</p>
-                </div>
-              </div>
+            {/* Viewport + track */}
+            <div
+              className="testimonial-viewport"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div
+                className="testimonial-track"
+                style={{
+                  transform: `translateX(-${activeTestimonial * 100}%)`,
+                }}
+              >
+                {testimonials.map((t, idx) => (
+                  <div className="testimonial-slide" key={idx}>
+                    <div className="testimonial-card interactive-card">
+                      <p className="testimonial-text">"{t.quote}"</p>
 
-              <div className="testimonial-dots" aria-label="Select testimonial">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    className={
-                      "testimonial-dot" +
-                      (idx === activeTestimonial ? " testimonial-dot-active" : "")
-                    }
-                    onClick={() => setActiveTestimonial(idx)}
-                  />
+                      <div className="testimonial-footer">
+                        {t.avatar && (
+                          <img
+                            className="testimonial-avatar"
+                            src={t.avatar}
+                            alt={`Portrait of ${t.name}`}
+                          />
+                        )}
+                        <div className="testimonial-meta">
+                          <p className="testimonial-author">{t.name}</p>
+                          <p className="testimonial-title">{t.title}</p>
+                          <p className="testimonial-company">{t.company}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
+
+            {/* Right arrow */}
+            <button
+              type="button"
+              className="testimonial-nav testimonial-nav-right"
+              onClick={() =>
+                setActiveTestimonial(
+                  (activeTestimonial + 1) % testimonials.length
+                )
+              }
+            >
+              ›
+            </button>
+          </div>
+
+          {/* Dots */}
+          <div className="testimonial-dots" aria-label="Select testimonial">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className={
+                  "testimonial-dot" +
+                  (idx === activeTestimonial ? " testimonial-dot-active" : "")
+                }
+                onClick={() => setActiveTestimonial(idx)}
+              />
+            ))}
           </div>
         </div>
 
