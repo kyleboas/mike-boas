@@ -81,6 +81,7 @@ body {
   width: 100%;
   max-width: 46rem;
   transition: all 0.7s ease;
+  padding-left: 20px;
 }
 
 
@@ -382,18 +383,6 @@ body {
   display: flex;
   gap: 1.25rem;
   align-items: flex-start;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: -0.25rem;
-  top: 0.45rem;
-  width: 0.9rem;
-  height: 0.9rem;
-  background: #facc15;
-  border-radius: 999px;
-  border: 2px solid rgba(248, 250, 252, 0.9);
-  box-shadow: 0 0 16px rgba(250, 204, 21, 0.9);
 }
 
 .timeline-logo-wrap {

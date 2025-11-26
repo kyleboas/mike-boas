@@ -46,40 +46,25 @@ const Linkedin = (props) => (
 ------------------------------------------------------------------ */
 const careerTimeline = [
   {
-    type: "education",
-    period: "1984 – 1988",
-    role: "BSc, Pharmacy",
-    org: "Example University",
+    role: "BS, Finance",
+    org: "Penn State",
     logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/example-university.png",
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/penn-state.png",
     summary:
-      "Major in Pharmaceutical Sciences with early focus on cardiovascular medicine.",
+      "Bachelor of Science - BS, Finance",
     bullets: [
-      "Graduated magna cum laude",
-      "Led student clinical research group"
+      "Brandywine Campus Mens Soccer Team",
+      "Acacia Fraternity"
     ],
-    featuredProject: {
-      title: "Senior Thesis – Optimizing CV Treatment Pathways",
-      description:
-        "Analyzed adherence data across hospital systems to propose new patient-support models."
-      // image: "optional-project-photo-url"
-    }
   },
   {
-    type: "role",
-    period: "1988 – 1991",
+    period: "1991 – 1996",
     role: "CV Sales Representative",
-    org: "Company A",
+    org: "AstraZeneca",
     logo:
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/company-a.png",
-    summary:
-      "Front-line experience with cardiology customers across key U.S. territories.",
-    bullets: [
-      "Top-10% in national sales performance for 3 consecutive years",
-      "Partnered with MSLs to pilot coordinated field visits"
     ]
   },
-  // …add remaining roles here, in chronological order…
   {
     type: "role",
     period: "2020 – Present",
@@ -373,10 +358,7 @@ const translateY = 0;
                     <div className="timeline-title-row">
                       <h4 className="timeline-role">{item.role}</h4>
                       {item.org && (
-                        <span className="timeline-org">· {item.org}</span>
-                      )}
-                      {item.type === "education" && (
-                        <span className="timeline-tag">Education</span>
+                        <span className="timeline-org">{item.org}</span>
                       )}
                     </div>
 
