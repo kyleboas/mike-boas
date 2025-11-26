@@ -317,12 +317,12 @@ const translateY = 0;
                 opacity: getSectionOpacity(0.33, 0.06),
               }}
             >
-              <h3 className="strategy-subheading">Purpose</h3>
-              <p className="strategy-text">
-                To elevate human potential and amplify human impact
+              <h3 className="strategy-title">Purpose</h3>
+              <p className="strategy-subheading">
+                Elevate human potential and impact
               </p>
-              <p className="strategy-text strategy-text-italic">
-                Creating the space for people and organizations to achieve extraordinary results.
+              <p className="strategy-text">
+                Creating the space for people and organizations to achieve <span className="strategy-text-bold">extraordinary results</span>.
               </p>
             </div>
 
@@ -333,10 +333,10 @@ const translateY = 0;
                 opacity: getSectionOpacity(0.36, 0.06),
               }}
             >
-              <h3 className="strategy-subheading">Philosophy</h3>
-              <p className="strategy-text">People Before Projects</p>
-              <p className="strategy-text strategy-text-italic">
-                Because when people feel valued, belief builds, alignment follows, and execution becomes unstoppable.
+              <h3 className="strategy-title">Philosophy</h3>
+              <p className="strategy-subheading">People Before Projects</p>
+              <p className="strategy-text">
+                Because when people feel <span className="strategy-text-bold">valued</span>, belief builds, alignment follows, and execution becomes <span className="strategy-text-bold">unstoppable</span>.
               </p>
             </div>
           </div>

@@ -259,14 +259,14 @@ body {
   width: 100%;
   max-width: 48rem;
   padding: 0 1rem;
-  text-align: center;
+  text-align: left;
   transition: all 0.7s ease;
 }
 
 .strategy-sequence {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .strategy-block {
@@ -283,16 +283,25 @@ body {
   margin: 0;
 }
 
-.strategy-subheading {
+.strategy-title {
+  font-family: "Playfair Display", serif;
   font-size: 1.6rem;
   font-weight: 600;
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.5rem;
   color: #a5f3fc; /* cyan-200 */
   text-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
 }
 
+.strategy-subheading {
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(241, 245, 249, 0.9);
+  margin: 0.25rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
 .strategy-text {
-  font-weight: 900;
+  font-weight: 100;
   line-height: 1.5;
   color: rgba(241, 245, 249, 0.9);
   margin: 0.25rem 0;
@@ -300,8 +309,11 @@ body {
 }
 
 .strategy-text-italic {
-  font-weight: 500;
   font-style: italic;
+}
+
+.strategy-text-bold {
+  font-weight: 100;
 }
 
 /* Timeline */
@@ -334,11 +346,12 @@ body {
 }
 
 .timeline-subheading {
-  font-size: 0.85rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: #a5b4fc;
-  margin: 0 0 1.75rem;
+  margin: 0 0 0.5rem;
 }
 
 .timeline-list {
