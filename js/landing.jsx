@@ -41,15 +41,6 @@ const Linkedin = (props) => (
   </IconBase>
 );
 
-const Quote = (props) => (
-  <IconBase {...props}>
-    <path d="M5 11h4v4H5z" />
-    <path d="M15 11h4v4h-4z" />
-    <path d="M9 11a4 4 0 0 0-4-4" />
-    <path d="M19 11a4 4 0 0 0-4-4" />
-  </IconBase>
-);
-
 /* ------------------------------------------------------------------
    Main component
 ------------------------------------------------------------------ */
@@ -258,7 +249,6 @@ const BridgeLanding = () => {
           className="testimonial-section"
           style={{ opacity: getSectionOpacity(0.76, 0.08) }}
         >
-          <Quote className="quote-icon" />
           <div className="testimonial-wrapper">
             <div className="testimonial-card">
               <p className="testimonial-text">
