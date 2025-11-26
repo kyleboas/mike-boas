@@ -511,7 +511,7 @@ body {
 
 /* Responsive tweaks */
 
-@media (max-width: 768px) {
+@media (max-width: 560px) {
   .hero-header-row {
     gap: 1.5rem;
   }
@@ -544,7 +544,7 @@ body {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 560px) {
 
   .overlay {
     background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/Bridge_Large.png");
