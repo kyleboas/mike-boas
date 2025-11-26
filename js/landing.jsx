@@ -124,7 +124,7 @@ const BridgeLanding = () => {
                     placeholder="your@email.com"
                     className="email-input"
                   />
-                  <button className="primary-button">Stay in touch</button>
+                  <button className="primary-button">Receive insights</button>
                 </div>
               </div>
             </div>
