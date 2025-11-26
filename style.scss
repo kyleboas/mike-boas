@@ -557,6 +557,7 @@ body {
 
 .testimonial-track {
   display: flex;
+  align-items: flex-start;
   transition: transform 0.8s ease-in-out;
 }
 
@@ -564,6 +565,7 @@ body {
   min-width: 100%;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .testimonial-card {
