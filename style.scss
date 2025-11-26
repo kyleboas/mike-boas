@@ -383,6 +383,26 @@ body {
 
 .testimonial-wrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Viewport holds one slide width; track slides left/right */
+.testimonial-viewport {
+  overflow: hidden;
+  max-width: 48rem;
+  width: 100%;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.testimonial-slide {
+  min-width: 100%;
+  display: flex;
   justify-content: center;
 }
 
@@ -448,6 +468,38 @@ body {
   opacity: 0.95;
 }
 
+/* Arrows */
+.testimonial-nav {
+  pointer-events: auto;           /* override floating-content */
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.testimonial-nav:hover {
+  background: rgba(15, 23, 42, 0.9);
+  transform: translateY(-1px);
+}
+
+.testimonial-nav-left {
+  margin-right: 0.25rem;
+}
+
+.testimonial-nav-right {
+  margin-left: 0.25rem;
+}
+
+/* Dots under carousel */
 .testimonial-dots {
   margin-top: 1.75rem;
   display: flex;
@@ -456,6 +508,7 @@ body {
 }
 
 .testimonial-dot {
+  pointer-events: auto;
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 999px;

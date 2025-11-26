@@ -47,8 +47,9 @@ const Linkedin = (props) => (
 const BridgeLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef(null);
-  
+
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const testimonials = [
     {
@@ -91,6 +92,17 @@ const BridgeLanding = () => {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveTestimonial((prev) =>
+        (prev + 1) % testimonials.length
+      );
+    }, 6000); // 6 seconds per slide
+
+    return () => clearInterval(interval);
+  }, [isPaused, testimonials.length]);
 
   const getSectionOpacity = (triggerPoint, duration = 0.08) => {
     const fadeInStart = triggerPoint - 0.04;
@@ -273,40 +285,83 @@ const BridgeLanding = () => {
           style={{ opacity: getSectionOpacity(0.76, 0.08) }}
         >
           <div className="testimonial-wrapper">
-            <div className="testimonial-card interactive-card">
-              <p className="testimonial-text">
-                "{currentTestimonial.quote}"
-              </p>
+            {/* Left arrow */}
+            <button
+              type="button"
+              className="testimonial-nav testimonial-nav-left"
+              onClick={() =>
+                setActiveTestimonial(
+                  (activeTestimonial - 1 + testimonials.length) % testimonials.length
+                )
+              }
+            >
+              ‹
+            </button>
 
-              <div className="testimonial-footer">
-                {currentTestimonial.avatar && (
-                  <img
-                    className="testimonial-avatar"
-                    src={currentTestimonial.avatar}
-                    alt={`Portrait of ${currentTestimonial.name}`}
-                  />
-                )}
-                <div className="testimonial-meta">
-                  <p className="testimonial-author">{currentTestimonial.name}</p>
-                  <p className="testimonial-title">{currentTestimonial.title}</p>
-                  <p className="testimonial-company">{currentTestimonial.company}</p>
-                </div>
-              </div>
+            {/* Viewport + track */}
+            <div
+              className="testimonial-viewport"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div
+                className="testimonial-track"
+                style={{
+                  transform: `translateX(-${activeTestimonial * 100}%)`,
+                }}
+              >
+                {testimonials.map((t, idx) => (
+                  <div className="testimonial-slide" key={idx}>
+                    <div className="testimonial-card interactive-card">
+                      <p className="testimonial-text">"{t.quote}"</p>
 
-              <div className="testimonial-dots" aria-label="Select testimonial">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    className={
-                      "testimonial-dot" +
-                      (idx === activeTestimonial ? " testimonial-dot-active" : "")
-                    }
-                    onClick={() => setActiveTestimonial(idx)}
-                  />
+                      <div className="testimonial-footer">
+                        {t.avatar && (
+                          <img
+                            className="testimonial-avatar"
+                            src={t.avatar}
+                            alt={`Portrait of ${t.name}`}
+                          />
+                        )}
+                        <div className="testimonial-meta">
+                          <p className="testimonial-author">{t.name}</p>
+                          <p className="testimonial-title">{t.title}</p>
+                          <p className="testimonial-company">{t.company}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
+
+            {/* Right arrow */}
+            <button
+              type="button"
+              className="testimonial-nav testimonial-nav-right"
+              onClick={() =>
+                setActiveTestimonial(
+                  (activeTestimonial + 1) % testimonials.length
+                )
+              }
+            >
+              ›
+            </button>
+          </div>
+
+          {/* Dots */}
+          <div className="testimonial-dots" aria-label="Select testimonial">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className={
+                  "testimonial-dot" +
+                  (idx === activeTestimonial ? " testimonial-dot-active" : "")
+                }
+                onClick={() => setActiveTestimonial(idx)}
+              />
+            ))}
           </div>
         </div>
 
