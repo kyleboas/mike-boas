@@ -47,6 +47,31 @@ const Linkedin = (props) => (
 const BridgeLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef(null);
+  
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const testimonials = [
+    {
+      quote:
+        "I've had the privilege of both working in Medical Information under Mike's leadership, and partnering with Mike and the MI organization during my time in Medical Affairs. Mike brings unique perspective with his extensive background in marketing and sales, which has not only enhanced the visibility and impact of Medical Information across the organization, but also motivated the team to deliver new customer centric digital solutions. Above all, Mike prioritizes people first, ensuring each and every person on the team are empowered to pursue personal development and growth. Mike's leadership and commitment to both innovation and team development have made a meaningful impact, and I am thankful to have had the opportunity to work with and learn from him.",
+      name: "Sean Swisher",
+      title: "Senior Director, Global Medical Execution, Respiratory Biologics",
+      company: "AstraZeneca",
+      avatar:
+        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/sean-swisher.jpeg",
+    },
+    {
+      quote:
+        "Michael is a seasoned and innovative Medical Affairs professional and has been at the forefront of some of AZ's most important transformation to digital and Al related content within the medical information and scientific communications space. His strong marketing background also allows to put a true 'customer lens' on all the work his team delivers.",
+      name: "Robert Fogel, MD",
+      title: "VP, Global Medical Affairs",
+      company: "AstraZeneca",
+      avatar:
+        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/robert-fogel.jpeg",
+    },
+  ];
+
+  const currentTestimonial = testimonials[activeTestimonial];
 
   const SCROLL_HEIGHT_MULTIPLIER = 10;
 
@@ -242,22 +267,45 @@ const BridgeLanding = () => {
           </div>
         </div>
 
-        {/* Testimonial */}
+        {/* Testimonials */}
         <div
           className="testimonial-section"
           style={{ opacity: getSectionOpacity(0.76, 0.08) }}
         >
           <div className="testimonial-wrapper">
-            <div className="testimonial-card">
+            <div className="testimonial-card interactive-card">
               <p className="testimonial-text">
-                "I've had the privilege of both working in Medical Information under Mike's leadership, and partnering with Mike and the MI organization during my time in Medical Affairs. Mike brings unique perspective with his extensive background in marketing and sales, which has not only enhanced the visibility and impact of Medical Information across the organization, but also motivated the team to deliver new customer centric digital solutions. Above all, Mike prioritizes people first, ensuring each and every person on the team are empowered to pursue personal development and growth. Mike's leadership and commitment to both innovation and team development have made a meaningful impact, and I am thankful to have had the opportunity to work with and learn from him."
+                "{currentTestimonial.quote}"
               </p>
-              <p className="testimonial-author">
-                Sean Swisher
-              </p>
-              <p className="testimonial-title">
-               Senior Director, Global Medical Execution, Respiratory Biologics
-              </p> 
+
+              <div className="testimonial-footer">
+                {currentTestimonial.avatar && (
+                  <img
+                    className="testimonial-avatar"
+                    src={currentTestimonial.avatar}
+                    alt={`Portrait of ${currentTestimonial.name}`}
+                  />
+                )}
+                <div className="testimonial-meta">
+                  <p className="testimonial-author">{currentTestimonial.name}</p>
+                  <p className="testimonial-title">{currentTestimonial.title}</p>
+                  <p className="testimonial-company">{currentTestimonial.company}</p>
+                </div>
+              </div>
+
+              <div className="testimonial-dots" aria-label="Select testimonial">
+                {testimonials.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={
+                      "testimonial-dot" +
+                      (idx === activeTestimonial ? " testimonial-dot-active" : "")
+                    }
+                    onClick={() => setActiveTestimonial(idx)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
