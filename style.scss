@@ -38,7 +38,6 @@ body {
   pointer-events: none;
   z-index: -1;
 
-  /* for scroll animation */
   transform-origin: right bottom;
   will-change: transform;
 }
@@ -561,6 +560,7 @@ body {
 
 .testimonial-track {
   display: flex;
+  align-items: flex-start;
   transition: transform 0.8s ease-in-out;
 }
 
@@ -568,6 +568,7 @@ body {
   min-width: 100%;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .testimonial-card {
@@ -785,9 +786,6 @@ body {
 /* Responsive tweaks */
 
 @media (max-width: 560px) {
-  .overlay {
-    background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/Bridge_Small.png");
- }
  
   .hero-header-row {
     gap: 1.5rem;
@@ -846,7 +844,6 @@ body {
 }
 
 @media (min-width: 560px) {
-
   .overlay {
     background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/Bridge_Large.jpeg");
   }
