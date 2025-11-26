@@ -51,9 +51,9 @@ body {
 
 .floating-content {
   position: fixed;
+  display: flex;
   inset: 0;
   z-index: 20;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -84,11 +84,12 @@ body {
   transition: all 0.7s ease;
 }
 
+
 .hero-card {
   position: relative;
-  margin: 0 auto;
   padding: 2.5rem 1.5rem;
-  max-width: 300px;
+  max-width: 250px;
+  bottom: 10px;
 }
 
 .hero-header-row {
@@ -108,18 +109,18 @@ body {
   font-family: "Playfair Display", serif;
   text-transform: uppercase;
   font-weight: 400;
-  font-size: 2.5rem;
-  letter-spacing: 0.12em;
-  margin: 0 0 1rem;
+  font-size: 2rem;
+  letter-spacing: 0.07em;
+  margin: 0 0 0.5rem;
 }
 
 .hero-subtitle {
   text-transform: uppercase;
   font-weight: 400;
-  font-size: 1.3rem;
-  letter-spacing: 0.3em;
-  color: #dbeafe; /* blue-100 */
-  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.2rem;
+  color: #dbeafe;
+  margin: 0 0 0.5rem;
 }
 
 .hero-blurb {
@@ -141,6 +142,7 @@ body {
   margin-top: 2.25rem;
   display: flex;
   justify-content: center;
+  display: none;
 }
 
 .email-card {
@@ -789,16 +791,6 @@ body {
  
   .hero-header-row {
     gap: 1.5rem;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-    letter-spacing: 0.08em;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-    letter-spacing: 0.15em;
   }
 
   .hero-blurb {
