@@ -356,7 +356,6 @@ const translateY = 0;
             <div className="timeline-list">
               {careerTimeline.map((item, index) => (
                 <div key={index} className="timeline-item">
-                  <div className="timeline-dot" />
 
                   <div className="timeline-logo-wrap">
                     {item.logo && (
