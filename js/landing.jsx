@@ -253,7 +253,7 @@ const BridgeLanding = () => {
                 "Mike isn't just a consultant; he's a true partner. He built the bridge that allowed our R&D and Marketing teams to finally speak the same language."
               </p>
               <p className="testimonial-author">
-                -- Sarah J., VP of Oncology
+                - Sarah J., VP of Oncology
               </p>
             </div>
           </div>
