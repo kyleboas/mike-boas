@@ -108,9 +108,7 @@ const BridgeLanding = () => {
                 <h1 className="hero-title">MIKE BOAS</h1>
                 <h2 className="hero-subtitle">BRIDGE BUILDER</h2>
                 <p className="hero-blurb">
-                  Strategic Advisor &amp; Leadership Partner
-                  <br className="hero-blurb-break" />
-                  for Medical, Marketing, AI Solutions
+                  Strategic Advisor &amp; Leadership Partner for Medical, Marketing, AI Solutions
                 </p>
               </div>
             </div>
