@@ -172,7 +172,7 @@ const rawT = (scrollProgress - zoomStart) / (zoomEnd - zoomStart);
 const zoomT = Math.max(0, Math.min(1, rawT));
 
 // zoom range
-const startScale = 2.7;   // close-in framing
+const startScale = 2.3;   // close-in framing
 const endScale = 1.0;     // fully zoomed out
 const scale = startScale + (endScale - startScale) * zoomT;
 
