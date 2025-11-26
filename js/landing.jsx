@@ -164,6 +164,24 @@ const BridgeLanding = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // --- scroll-based zoom for the overlay background ---
+  // We want the zoom to finish by the time logos start (≈ 0.18)
+  const zoomStart = 0.0;
+  const zoomEnd = 0.18;
+  const rawT = (scrollProgress - zoomStart) / (zoomEnd - zoomStart);
+  const zoomT = Math.max(0, Math.min(1, rawT));
+
+  // t = 0 -> close bridge (picture 1)
+  // t = 1 -> wide bridge (picture 2)
+  const startScale = 1.7;   // adjust until top frame matches picture 1
+  const endScale = 1.0;     // final framing (picture 2)
+  const scale = startScale + (endScale - startScale) * zoomT;
+
+  // optional tiny vertical shift if you need it to line up exactly
+  const startTranslateY = 8;   // % down at start
+  const endTranslateY = 0;     // back to normal by logos
+  const translateY = startTranslateY + (endTranslateY - startTranslateY) * zoomT;
+
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
@@ -198,6 +216,14 @@ const BridgeLanding = () => {
       className="page-container"
       style={{ height: `${SCROLL_HEIGHT_MULTIPLIER * 100}vh` }}
     >
+      {/* Scroll-animated background */}
+      <div
+        className="overlay"
+        style={{
+          transform: `scale(${scale}) translateY(${translateY}%)`,
+        }}
+      />
+
       {/* Floating content */}
       <div className="floating-content">
         {/* Hero Section */}

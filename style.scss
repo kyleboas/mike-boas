@@ -30,13 +30,17 @@ body {
 .overlay {
   position: fixed;
   inset: 0;
-  background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/Bridge_Small.png");
+  background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/Bridge_Large.jpeg");
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
   background-position: right bottom;
   background-color: #0f172a;
   pointer-events: none;
   z-index: -1;
+
+  /* for smooth scroll-driven zoom */
+  transform-origin: right bottom;
+  will-change: transform;
 }
 
 /* Page container and floating scroll content */
@@ -840,10 +844,6 @@ body {
 }
 
 @media (min-width: 560px) {
-
-  .overlay {
-    background-image: url("https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/Bridge_Large.jpeg");
-  }
 
   .hero-header-row {
     flex-direction: row;
