@@ -53,7 +53,7 @@ const BridgeLanding = () => {
   const testimonials = [
     {
       quote:
-        "I've had the privilege of both working in Medical Information under Mike's leadership, and partnering with Mike and the MI organization during my time in Medical Affairs. Mike brings unique perspective with his extensive background in marketing and sales, which has not only enhanced the visibility and impact of Medical Information across the organization, but also motivated the team to deliver new customer centric digital solutions. Above all, Mike prioritizes people first, ensuring each and every person on the team are empowered to pursue personal development and growth. Mike's leadership and commitment to both innovation and team development have made a meaningful impact, and I am thankful to have had the opportunity to work with and learn from him.",
+        "Mike brings unique perspective with his extensive background in marketing and sales, which has not only enhanced the visibility and impact of Medical Information across the organization, but also motivated the team to deliver new customer centric digital solutions. Above all, Mike prioritizes people first, ensuring each and every person on the team are empowered to pursue personal development and growth.",
       name: "Sean Swisher",
       title: "Senior Director, Global Medical Execution, Respiratory Biologics",
       company: "AstraZeneca",
@@ -68,6 +68,15 @@ const BridgeLanding = () => {
       company: "AstraZeneca",
       avatar:
         "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/robert-fogel.jpeg",
+    },
+    {
+      quote:
+        "What stands out most about Mike is his commitment to empowering the team as individuals, while driving the whole team towards a future vision. As my manager, he understands my strengths, has challenged me to grow, and has supported me when it was needed most.",
+      name: "Amy Fetchko",
+      title: "Senior Director",
+      company: "AstraZeneca",
+      avatar:
+        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/amy-fetchko.jpeg",
     },
   ];
 
