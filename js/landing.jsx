@@ -164,9 +164,22 @@ const BridgeLanding = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Hero fades out immediately on scroll (no fade-in)
+  const HERO_FADE_START = 0.0;   // start fading as soon as user scrolls
+  const HERO_FADE_END = 0.08;    // fully gone by 8% scroll
+
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  const heroOpacity = 1 - clamp(
+    (scrollProgress - HERO_FADE_START) / (HERO_FADE_END - HERO_FADE_START),
+    0,
+    1
+  );
+
 // --- scroll-based zoom for the overlay background ---
-const zoomStart = 0.0;
-const zoomEnd = 0.18;
+// Zoom starts only after hero has faded out
+const zoomStart = HERO_FADE_END;      // e.g. 0.08
+const zoomEnd = 0.26;
 
 const rawT = (scrollProgress - zoomStart) / (zoomEnd - zoomStart);
 const zoomT = Math.max(0, Math.min(1, rawT));
@@ -227,10 +240,9 @@ const translateY = 0;
         <div
           className="hero-section"
           style={{
-            transform: `translate(-50%, ${
-              getSectionOpacity(0.02, 0.08) === 0 ? "20px" : "0px"
-            })`,
-            opacity: 1,
+            transform: `translate(-50%, ${20 * (1 - heroOpacity)}px)`,
+            opacity: heroOpacity,
+            pointerEvents: heroOpacity === 0 ? "none" : "auto",
           }}
         >
           <div className="hero-card">
