@@ -348,7 +348,7 @@ const translateY = 0;
           style={{ opacity: getSectionOpacity(0.52, 0.26) }}
         >
           <div className="timeline-card">
-            <h3 className="timeline-heading">35Years of Experience</h3>
+            <h3 className="timeline-heading">35+ Years of Experience</h3>
 
             <div className="timeline-list">
               {careerTimeline.map((item, index) => (
