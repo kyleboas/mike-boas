@@ -185,7 +185,7 @@ const BridgeLanding = () => {
                 opacity: getSectionOpacity(0.33, 0.06),
               }}
             >
-              <h3 className="strategy-subheading">My Purpose</h3>
+              <h3 className="strategy-subheading">Purpose</h3>
               <p className="strategy-text">
                 To elevate human potential and amplify human impact
               </p>
@@ -201,7 +201,7 @@ const BridgeLanding = () => {
                 opacity: getSectionOpacity(0.36, 0.06),
               }}
             >
-              <h3 className="strategy-subheading">My Philosophy</h3>
+              <h3 className="strategy-subheading">Philosophy</h3>
               <p className="strategy-text">People Before Projects</p>
               <p className="strategy-text strategy-text-italic">
                 Because when people feel valued, belief builds, alignment follows, and execution becomes unstoppable.
