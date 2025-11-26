@@ -285,7 +285,7 @@ const BridgeLanding = () => {
                 </a>
               </div>
               <p className="cta-credit">
-                <a href="https://kyleboas.com">Made by Kyle Boas</a>. © 2025
+                Made by <a href="https://kyleboas.com">Kyle Boas</a>. © 2025
                 Mike Boas. All rights reserved.
               </p>
             </div>
