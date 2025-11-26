@@ -173,8 +173,8 @@ const BridgeLanding = () => {
 
   // t = 0 -> close bridge (picture 1)
   // t = 1 -> wide bridge (picture 2)
-  const startScale = 2.7;   // adjust until top frame matches picture 1
-  const endScale = 1.0;     // final framing (picture 2)
+  const startScale = 1.0;   // adjust until top frame matches picture 1
+  const endScale = 2.7;     // final framing (picture 2)
   const scale = startScale + (endScale - startScale) * zoomT;
 
   useEffect(() => {
