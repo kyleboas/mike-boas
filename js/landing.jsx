@@ -179,7 +179,7 @@ const BridgeLanding = () => {
 // --- scroll-based zoom for the overlay background ---
 // Zoom starts only after hero has faded out
 const zoomStart = HERO_FADE_END;      // e.g. 0.08
-const zoomEnd = 0.12;
+const zoomEnd = 0.14;
 
 const rawT = (scrollProgress - zoomStart) / (zoomEnd - zoomStart);
 const zoomT = Math.max(0, Math.min(1, rawT));
