@@ -812,7 +812,6 @@ body {
     grid-template-columns: 1fr;
   }
   
-  /* Keep the carousel within the viewport width */
   .testimonial-section {
     width: 100%;
     max-width: 100%;
@@ -822,11 +821,9 @@ body {
     max-width: 100%;
   }
 
-  /* Force the card to fit within the screen height and allow internal scroll */
   .testimonial-card {
-    padding: 1.5rem 1.25rem;
-    max-height: calc(100vh - 6rem); /* leaves room for arrows & dots */
-    overflow-y: auto;               /* scroll inside card if text is very long */
+    max-height: none;
+    overflow: visible;
   }
 
   .testimonial-text {
