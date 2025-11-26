@@ -250,11 +250,14 @@ const BridgeLanding = () => {
           <div className="testimonial-wrapper">
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Mike isn't just a consultant; he's a true partner. He built the bridge that allowed our R&D and Marketing teams to finally speak the same language."
+                "I've had the privilege of both working in Medical Information under Mike's leadership, and partnering with Mike and the MI organization during my time in Medical Affairs. Mike brings unique perspective with his extensive background in marketing and sales, which has not only enhanced the visibility and impact of Medical Information across the organization, but also motivated the team to deliver new customer centric digital solutions. Above all, Mike prioritizes people first, ensuring each and every person on the team are empowered to pursue personal development and growth. Mike's leadership and commitment to both innovation and team development have made a meaningful impact, and I am thankful to have had the opportunity to work with and learn from him."
               </p>
               <p className="testimonial-author">
-                - Sarah J., VP of Oncology
+                Sean Swisher
               </p>
+              <p className="testimonial-title">
+               Senior Director, Global Medical Execution, Respiratory Biologics
+              </p> 
             </div>
           </div>
         </div>
@@ -265,7 +268,6 @@ const BridgeLanding = () => {
           style={{ opacity: getSectionOpacity(0.9, 0.15) }}
         >
           <div className="cta-card interactive-card">
-            <h2 className="cta-heading">Ready to get to work?</h2>
             <p className="cta-text">
               Let's build the bridge to your next success story.
             </p>
