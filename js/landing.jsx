@@ -139,7 +139,7 @@ const BridgeLanding = () => {
       title: "Senior Director",
       company: "AstraZeneca",
       avatar:
-        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/amy-fetchko.jpeg",
+        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/amy-fetchko.jpeg", 
     },
   ];
 
