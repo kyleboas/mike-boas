@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% if page.title %}{{ page.title }} - Mike Boas{% else %}Mike Boas{% endif %}</title>
+  <title>
+    {% if page.title %}
+      {{ page.title }} - Mike Boas
+    {% else %}
+      Mike Boas
+    {% endif %}
+  </title>
 
   <!-- Serif display font for hero -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
-  
+
   {% include favicon.html %}
-    {% if site.tags != "" %}{% include collecttags.html %}{% endif %}
-    {% include meta.html %}
+  {% if site.tags != "" %}{% include collecttags.html %}{% endif %}
+  {% include meta.html %}
 
   <!-- Main stylesheet -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
 
   <!-- React & ReactDOM -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -27,13 +32,8 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-
-  <!-- Optional dark overlay (keeps text readable) -->
   <div class="overlay"></div>
-
   <div id="root"></div>
-  
   {{ content }}
-  
 </body>
 </html>
