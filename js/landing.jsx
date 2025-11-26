@@ -230,7 +230,7 @@ const translateY = 0;
             transform: `translate(-50%, ${
               getSectionOpacity(0.02, 0.08) === 0 ? "20px" : "0px"
             })`,
-            opacity: getSectionOpacity(0.02, 0.08),
+            opacity: 1,
           }}
         >
           <div className="hero-card">

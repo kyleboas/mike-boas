@@ -87,9 +87,9 @@ body {
 
 .hero-card {
   position: relative;
-  padding: 2.5rem 1.5rem;
-  max-width: 250px;
-  bottom: 10px;
+  padding: 2.5rem 0rem;
+  max-width: 220px;
+  bottom: 110px;
 }
 
 .hero-header-row {
@@ -109,8 +109,8 @@ body {
   font-family: "Playfair Display", serif;
   text-transform: uppercase;
   font-weight: 400;
-  font-size: 2rem;
-  letter-spacing: 0.07em;
+  font-size: 1.9rem;
+  letter-spacing: 0.1em;
   margin: 0 0 0.5rem;
 }
 
@@ -124,11 +124,11 @@ body {
 }
 
 .hero-blurb {
-  font-size: 1rem;
+  font-size: 0.6rem;
   letter-spacing: 0.06em;
   line-height: 1.5;
   color: rgba(241, 245, 249, 0.9);
-  max-width: 28rem;
+  max-width: 12rem;
   margin: 0 auto;
 }
 
