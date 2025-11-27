@@ -41,10 +41,73 @@ const Linkedin = (props) => (
   </IconBase>
 );
 
+featuredProject: {
+      title: "Global AI Medical Information Platform",
+      description:
+        "Led the design of an omni-channel MI platform integrating generative AI, safety, and compliance workflows for 20+ markets.",
+      image:
+        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png"
+    }
+  },
+
 /* ------------------------------------------------------------------
    Career timeline data
 ------------------------------------------------------------------ */
 const careerTimeline = [
+  {
+    period: "2005 – 2007",
+    role: "Associate Director- Marketing",
+    org: "AstraZeneca",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
+    bullets: [
+      "Created the first hospital "emergency room" strategy focused on improving the use of a Pulmicort Respules (pediatric nebulized asthma treatment)"
+    ],
+  },
+  {
+    period: "2002 – 2005",
+    role: "National Director - Sales",
+    org: "AstraZeneca",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
+    bullets: [
+      "Designed the first primary care & hospital sales force focused on improving the use of Pulmicort Respules (pediatric nebulized asthma treatment)",
+      "5 direct reports, with supervisory oversight of a full team of 300."
+    ],
+  },
+  {
+    period: "2000 – 2002",
+    role: "District Sales Manager - Respiratory/ Dyslipidemia",
+    org: "AstraZeneca",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
+    bullets: [
+      "First District Sales Manager (DSM) on the National DSM Effectiveness Team",
+      "10 direct reports",
+      "Responsible for R&I and CV portfolio"
+    ],
+  },
+  {
+    period: "1998 – 2000",
+    role: "Consumer Marketing Manager - Neuroscience",
+    org: "AstraZeneca",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
+  },
+  {
+    period: "1996 – 1998",
+    role: "National Sales Trainer",
+    org: "AstraZeneca",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
+  },
+  {
+    period: "1991 – 1996",
+    role: "CV Sales Representative",
+    org: "AstraZeneca",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
+  },
   {
     role: "BS, Finance",
     org: "Penn State",
@@ -55,37 +118,6 @@ const careerTimeline = [
       "Brandywine Campus Mens Soccer Team",
       "Acacia Fraternity"
     ],
-  },
-  {
-    period: "1991 – 1996",
-    role: "CV Sales Representative",
-    org: "AstraZeneca",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
-    // add whatever you want here, just no stray bracket
-    summary: "CV Sales Representative, Cardiovascular portfolio",
-    bullets: [],
-  },
-  {
-    type: "role",
-    period: "2020 – Present",
-    role: "Strategic Advisor",
-    org: "Independent / Multiple Pharma Partners",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/consulting.png",
-    summary:
-      "Advising top pharma on AI-enabled medical and marketing transformations.",
-    bullets: [
-      "Designed global AI content strategy for 3 enterprise portfolios",
-      "Coached cross-functional leadership teams on digital ways of working"
-    ],
-    featuredProject: {
-      title: "Global AI Medical Information Platform",
-      description:
-        "Led the design of an omni-channel MI platform integrating generative AI, safety, and compliance workflows for 20+ markets.",
-      image:
-        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png"
-    }
   }
 ];
 
