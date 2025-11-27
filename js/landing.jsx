@@ -269,7 +269,7 @@ const BridgeLanding = () => {
 
   // Pre-calculate opacity to control pointer-events
   const logosOpacity = getSectionOpacity(0.18, 0.08);
-  const strategyOpacity = getSectionOpacity(0.3, 0.12);
+  const strategyOpacity = getSectionOpacity(0.18, 0.12);
   const testimonialOpacity = getSectionOpacity(0.52, 0.06);
   const ctaOpacity = getSectionOpacity(0.68, 0.06);
 
@@ -374,7 +374,7 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.33, 0.06),
+                opacity: getSectionOpacity(0.33, 0.12),
               }}
             >
               <h3 className="strategy-title">Purpose</h3>
@@ -394,7 +394,7 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.36, 0.06),
+                opacity: getSectionOpacity(0.36, 0.12),
               }}
             >
               <h3 className="strategy-title">Philosophy</h3>
