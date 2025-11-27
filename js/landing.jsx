@@ -269,7 +269,7 @@ const BridgeLanding = () => {
 
   // Pre-calculate opacity to control pointer-events
   const logosOpacity = getSectionOpacity(0.18, 0.08);
-  const strategyOpacity = getSectionOpacity(0.18, 0.12);
+  const strategyOpacity = getSectionOpacity(0.3, 0.12);
   const testimonialOpacity = getSectionOpacity(0.52, 0.06);
   const ctaOpacity = getSectionOpacity(0.68, 0.06);
 
