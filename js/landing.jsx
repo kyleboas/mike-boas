@@ -148,14 +148,14 @@ const BridgeLanding = () => {
 
   // Check for first visit cookie on mount
   useEffect(() => {
-    const visited = readCookie('hero-first-visit');
+    const visited = readCookie('visited');
     if (!visited) {
       // First visit - start with content hidden
       setIsFirstVisit(true);
       setContentOpacity(0);
 
-      // Set the cookie (expires in 365 days)
-      createCookie('hero-first-visit', 'true', 365);
+      // Set the cookie (expires in 30 days)
+      createCookie('visited', 'true', 30);
 
       // Fade in content after 1.5 seconds
       setTimeout(() => {
