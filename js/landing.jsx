@@ -1,6 +1,30 @@
 const { useState, useEffect, useRef } = React;
 
 /* ------------------------------------------------------------------
+   Cookie utility functions
+------------------------------------------------------------------ */
+const createCookie = (name, value, days) => {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+};
+
+const readCookie = (name) => {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+};
+
+/* ------------------------------------------------------------------
    Minimal icon components
 ------------------------------------------------------------------ */
 const IconBase = ({ children, ...rest }) => (
@@ -84,6 +108,10 @@ const BridgeLanding = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  // First-visit detection
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [contentOpacity, setContentOpacity] = useState(1);
+
   const testimonials = [
     {
       quote:
@@ -117,6 +145,24 @@ const BridgeLanding = () => {
   const currentTestimonial = testimonials[activeTestimonial];
 
   const SCROLL_HEIGHT_MULTIPLIER = 8;
+
+  // Check for first visit cookie on mount
+  useEffect(() => {
+    const visited = readCookie('visited');
+    if (!visited) {
+      // First visit - start with content hidden
+      setIsFirstVisit(true);
+      setContentOpacity(0);
+
+      // Set the cookie (expires in 30 days)
+      createCookie('visited', 'true', 30);
+
+      // Fade in content after 1.5 seconds
+      setTimeout(() => {
+        setContentOpacity(1);
+      }, 1500);
+    }
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -288,7 +334,13 @@ const BridgeLanding = () => {
       />
 
       {/* Floating content */}
-      <div className="floating-content">
+      <div
+        className="floating-content"
+        style={{
+          transition: isFirstVisit ? 'opacity 1s ease-in' : 'none',
+          opacity: contentOpacity,
+        }}
+      >
         {/* Hero Section */}
         <div
           className="hero-section"
