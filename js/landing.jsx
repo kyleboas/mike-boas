@@ -98,6 +98,8 @@ const BridgeLanding = () => {
   const timelineViewportRef = useRef(null);
   const timelineListRef = useRef(null);
   const [timelineMaxScroll, setTimelineMaxScroll] = useState(0);
+  const [displayY, setDisplayY] = useState(0);
+  const targetYRef = useRef(0);
 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -216,6 +218,25 @@ const translateY = 0;
   );
 
   const timelineScrollY = -timelineMaxScroll * timelineT;
+
+  // Update target position whenever scroll changes
+  useEffect(() => {
+    targetYRef.current = timelineScrollY;
+  }, [timelineScrollY]);
+
+  // Lerping animation loop for smooth trailing motion
+  useEffect(() => {
+    let rafId;
+    const SMOOTHING_FACTOR = 0.12; // Higher = smoother but slower; lower = snappier
+
+    const animate = () => {
+      setDisplayY((prev) => prev + (targetYRef.current - prev) * SMOOTHING_FACTOR);
+      rafId = requestAnimationFrame(animate);
+    };
+
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
 
   useEffect(() => {
     if (isPaused) return;
@@ -379,7 +400,7 @@ const translateY = 0;
               className="timeline-list"
               ref={timelineListRef}
               style={{
-                transform: `translate3d(0, ${timelineScrollY}px, 0)`,
+                transform: `translate3d(0, ${displayY}px, 0)`,
               }}
             >
               {careerTimeline.map((item, index) => (
