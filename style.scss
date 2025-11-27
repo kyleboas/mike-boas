@@ -65,11 +65,6 @@ body {
   padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
 }
 
-/* Generic interactive container override */
-
-.interactive-card {
-  pointer-events: auto;
-}
 
 /* Hero section */
 
