@@ -521,7 +521,7 @@ const BridgeLanding = () => {
         {/* Testimonials */}
         <div
           className="testimonial-section"
-          style={{ opacity: getSectionOpacity(0.93, 0.05) }}
+          style={{ opacity: getSectionOpacity(0.90, 0.06) }}
         >
           <div className="testimonial-wrapper">
             {/* Left arrow */}
@@ -608,7 +608,7 @@ const BridgeLanding = () => {
         {/* CTA */}
         <div
           className="cta-section"
-          style={{ opacity: getSectionOpacity(1.02, 0.05) }}
+          style={{ opacity: getSectionOpacity(1.02, 0.06) }}
         >
           <div className="cta-card interactive-card">
             <p className="cta-text">
