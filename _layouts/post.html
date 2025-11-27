@@ -3,18 +3,63 @@ layout: default
 ---
 
 <article class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <p class="post-date">{{ page.date | date: "%d %B %Y" }}</p>
 
-  {% if page.image %}
-    <img class="cake-shot" src="{{ page.image }}" alt="{{ page.title }}" />
-  {% endif %}
-
-  <div class="post-content">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-date">{{ page.date | date: "%d %B %Y" }}</p>
-
-    <div class="entry">
-      {{ content }}
-    </div>
+  <div class="entry">
+   {{ content }}
   </div>
 
+
+  <div class="post-navigation">
+  <a href="mailto:contact@mikeboas.net?subject=Re:%20{{ page.title | uri_escape }}&body={{ site.url }}{{ page.url | uri_escape }}">Reply</a>
+  <a href="#top">Back to top</a>
+
+<script>
+function copyToClipboard() {
+  const url = document.URL;
+}
+</script>
+  <a href="mailto:?subject={{ page.title }}&body={{ site.url }}{{ page.url }}">Email this post</a>
+  {% include copylink.html %}
+</div>
+  <div class="subscribe-section">
+    <div class="subscribe-section-header">Subscribe</div>
+      <form action="https://buttondown.com/api/emails/embed-subscribe/TacticsJournal" 
+      method="post" 
+      target="_blank"
+      id="subscribeForm">
+
+    <div class="form-container">
+        <input type="email" name="email" id="email" placeholder="Enter your email..." required>
+
+        <button type="submit" id="subscribeButton">
+            <svg width="15" height="15" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 50 L40 80 L90 20" stroke="black" stroke-width="15" fill="none"/>
+            </svg>
+        </button>
+    </div>
+    </form>
+  </div>
+
+<script>
+    document.getElementById("email").addEventListener("input", function() {
+        let button = document.getElementById("subscribeButton");
+        let email = this.value.trim();
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailPattern.test(email)) {
+            button.classList.add("show");
+        } else {
+            button.classList.remove("show");
+        }
+    });
+document.getElementById("subscribeForm").addEventListener("submit", function(event) {
+    setTimeout(function() { // Ensure the form submission request goes through first
+        document.getElementById("email").value = ""; 
+        document.getElementById("subscribeButton").classList.remove("show");
+    }, 100);
+});
+ 
+</script>
 </article>
