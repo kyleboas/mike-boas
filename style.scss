@@ -19,8 +19,6 @@ body {
   font-family: 'Inter',
     sans-serif;
   color: #ffffff;
-  /* plain fallback color only */
-  background-color: #0f172a;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -586,12 +584,9 @@ body {
 }
 
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
   padding: 2rem;
   border-radius: 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
   max-width: 48rem;
   text-align: left;
 }
@@ -649,10 +644,9 @@ body {
 
 /* Arrows */
 .testimonial-nav {
-  pointer-events: auto;           /* override floating-content */
-  background: rgba(15, 23, 42, 0.7);
+  pointer-events: auto;
+  background: transparent;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
   width: 2rem;
   height: 2rem;
   display: inline-flex;
@@ -663,6 +657,8 @@ body {
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
   opacity: 0.85;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .testimonial-nav:hover {
