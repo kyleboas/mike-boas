@@ -262,7 +262,7 @@ const translateY = 0;
                     placeholder="your@email.com"
                     className="email-input"
                   />
-                  <button className="primary-button">Receive insights</button>
+                  <button className="primary-button">Subscribe</button>
                 </div>
               </div>
             </div>
