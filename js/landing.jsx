@@ -95,6 +95,9 @@ const careerTimeline = [
 const BridgeLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef(null);
+  const timelineViewportRef = useRef(null);
+  const timelineListRef = useRef(null);
+  const [timelineMaxScroll, setTimelineMaxScroll] = useState(0);
 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -150,6 +153,20 @@ const BridgeLanding = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const updateTimelineMaxScroll = () => {
+      if (!timelineViewportRef.current || !timelineListRef.current) return;
+      const viewportHeight = timelineViewportRef.current.clientHeight;
+      const listHeight = timelineListRef.current.scrollHeight;
+      const maxScroll = Math.max(0, listHeight - viewportHeight);
+      setTimelineMaxScroll(maxScroll);
+    };
+
+    updateTimelineMaxScroll();
+    window.addEventListener("resize", updateTimelineMaxScroll);
+    return () => window.removeEventListener("resize", updateTimelineMaxScroll);
+  }, []);
+
   // Hero fades out immediately on scroll (no fade-in)
   const HERO_FADE_START = 0.0;   // start fading as soon as user scrolls
   const HERO_FADE_END = 0.08;    // fully gone by 8% scroll
@@ -188,6 +205,8 @@ const translateY = 0;
     0,
     1
   );
+
+  const timelineScrollY = -timelineMaxScroll * timelineT;
 
   useEffect(() => {
     if (isPaused) return;
@@ -344,107 +363,74 @@ const translateY = 0;
           className="timeline-section"
           style={{ opacity: getSectionOpacity(0.52, 0.26) }}
         >
-          <div className="timeline-card">
+          <div className="timeline-card" ref={timelineViewportRef}>
             <h3 className="timeline-heading">35+ Years of Experience</h3>
 
-            <div className="timeline-list">
-              {careerTimeline.map((item, index) => {
-                const total = careerTimeline.length;
-                const perItem = 1 / total;
+            <div
+              className="timeline-list"
+              ref={timelineListRef}
+              style={{
+                transform: `translateY(${timelineScrollY}px)`,
+                transition: "transform 0.1s linear",
+              }}
+            >
+              {careerTimeline.map((item, index) => (
+                <div key={index} className="timeline-item">
+                  <div className="timeline-logo-wrap">
+                    {item.logo && (
+                      <img
+                        src={item.logo}
+                        alt={item.org || "Organization logo"}
+                        className={
+                          "timeline-logo" +
+                          (item.type === "education" ? " timeline-logo-edu" : "")
+                        }
+                      />
+                    )}
+                  </div>
 
-                // Each item has a "center" in [0,1] over the timeline window
-                const itemCenter = (index + 0.5) * perItem;
+                  <div className="timeline-content">
+                    <p className="timeline-period">{item.period}</p>
 
-                // visibleRadius = total width where the item can be seen at all
-                // fadeRadius = inner region where it's fully opaque
-                const visibleRadius = perItem * 0.6; // tweak overlap
-                const fadeRadius = perItem * 0.3;
-
-                const dist = Math.abs(timelineT - itemCenter);
-
-                let itemOpacity = 0;
-
-                if (dist < fadeRadius) {
-                  // fully visible zone
-                  itemOpacity = 1;
-                } else if (dist < visibleRadius) {
-                  // fade out as we move away from center
-                  itemOpacity =
-                    1 - (dist - fadeRadius) / (visibleRadius - fadeRadius);
-                } else {
-                  // far from center: gone
-                  itemOpacity = 0;
-                }
-
-                const translateY = 20 * (1 - itemOpacity);
-
-                return (
-                  <div
-                    key={index}
-                    className="timeline-item"
-                    style={{
-                      opacity: itemOpacity,
-                      transform: `translateY(${translateY}px)`,
-                      transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
-                    }}
-                  >
-                    <div className="timeline-logo-wrap">
-                      {item.logo && (
-                        <img
-                          src={item.logo}
-                          alt={item.org || "Organization logo"}
-                          className={
-                            "timeline-logo" +
-                            (item.type === "education" ? " timeline-logo-edu" : "")
-                          }
-                        />
+                    <div className="timeline-title-row">
+                      <h4 className="timeline-role">{item.role}</h4>
+                      {item.org && (
+                        <span className="timeline-org">{item.org}</span>
                       )}
                     </div>
 
-                    <div className="timeline-content">
-                      <p className="timeline-period">{item.period}</p>
+                    {item.summary && (
+                      <p className="timeline-summary">{item.summary}</p>
+                    )}
 
-                      <div className="timeline-title-row">
-                        <h4 className="timeline-role">{item.role}</h4>
-                        {item.org && (
-                          <span className="timeline-org">{item.org}</span>
+                    {item.bullets && item.bullets.length > 0 && (
+                      <ul className="timeline-bullets">
+                        {item.bullets.map((point, idx) => (
+                          <li key={idx}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {item.featuredProject && (
+                      <div className="timeline-project">
+                        <p className="timeline-project-title">
+                          {item.featuredProject.title}
+                        </p>
+                        <p className="timeline-project-desc">
+                          {item.featuredProject.description}</p>
+                        {item.featuredProject.image && (
+                          <div className="timeline-project-media">
+                            <img
+                              src={item.featuredProject.image}
+                              alt={item.featuredProject.title}
+                            />
+                          </div>
                         )}
                       </div>
-
-                      {item.summary && (
-                        <p className="timeline-summary">{item.summary}</p>
-                      )}
-
-                      {item.bullets && item.bullets.length > 0 && (
-                        <ul className="timeline-bullets">
-                          {item.bullets.map((point, idx) => (
-                            <li key={idx}>{point}</li>
-                          ))}
-                        </ul>
-                      )}
-
-                      {item.featuredProject && (
-                        <div className="timeline-project">
-                          <p className="timeline-project-title">
-                            {item.featuredProject.title}
-                          </p>
-                          <p className="timeline-project-desc">
-                            {item.featuredProject.description}
-                          </p>
-                          {item.featuredProject.image && (
-                            <div className="timeline-project-media">
-                              <img
-                                src={item.featuredProject.image}
-                                alt={item.featuredProject.title}
-                              />
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
+                    )}
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         </div>

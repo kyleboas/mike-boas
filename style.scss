@@ -332,6 +332,8 @@ body {
   text-align: left;
   border-radius: 1.5rem;
   padding: 2rem 2rem 2.5rem;
+  position: relative;    /* added */
+  overflow: hidden;      /* added - list scrolls inside */
 }
 
 .timeline-heading {
@@ -358,8 +360,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-height: 70vh;      /* responsive cap */
-  overflow: visible;     /* NO internal scrolling */
+  /* removed max-height */
+  overflow: visible;     /* list is taller than viewport; card clips it */
   padding-right: 0.75rem;
 }
 
@@ -509,11 +511,6 @@ body {
 @media (max-width: 560px) {
   .timeline-card {
     padding: 1.75rem 1.25rem 2rem;
-  }
-
-  .timeline-list {
-    max-height: 65vh;    /* slightly smaller on mobile */
-    overflow: visible;   /* still no internal scroll */
   }
 
   .timeline-logo-wrap {
