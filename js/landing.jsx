@@ -100,6 +100,8 @@ const BridgeLanding = () => {
   const [timelineMaxScroll, setTimelineMaxScroll] = useState(0);
   const [displayY, setDisplayY] = useState(0);
   const targetYRef = useRef(0);
+  const [displayScale, setDisplayScale] = useState(1.8);
+  const targetScaleRef = useRef(1.8);
 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -206,6 +208,25 @@ const scale = startScale + (endScale - startScale) * zoomT;
 // no translation at all
 const translateY = 0;
 
+  // Update target scale whenever scroll changes
+  useEffect(() => {
+    targetScaleRef.current = scale;
+  }, [scale]);
+
+  // Lerping animation loop for smooth zoom effect
+  useEffect(() => {
+    let rafId;
+    const SCALE_SMOOTHING = 0.12; // Higher = smoother but slower; lower = snappier
+
+    const animate = () => {
+      setDisplayScale((prev) => prev + (targetScaleRef.current - prev) * SCALE_SMOOTHING);
+      rafId = requestAnimationFrame(animate);
+    };
+
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
   // Timeline scroll window: items move through between 40% and 90% scroll
   const TIMELINE_START = 0.40;
   const TIMELINE_END = 0.90;
@@ -276,7 +297,7 @@ const translateY = 0;
       <div
         className="overlay"
         style={{
-          transform: `scale(${scale})`,
+          transform: `scale(${displayScale})`,
         }}
       />
 
