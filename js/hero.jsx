@@ -4,10 +4,27 @@ const { useState, useEffect, useRef } = React;
    Minimal hero + background zoom only
 ------------------------------------------------------------------ */
 
+const ANIMATION_SCROLL_PX = 800; // how much scroll you want for fade + zoom
+
 const BridgeHeroOnly = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [displayScale, setDisplayScale] = useState(1.8);
   const targetScaleRef = useRef(1.8);
+  const [containerHeight, setContainerHeight] = useState(
+    typeof window !== "undefined"
+      ? window.innerHeight + ANIMATION_SCROLL_PX
+      : 0
+  );
+
+  // keep container height = viewport + animation distance
+  useEffect(() => {
+    const updateHeight = () => {
+      setContainerHeight(window.innerHeight + ANIMATION_SCROLL_PX);
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
   // Basic scroll progress (0 → 1) across the page
   useEffect(() => {
@@ -85,7 +102,10 @@ const BridgeHeroOnly = () => {
   }, []);
 
   return (
-    <div className="page-container" style={{ height: '55vh' }}>
+    <div
+      className="page-container"
+      style={{ height: containerHeight || "100vh" }}
+    >
       {/* Scroll-animated background */}
       <div
         className="overlay"
@@ -134,8 +154,7 @@ const BridgeHeroOnly = () => {
           </div>
         </div>
 
-        {/* Optional: you can render additional sections here,
-            they will appear as the user scrolls after the hero */}
+        {/* Additional sections can follow here */}
       </div>
     </div>
   );
