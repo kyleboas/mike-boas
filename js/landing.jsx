@@ -195,9 +195,9 @@ const scale = startScale + (endScale - startScale) * zoomT;
 // no translation at all
 const translateY = 0;
 
-  // Timeline scroll window: items move through between 40% and 92% scroll
+  // Timeline scroll window: items move through between 40% and 90% scroll
   const TIMELINE_START = 0.40;
-  const TIMELINE_END = 0.92;
+  const TIMELINE_END = 0.90;
   const timelineRange = TIMELINE_END - TIMELINE_START;
 
   const timelineT = clamp(
