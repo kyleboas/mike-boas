@@ -178,6 +178,17 @@ const scale = startScale + (endScale - startScale) * zoomT;
 // no translation at all
 const translateY = 0;
 
+  // Timeline scroll window: items move through between 52% and 78% scroll
+  const TIMELINE_START = 0.52;
+  const TIMELINE_END = 0.78;
+  const timelineRange = TIMELINE_END - TIMELINE_START;
+
+  const timelineT = clamp(
+    (scrollProgress - TIMELINE_START) / timelineRange,
+    0,
+    1
+  );
+
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
@@ -337,65 +348,103 @@ const translateY = 0;
             <h3 className="timeline-heading">35+ Years of Experience</h3>
 
             <div className="timeline-list">
-              {careerTimeline.map((item, index) => (
-                <div key={index} className="timeline-item">
+              {careerTimeline.map((item, index) => {
+                const total = careerTimeline.length;
+                const perItem = 1 / total;
 
-                  <div className="timeline-logo-wrap">
-                    {item.logo && (
-                      <img
-                        src={item.logo}
-                        alt={item.org || "Organization logo"}
-                        className={
-                          "timeline-logo" +
-                          (item.type === "education" ? " timeline-logo-edu" : "")
-                        }
-                      />
-                    )}
-                  </div>
+                // Each item has a "center" in [0,1] over the timeline window
+                const itemCenter = (index + 0.5) * perItem;
 
-                  <div className="timeline-content">
-                    <p className="timeline-period">{item.period}</p>
+                // visibleRadius = total width where the item can be seen at all
+                // fadeRadius = inner region where it's fully opaque
+                const visibleRadius = perItem * 0.6; // tweak overlap
+                const fadeRadius = perItem * 0.3;
 
-                    <div className="timeline-title-row">
-                      <h4 className="timeline-role">{item.role}</h4>
-                      {item.org && (
-                        <span className="timeline-org">{item.org}</span>
+                const dist = Math.abs(timelineT - itemCenter);
+
+                let itemOpacity = 0;
+
+                if (dist < fadeRadius) {
+                  // fully visible zone
+                  itemOpacity = 1;
+                } else if (dist < visibleRadius) {
+                  // fade out as we move away from center
+                  itemOpacity =
+                    1 - (dist - fadeRadius) / (visibleRadius - fadeRadius);
+                } else {
+                  // far from center: gone
+                  itemOpacity = 0;
+                }
+
+                const translateY = 20 * (1 - itemOpacity);
+
+                return (
+                  <div
+                    key={index}
+                    className="timeline-item"
+                    style={{
+                      opacity: itemOpacity,
+                      transform: `translateY(${translateY}px)`,
+                      transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
+                    }}
+                  >
+                    <div className="timeline-logo-wrap">
+                      {item.logo && (
+                        <img
+                          src={item.logo}
+                          alt={item.org || "Organization logo"}
+                          className={
+                            "timeline-logo" +
+                            (item.type === "education" ? " timeline-logo-edu" : "")
+                          }
+                        />
                       )}
                     </div>
 
-                    {item.summary && (
-                      <p className="timeline-summary">{item.summary}</p>
-                    )}
+                    <div className="timeline-content">
+                      <p className="timeline-period">{item.period}</p>
 
-                    {item.bullets && item.bullets.length > 0 && (
-                      <ul className="timeline-bullets">
-                        {item.bullets.map((point, idx) => (
-                          <li key={idx}>{point}</li>
-                        ))}
-                      </ul>
-                    )}
-
-                    {item.featuredProject && (
-                      <div className="timeline-project">
-                        <p className="timeline-project-title">
-                          {item.featuredProject.title}
-                        </p>
-                        <p className="timeline-project-desc">
-                          {item.featuredProject.description}
-                        </p>
-                        {item.featuredProject.image && (
-                          <div className="timeline-project-media">
-                            <img
-                              src={item.featuredProject.image}
-                              alt={item.featuredProject.title}
-                            />
-                          </div>
+                      <div className="timeline-title-row">
+                        <h4 className="timeline-role">{item.role}</h4>
+                        {item.org && (
+                          <span className="timeline-org">{item.org}</span>
                         )}
                       </div>
-                    )}
+
+                      {item.summary && (
+                        <p className="timeline-summary">{item.summary}</p>
+                      )}
+
+                      {item.bullets && item.bullets.length > 0 && (
+                        <ul className="timeline-bullets">
+                          {item.bullets.map((point, idx) => (
+                            <li key={idx}>{point}</li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {item.featuredProject && (
+                        <div className="timeline-project">
+                          <p className="timeline-project-title">
+                            {item.featuredProject.title}
+                          </p>
+                          <p className="timeline-project-desc">
+                            {item.featuredProject.description}
+                          </p>
+                          {item.featuredProject.image && (
+                            <div className="timeline-project-media">
+                              <img
+                                src={item.featuredProject.image}
+                                alt={item.featuredProject.title}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -403,7 +452,7 @@ const translateY = 0;
         {/* Testimonials */}
         <div
           className="testimonial-section"
-          style={{ opacity: getSectionOpacity(0.76, 0.08) }}
+          style={{ opacity: getSectionOpacity(0.88, 0.08) }}
         >
           <div className="testimonial-wrapper">
             {/* Left arrow */}

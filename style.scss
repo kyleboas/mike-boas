@@ -358,8 +358,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-height: 70vh;
-  overflow-y: auto;
+  max-height: 70vh;      /* responsive cap */
+  overflow: visible;     /* NO internal scrolling */
   padding-right: 0.75rem;
 }
 
@@ -512,7 +512,8 @@ body {
   }
 
   .timeline-list {
-    max-height: 65vh;
+    max-height: 65vh;    /* slightly smaller on mobile */
+    overflow: visible;   /* still no internal scroll */
   }
 
   .timeline-logo-wrap {
