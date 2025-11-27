@@ -46,58 +46,16 @@ const Linkedin = (props) => (
 ------------------------------------------------------------------ */
 const careerTimeline = [
   {
-    period: "2005 – 2007",
-    role: "Associate Director- Marketing",
-    org: "AstraZeneca",
+    period: "1991 – 2007",
+    role: "AstraZeneca",
+    org: "15 yrs 10 mos",
     logo:
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
     bullets: [
       "Created the first hospital \"emergency room\" strategy focused on improving the use of a Pulmicort Respules (pediatric nebulized asthma treatment)",
-    ],
-  },
-  {
-    period: "2002 – 2005",
-    role: "National Director - Sales",
-    org: "AstraZeneca",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
-    bullets: [
       "Designed the first primary care & hospital sales force focused on improving the use of Pulmicort Respules (pediatric nebulized asthma treatment)",
-      "5 direct reports, with supervisory oversight of a full team of 300.",
-    ],
-  },
-  {
-    period: "2000 – 2002",
-    role: "District Sales Manager - Respiratory/ Dyslipidemia",
-    org: "AstraZeneca",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
-    bullets: [
       "First District Sales Manager (DSM) on the National DSM Effectiveness Team",
-      "10 direct reports",
-      "Responsible for R&I and CV portfolio",
     ],
-  },
-  {
-    period: "1998 – 2000",
-    role: "Consumer Marketing Manager - Neuroscience",
-    org: "AstraZeneca",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
-  },
-  {
-    period: "1996 – 1998",
-    role: "National Sales Trainer",
-    org: "AstraZeneca",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
-  },
-  {
-    period: "1991 – 1996",
-    role: "CV Sales Representative",
-    org: "AstraZeneca",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
   },
   {
     role: "BS, Finance",
