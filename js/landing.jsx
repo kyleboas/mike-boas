@@ -345,12 +345,12 @@ const BridgeLanding = () => {
                 class: "logo-image invert-logo",
               },
               {
-                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0922.gif",
+                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/aingens.gif",
                 alt: "Aingens",
                 class: "logo-image invert-logo",
               },
               {
-                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0926.png",
+                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/thestem.png",
                 alt: "The Stem",
                 class: "logo-image",
               },
