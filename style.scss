@@ -789,10 +789,11 @@ body {
 }
 
 /* Posts */
-
+ 
 .post {
   margin: 20px;
   margin-top: 60px;
+  padding-bottom: 200px;
 }
 
 .post-title {
@@ -805,6 +806,15 @@ body {
   font-weight: 100;
   margin-top: 5px;
 } 
+
+.entry {
+  line-height: 1.8rem;
+  margin-bottom: 100px;
+}
+
+.post img {
+  max-width: 100%;
+}  
 
 /* Responsive tweaks */
 
