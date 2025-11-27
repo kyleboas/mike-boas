@@ -56,10 +56,15 @@ function copyToClipboard() {
     });
 document.getElementById("subscribeForm").addEventListener("submit", function(event) {
     setTimeout(function() { // Ensure the form submission request goes through first
-        document.getElementById("email").value = ""; 
+        document.getElementById("email").value = "";
         document.getElementById("subscribeButton").classList.remove("show");
     }, 100);
 });
- 
+
 </script>
 </article>
+
+<!-- Hero loader for first-time visitors -->
+<script>window.HERO_SCRIPT_PATH = '{{ site.baseurl }}/js/hero.jsx';</script>
+<script src="{{ site.baseurl }}/js/cookies.js"></script>
+<script src="{{ site.baseurl }}/js/heroLoader.js"></script>
