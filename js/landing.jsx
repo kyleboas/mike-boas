@@ -296,7 +296,7 @@ const BridgeLanding = () => {
           style={{
             transform: `translate(-50%, ${20 * (1 - heroOpacity)}px)`,
             opacity: heroOpacity,
-            pointerEvents: heroOpacity > 0 ? "auto" : "none",
+            pointerEvents: heroOpacity > 0.8 ? "auto" : "none",
           }}
         >
           <div className="hero-card">
@@ -330,9 +330,9 @@ const BridgeLanding = () => {
         {/* Logos */}
         <div
           className="logos-section"
-          style={{ 
+          style={{
             opacity: logosOpacity,
-            pointerEvents: logosOpacity > 0 ? "auto" : "none",
+            pointerEvents: logosOpacity > 0.8 ? "auto" : "none",
           }}
         >
           <h3 className="section-label">Trusted By Industry Leaders</h3>
@@ -365,9 +365,9 @@ const BridgeLanding = () => {
         {/* Strategy */}
         <div
           className="strategy-section"
-          style={{ 
+          style={{
             opacity: strategyOpacity,
-            pointerEvents: strategyOpacity > 0 ? "auto" : "none",
+            pointerEvents: strategyOpacity > 0.8 ? "auto" : "none",
           }}
         >
           <div className="strategy-sequence">
@@ -413,9 +413,9 @@ const BridgeLanding = () => {
         {/* Timeline – from college to today */}
         <div
           className="timeline-section"
-          style={{ 
+          style={{
             opacity: timelineOpacity,
-            pointerEvents: timelineOpacity > 0 ? "auto" : "none",
+            pointerEvents: timelineOpacity > 0.8 ? "auto" : "none",
           }}
         >
           <h3 className="timeline-heading">35+ Years of Experience</h3>
@@ -495,9 +495,9 @@ const BridgeLanding = () => {
         {/* Testimonials */}
         <div
           className="testimonial-section"
-          style={{ 
+          style={{
             opacity: testimonialOpacity,
-            pointerEvents: testimonialOpacity > 0 ? "auto" : "none",
+            pointerEvents: testimonialOpacity > 0.8 ? "auto" : "none",
           }}
         >
           <div className="testimonial-wrapper">
@@ -585,9 +585,9 @@ const BridgeLanding = () => {
         {/* CTA */}
         <div
           className="cta-section"
-          style={{ 
+          style={{
             opacity: ctaOpacity,
-            pointerEvents: ctaOpacity > 0 ? "auto" : "none",
+            pointerEvents: ctaOpacity > 0.8 ? "auto" : "none",
           }}
         >
           <div className="cta-card interactive-card">
