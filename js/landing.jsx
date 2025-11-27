@@ -116,7 +116,7 @@ const BridgeLanding = () => {
 
   const currentTestimonial = testimonials[activeTestimonial];
 
-  const SCROLL_HEIGHT_MULTIPLIER = 11;
+  const SCROLL_HEIGHT_MULTIPLIER = 8;
 
   useEffect(() => {
     let ticking = false;
