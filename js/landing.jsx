@@ -549,23 +549,18 @@ const BridgeLanding = () => {
 
           {/* Dots */}
           <div className="testimonial-dots" aria-label="Select testimonial">
-          {testimonials.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              className={
-                "testimonial-dot" +
-                (idx === activeTestimonial ? " testimonial-dot-active" : "")
-              }
-              onClick={() => {
-                setActiveTestimonial(idx);
-                window.open(
-                  "https://calendly.com/heyboas/30-minute-zoom-call",
-                  "_blank"
-                );
-              }}
-            />
-          ))}
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className={
+                  "testimonial-dot" +
+                  (idx === activeTestimonial ? " testimonial-dot-active" : "")
+                }
+                onClick={() => setActiveTestimonial(idx)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* CTA */}
@@ -578,7 +573,15 @@ const BridgeLanding = () => {
               {"Let's"} build the bridge to your next success story.
             </p>
 
-            <button className="cta-button">
+            <button
+              className="cta-button"
+              onClick={() =>
+                window.open(
+                  "https://calendly.com/heyboas/30-minute-zoom-call",
+                  "_blank"
+                )
+              }
+            >
               <Calendar width={24} height={24} />
               <span>Schedule a Consultation</span>
             </button>
