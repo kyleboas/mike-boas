@@ -430,7 +430,7 @@ const BridgeLanding = () => {
               <h3 className="strategy-title">Philosophy</h3>
               <p className="strategy-subheading">People Before Projects</p>
               <p className="strategy-text">
-                Because when people feel{" "}
+                When people feel{" "}
                 <span className="strategy-text-bold">valued</span>, belief
                 builds, alignment follows, and execution becomes{" "}
                 <span className="strategy-text-bold">unstoppable</span>.
