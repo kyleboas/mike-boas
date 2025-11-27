@@ -50,8 +50,7 @@ const careerTimeline = [
     org: "Penn State",
     logo:
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/penn-state.png",
-    summary:
-      "Bachelor of Science - BS, Finance",
+    summary: "Bachelor of Science - BS, Finance",
     bullets: [
       "Brandywine Campus Mens Soccer Team",
       "Acacia Fraternity"
@@ -63,7 +62,9 @@ const careerTimeline = [
     org: "AstraZeneca",
     logo:
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
-    ]
+    // add whatever you want here, just no stray bracket
+    summary: "CV Sales Representative, Cardiovascular portfolio",
+    bullets: [],
   },
   {
     type: "role",
