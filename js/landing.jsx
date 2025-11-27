@@ -393,9 +393,9 @@ const translateY = 0;
           className="timeline-section"
           style={{ opacity: getSectionOpacity(0.52, 0.26) }}
         >
-          <div className="timeline-card" ref={timelineViewportRef}>
-            <h3 className="timeline-heading">35+ Years of Experience</h3>
+          <h3 className="timeline-heading">35+ Years of Experience</h3>
 
+          <div className="timeline-card" ref={timelineViewportRef}>
             <div
               className="timeline-list"
               ref={timelineListRef}
