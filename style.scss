@@ -705,6 +705,7 @@ body {
 /* CTA */
 
 .cta-section {
+  background-color: transparent;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -715,8 +716,6 @@ body {
 }
 
 .cta-card {
-  background: #ffffff;
-  color: #0f172a;
   padding: 2.5rem 2rem;
   border-radius: 1.2rem;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
@@ -736,7 +735,7 @@ body {
 
 .cta-text {
   font-size: 1.05rem;
-  color: #475569;
+  color: #fff;
   margin: 0 0 2rem;
 }
 
