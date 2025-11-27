@@ -85,7 +85,7 @@ const BridgeHeroOnly = () => {
   }, []);
 
   return (
-    <div className="page-container">
+    <div className="page-container" style={{ height: '200vh' }}>
       {/* Scroll-animated background */}
       <div
         className="overlay"
