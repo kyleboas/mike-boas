@@ -41,15 +41,6 @@ const Linkedin = (props) => (
   </IconBase>
 );
 
-featuredProject: {
-      title: "Global AI Medical Information Platform",
-      description:
-        "Led the design of an omni-channel MI platform integrating generative AI, safety, and compliance workflows for 20+ markets.",
-      image:
-        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png"
-    }
-  },
-
 /* ------------------------------------------------------------------
    Career timeline data
 ------------------------------------------------------------------ */
