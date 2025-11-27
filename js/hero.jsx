@@ -9,8 +9,6 @@ const BridgeHeroOnly = () => {
   const [displayScale, setDisplayScale] = useState(1.8);
   const targetScaleRef = useRef(1.8);
 
-  const SCROLL_HEIGHT_MULTIPLIER = 4; // controls how much scroll room you have
-
   // Basic scroll progress (0 → 1) across the page
   useEffect(() => {
     let ticking = false;
@@ -87,10 +85,7 @@ const BridgeHeroOnly = () => {
   }, []);
 
   return (
-    <div
-      className="page-container"
-      style={{ height: `${SCROLL_HEIGHT_MULTIPLIER * 100}vh` }}
-    >
+    <div className="page-container">
       {/* Scroll-animated background */}
       <div
         className="overlay"
