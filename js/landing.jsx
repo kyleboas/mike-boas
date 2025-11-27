@@ -138,7 +138,7 @@ const BridgeLanding = () => {
 
   const currentTestimonial = testimonials[activeTestimonial];
 
-  const SCROLL_HEIGHT_MULTIPLIER = 18;
+  const SCROLL_HEIGHT_MULTIPLIER = 10;
 
   useEffect(() => {
     let ticking = false;
@@ -488,7 +488,7 @@ const translateY = 0;
         {/* Testimonials */}
         <div
           className="testimonial-section"
-          style={{ opacity: getSectionOpacity(0.93, 0.06) }}
+          style={{ opacity: getSectionOpacity(0.92, 0.05) }}
         >
           <div className="testimonial-wrapper">
             {/* Left arrow */}
@@ -574,7 +574,7 @@ const translateY = 0;
         {/* CTA */}
         <div
           className="cta-section"
-          style={{ opacity: getSectionOpacity(0.96, 0.06) }}
+          style={{ opacity: getSectionOpacity(1.02, 0.05) }}
         >
           <div className="cta-card interactive-card">
             <p className="cta-text">
