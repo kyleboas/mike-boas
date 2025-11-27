@@ -52,7 +52,7 @@ const careerTimeline = [
     logo:
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
     bullets: [
-      "Created the first hospital "emergency room" strategy focused on improving the use of a Pulmicort Respules (pediatric nebulized asthma treatment)"
+      "Created the first hospital \"emergency room\" strategy focused on improving the use of a Pulmicort Respules (pediatric nebulized asthma treatment)",
     ],
   },
   {
@@ -63,7 +63,7 @@ const careerTimeline = [
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
     bullets: [
       "Designed the first primary care & hospital sales force focused on improving the use of Pulmicort Respules (pediatric nebulized asthma treatment)",
-      "5 direct reports, with supervisory oversight of a full team of 300."
+      "5 direct reports, with supervisory oversight of a full team of 300.",
     ],
   },
   {
@@ -75,7 +75,7 @@ const careerTimeline = [
     bullets: [
       "First District Sales Manager (DSM) on the National DSM Effectiveness Team",
       "10 direct reports",
-      "Responsible for R&I and CV portfolio"
+      "Responsible for R&I and CV portfolio",
     ],
   },
   {
@@ -105,11 +105,8 @@ const careerTimeline = [
     logo:
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/penn-state.png",
     summary: "Bachelor of Science - BS, Finance",
-    bullets: [
-      "Brandywine Campus Mens Soccer Team",
-      "Acacia Fraternity"
-    ],
-  }
+    bullets: ["Brandywine Campus Mens Soccer Team", "Acacia Fraternity"],
+  },
 ];
 
 /* ------------------------------------------------------------------
@@ -155,7 +152,7 @@ const BridgeLanding = () => {
       title: "Senior Director",
       company: "AstraZeneca",
       avatar:
-        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/amy-fetchko.jpeg", 
+        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/amy-fetchko.jpeg",
     },
   ];
 
@@ -171,9 +168,7 @@ const BridgeLanding = () => {
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
       const next =
-        docHeight > 0
-          ? Math.max(0, Math.min(1, scrollTop / docHeight))
-          : 0;
+        docHeight > 0 ? Math.max(0, Math.min(1, scrollTop / docHeight)) : 0;
 
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -204,32 +199,34 @@ const BridgeLanding = () => {
   }, []);
 
   // Hero fades out immediately on scroll (no fade-in)
-  const HERO_FADE_START = 0.0;   // start fading as soon as user scrolls
-  const HERO_FADE_END = 0.08;    // fully gone by 8% scroll
+  const HERO_FADE_START = 0.0; // start fading as soon as user scrolls
+  const HERO_FADE_END = 0.08; // fully gone by 8% scroll
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
-  const heroOpacity = 1 - clamp(
-    (scrollProgress - HERO_FADE_START) / (HERO_FADE_END - HERO_FADE_START),
-    0,
-    1
-  );
+  const heroOpacity =
+    1 -
+    clamp(
+      (scrollProgress - HERO_FADE_START) / (HERO_FADE_END - HERO_FADE_START),
+      0,
+      1
+    );
 
-// --- scroll-based zoom for the overlay background ---
-// Zoom starts only after hero has faded out
-const zoomStart = HERO_FADE_END;      // e.g. 0.08
-const zoomEnd = 0.14;
+  // --- scroll-based zoom for the overlay background ---
+  // Zoom starts only after hero has faded out
+  const zoomStart = HERO_FADE_END; // e.g. 0.08
+  const zoomEnd = 0.14;
 
-const rawT = (scrollProgress - zoomStart) / (zoomEnd - zoomStart);
-const zoomT = Math.max(0, Math.min(1, rawT));
+  const rawT = (scrollProgress - zoomStart) / (zoomEnd - zoomStart);
+  const zoomT = Math.max(0, Math.min(1, rawT));
 
-// zoom range
-const startScale = 1.8;   // close-in framing
-const endScale = 1.0;     // fully zoomed out
-const scale = startScale + (endScale - startScale) * zoomT;
+  // zoom range
+  const startScale = 1.8; // close-in framing
+  const endScale = 1.0; // fully zoomed out
+  const scale = startScale + (endScale - startScale) * zoomT;
 
-// no translation at all
-const translateY = 0;
+  // no translation at all
+  const translateY = 0;
 
   // Update target scale whenever scroll changes
   useEffect(() => {
@@ -242,7 +239,9 @@ const translateY = 0;
     const SCALE_SMOOTHING = 0.12; // Higher = smoother but slower; lower = snappier
 
     const animate = () => {
-      setDisplayScale((prev) => prev + (targetScaleRef.current - prev) * SCALE_SMOOTHING);
+      setDisplayScale(
+        (prev) => prev + (targetScaleRef.current - prev) * SCALE_SMOOTHING
+      );
       rafId = requestAnimationFrame(animate);
     };
 
@@ -251,8 +250,8 @@ const translateY = 0;
   }, []);
 
   // Timeline scroll window: items move through between 40% and 90% scroll
-  const TIMELINE_START = 0.40;
-  const TIMELINE_END = 0.90;
+  const TIMELINE_START = 0.4;
+  const TIMELINE_END = 0.9;
   const timelineRange = TIMELINE_END - TIMELINE_START;
 
   const timelineT = clamp(
@@ -274,7 +273,9 @@ const translateY = 0;
     const SMOOTHING_FACTOR = 0.12; // Higher = smoother but slower; lower = snappier
 
     const animate = () => {
-      setDisplayY((prev) => prev + (targetYRef.current - prev) * SMOOTHING_FACTOR);
+      setDisplayY(
+        (prev) => prev + (targetYRef.current - prev) * SMOOTHING_FACTOR
+      );
       rafId = requestAnimationFrame(animate);
     };
 
@@ -285,9 +286,7 @@ const translateY = 0;
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      setActiveTestimonial((prev) =>
-        (prev + 1) % testimonials.length
-      );
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 6000); // 6 seconds per slide
 
     return () => clearInterval(interval);
@@ -341,7 +340,8 @@ const translateY = 0;
                 <h1 className="hero-title">MIKE BOAS</h1>
                 <h2 className="hero-subtitle">BRIDGE BUILDER</h2>
                 <p className="hero-blurb">
-                  Strategic Advisor &amp; Leadership Partner for Medical, Marketing, AI Solutions
+                  Strategic Advisor &amp; Leadership Partner for Medical,
+                  Marketing, AI Solutions
                 </p>
               </div>
             </div>
@@ -412,7 +412,11 @@ const translateY = 0;
                 Elevate human potential and impact
               </p>
               <p className="strategy-text">
-                Creating the space for people and organizations to achieve <span className="strategy-text-bold">extraordinary results</span>.
+                Creating the space for people and organizations to achieve{" "}
+                <span className="strategy-text-bold">
+                  extraordinary results
+                </span>
+                .
               </p>
             </div>
 
@@ -426,7 +430,10 @@ const translateY = 0;
               <h3 className="strategy-title">Philosophy</h3>
               <p className="strategy-subheading">People Before Projects</p>
               <p className="strategy-text">
-                Because when people feel <span className="strategy-text-bold">valued</span>, belief builds, alignment follows, and execution becomes <span className="strategy-text-bold">unstoppable</span>.
+                Because when people feel{" "}
+                <span className="strategy-text-bold">valued</span>, belief
+                builds, alignment follows, and execution becomes{" "}
+                <span className="strategy-text-bold">unstoppable</span>.
               </p>
             </div>
           </div>
@@ -456,7 +463,9 @@ const translateY = 0;
                         alt={item.org || "Organization logo"}
                         className={
                           "timeline-logo" +
-                          (item.type === "education" ? " timeline-logo-edu" : "")
+                          (item.type === "education"
+                            ? " timeline-logo-edu"
+                            : "")
                         }
                       />
                     )}
@@ -490,7 +499,8 @@ const translateY = 0;
                           {item.featuredProject.title}
                         </p>
                         <p className="timeline-project-desc">
-                          {item.featuredProject.description}</p>
+                          {item.featuredProject.description}
+                        </p>
                         {item.featuredProject.image && (
                           <div className="timeline-project-media">
                             <img
@@ -520,7 +530,8 @@ const translateY = 0;
               className="testimonial-nav testimonial-nav-left"
               onClick={() =>
                 setActiveTestimonial(
-                  (activeTestimonial - 1 + testimonials.length) % testimonials.length
+                  (activeTestimonial - 1 + testimonials.length) %
+                    testimonials.length
                 )
               }
             >
@@ -601,7 +612,7 @@ const translateY = 0;
         >
           <div className="cta-card interactive-card">
             <p className="cta-text">
-              Let's build the bridge to your next success story.
+              {"Let's"} build the bridge to your next success story.
             </p>
 
             <button className="cta-button">
