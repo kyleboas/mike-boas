@@ -68,7 +68,7 @@ body {
 /* Generic interactive container override */
 
 .interactive-card {
-  pointer-events: auto;
+  /* Removed pointer-events: auto to allow section-level control */
 }
 
 /* Hero section */
@@ -643,7 +643,6 @@ body {
 
 /* Arrows */
 .testimonial-nav {
-  pointer-events: auto;
   background: transparent;
   border-color: transparent;
   border-radius: 999px;
@@ -684,7 +683,6 @@ body {
 }
 
 .testimonial-dot {
-  pointer-events: auto;
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 999px;
