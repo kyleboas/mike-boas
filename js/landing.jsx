@@ -52,7 +52,7 @@ const careerTimeline = [
     logo:
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
     bullets: [
-      "Created the first hospital \"emergency room\" strategy focused on improving the use of a Pulmicort Respules (pediatric nebulized asthma treatment)",
+      'Created the first hospital "emergency room" strategy focused on improving the use of a Pulmicort Respules (pediatric nebulized asthma treatment)',
       "Designed the first primary care & hospital sales force focused on improving the use of Pulmicort Respules (pediatric nebulized asthma treatment)",
       "First District Sales Manager (DSM) on the National DSM Effectiveness Team",
     ],
@@ -267,6 +267,13 @@ const BridgeLanding = () => {
     return 0;
   };
 
+  // Pre-calculate opacity to control pointer-events
+  const logosOpacity = getSectionOpacity(0.18, 0.08);
+  const strategyOpacity = getSectionOpacity(0.3, 0.12);
+  const timelineOpacity = getSectionOpacity(0.52, 0.26);
+  const testimonialOpacity = getSectionOpacity(0.86, 0.05);
+  const ctaOpacity = getSectionOpacity(0.99, 0.06);
+
   return (
     <div
       ref={containerRef}
@@ -289,7 +296,7 @@ const BridgeLanding = () => {
           style={{
             transform: `translate(-50%, ${20 * (1 - heroOpacity)}px)`,
             opacity: heroOpacity,
-            pointerEvents: heroOpacity === 0 ? "none" : "auto",
+            pointerEvents: heroOpacity > 0 ? "auto" : "none",
           }}
         >
           <div className="hero-card">
@@ -323,7 +330,10 @@ const BridgeLanding = () => {
         {/* Logos */}
         <div
           className="logos-section"
-          style={{ opacity: getSectionOpacity(0.18, 0.08) }}
+          style={{ 
+            opacity: logosOpacity,
+            pointerEvents: logosOpacity > 0 ? "auto" : "none",
+          }}
         >
           <h3 className="section-label">Trusted By Industry Leaders</h3>
 
@@ -355,7 +365,10 @@ const BridgeLanding = () => {
         {/* Strategy */}
         <div
           className="strategy-section"
-          style={{ opacity: getSectionOpacity(0.3, 0.12) }}
+          style={{ 
+            opacity: strategyOpacity,
+            pointerEvents: strategyOpacity > 0 ? "auto" : "none",
+          }}
         >
           <div className="strategy-sequence">
             {/* 1 */}
@@ -400,7 +413,10 @@ const BridgeLanding = () => {
         {/* Timeline – from college to today */}
         <div
           className="timeline-section"
-          style={{ opacity: getSectionOpacity(0.52, 0.26) }}
+          style={{ 
+            opacity: timelineOpacity,
+            pointerEvents: timelineOpacity > 0 ? "auto" : "none",
+          }}
         >
           <h3 className="timeline-heading">35+ Years of Experience</h3>
 
@@ -479,7 +495,10 @@ const BridgeLanding = () => {
         {/* Testimonials */}
         <div
           className="testimonial-section"
-          style={{ opacity: getSectionOpacity(0.86, 0.05) }}
+          style={{ 
+            opacity: testimonialOpacity,
+            pointerEvents: testimonialOpacity > 0 ? "auto" : "none",
+          }}
         >
           <div className="testimonial-wrapper">
             {/* Left arrow */}
@@ -566,7 +585,10 @@ const BridgeLanding = () => {
         {/* CTA */}
         <div
           className="cta-section"
-          style={{ opacity: getSectionOpacity(0.99, 0.06) }}
+          style={{ 
+            opacity: ctaOpacity,
+            pointerEvents: ctaOpacity > 0 ? "auto" : "none",
+          }}
         >
           <div className="cta-card interactive-card">
             <p className="cta-text">
