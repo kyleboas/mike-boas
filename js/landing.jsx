@@ -47,8 +47,8 @@ const Linkedin = (props) => (
 const careerTimeline = [
   {
     period: "1991 – 2007",
-    role: "AstraZeneca",
-    org: "15 yrs 10 mos",
+    org: "AstraZeneca",
+    yrs: "15 yrs 10 mos",
     logo:
       "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
     bullets: [
@@ -433,9 +433,9 @@ const BridgeLanding = () => {
                     <p className="timeline-period">{item.period}</p>
 
                     <div className="timeline-title-row">
-                      <h4 className="timeline-role">{item.role}</h4>
-                      {item.org && (
-                        <span className="timeline-org">{item.org}</span>
+                      <h4 className="timeline-role">{item.org}</h4>
+                      {item.yrs && (
+                        <span className="timeline-yrs">{item.yrs}</span>
                       )}
                     </div>
 
