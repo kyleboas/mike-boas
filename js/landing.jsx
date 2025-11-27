@@ -68,6 +68,31 @@ const careerTimeline = [
 ];
 
 /* ------------------------------------------------------------------
+   Viewport visibility hook
+------------------------------------------------------------------ */
+const useIsInViewport = (threshold = 0.25) => {
+  const ref = React.useRef(null);
+  const [isInView, setIsInView] = React.useState(false);
+
+  React.useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, isInView];
+};
+
+/* ------------------------------------------------------------------
    Main component
 ------------------------------------------------------------------ */
 const BridgeLanding = () => {
@@ -83,6 +108,14 @@ const BridgeLanding = () => {
 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  // Viewport visibility hooks for each section
+  const [heroRef, heroInView] = useIsInViewport(0.25);
+  const [logosRef, logosInView] = useIsInViewport(0.25);
+  const [strategyRef, strategyInView] = useIsInViewport(0.25);
+  const [timelineRef, timelineInView] = useIsInViewport(0.25);
+  const [testimonialRef, testimonialInView] = useIsInViewport(0.25);
+  const [ctaRef, ctaInView] = useIsInViewport(0.25);
 
   const testimonials = [
     {
@@ -292,11 +325,12 @@ const BridgeLanding = () => {
       <div className="floating-content">
         {/* Hero Section */}
         <div
+          ref={heroRef}
           className="hero-section"
           style={{
             transform: `translate(-50%, ${20 * (1 - heroOpacity)}px)`,
             opacity: heroOpacity,
-            pointerEvents: heroOpacity > 0 ? "auto" : "none",
+            pointerEvents: heroOpacity > 0 && heroInView ? "auto" : "none",
           }}
         >
           <div className="hero-card">
@@ -329,10 +363,11 @@ const BridgeLanding = () => {
 
         {/* Logos */}
         <div
+          ref={logosRef}
           className="logos-section"
-          style={{ 
+          style={{
             opacity: logosOpacity,
-            pointerEvents: logosOpacity > 0 ? "auto" : "none",
+            pointerEvents: logosOpacity > 0 && logosInView ? "auto" : "none",
           }}
         >
           <h3 className="section-label">Trusted By Industry Leaders</h3>
@@ -364,10 +399,11 @@ const BridgeLanding = () => {
 
         {/* Strategy */}
         <div
+          ref={strategyRef}
           className="strategy-section"
-          style={{ 
+          style={{
             opacity: strategyOpacity,
-            pointerEvents: strategyOpacity > 0 ? "auto" : "none",
+            pointerEvents: strategyOpacity > 0 && strategyInView ? "auto" : "none",
           }}
         >
           <div className="strategy-sequence">
@@ -412,10 +448,11 @@ const BridgeLanding = () => {
 
         {/* Timeline – from college to today */}
         <div
+          ref={timelineRef}
           className="timeline-section"
-          style={{ 
+          style={{
             opacity: timelineOpacity,
-            pointerEvents: timelineOpacity > 0 ? "auto" : "none",
+            pointerEvents: timelineOpacity > 0 && timelineInView ? "auto" : "none",
           }}
         >
           <h3 className="timeline-heading">35+ Years of Experience</h3>
@@ -494,10 +531,11 @@ const BridgeLanding = () => {
 
         {/* Testimonials */}
         <div
+          ref={testimonialRef}
           className="testimonial-section"
-          style={{ 
+          style={{
             opacity: testimonialOpacity,
-            pointerEvents: testimonialOpacity > 0 ? "auto" : "none",
+            pointerEvents: testimonialOpacity > 0 && testimonialInView ? "auto" : "none",
           }}
         >
           <div className="testimonial-wrapper">
@@ -584,10 +622,11 @@ const BridgeLanding = () => {
 
         {/* CTA */}
         <div
+          ref={ctaRef}
           className="cta-section"
-          style={{ 
+          style={{
             opacity: ctaOpacity,
-            pointerEvents: ctaOpacity > 0 ? "auto" : "none",
+            pointerEvents: ctaOpacity > 0 && ctaInView ? "auto" : "none",
           }}
         >
           <div className="cta-card interactive-card">
