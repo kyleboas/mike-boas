@@ -378,9 +378,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  overflow: visible;     /* list is taller than viewport; card clips it */
+  overflow: visible;
   padding-right: 0.75rem;
-  will-change: transform; /* helps smoothness */
+  will-change: transform;
+  top: 100px;
 }
 
 /* thin rail */
