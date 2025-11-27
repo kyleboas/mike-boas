@@ -99,6 +99,10 @@ const BridgeLanding = () => {
   const timelineListRef = useRef(null);
   const [timelineMaxScroll, setTimelineMaxScroll] = useState(0);
 
+  // Smooth timeline scroll with lerping
+  const [displayTimelineY, setDisplayTimelineY] = useState(0);
+  const targetTimelineY = useRef(0);
+
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -216,6 +220,28 @@ const translateY = 0;
   );
 
   const timelineScrollY = -timelineMaxScroll * timelineT;
+
+  // Update target for lerping
+  useEffect(() => {
+    targetTimelineY.current = timelineScrollY;
+  }, [timelineScrollY]);
+
+  // Continuous rAF loop for smooth interpolation
+  useEffect(() => {
+    let rafId;
+    const animate = () => {
+      setDisplayTimelineY(prev => {
+        const diff = targetTimelineY.current - prev;
+        // If close enough, snap to target to prevent infinite micro-updates
+        if (Math.abs(diff) < 0.1) return targetTimelineY.current;
+        // Smooth interpolation with 0.12 smoothing factor
+        return prev + diff * 0.12;
+      });
+      rafId = requestAnimationFrame(animate);
+    };
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
 
   useEffect(() => {
     if (isPaused) return;
@@ -379,7 +405,7 @@ const translateY = 0;
               className="timeline-list"
               ref={timelineListRef}
               style={{
-                transform: `translate3d(0, ${timelineScrollY}px, 0)`,
+                transform: `translate3d(0, ${displayTimelineY}px, 0)`,
               }}
             >
               {careerTimeline.map((item, index) => (
