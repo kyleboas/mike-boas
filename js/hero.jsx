@@ -4,7 +4,7 @@ const { useState, useEffect, useRef } = React;
    Minimal hero + background zoom only
 ------------------------------------------------------------------ */
 
-const ANIMATION_SCROLL_PX = 300; // how much scroll you want for fade + zoom
+const ANIMATION_SCROLL_PX = 100; // how much scroll you want for fade + zoom
 
 const BridgeHeroOnly = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
