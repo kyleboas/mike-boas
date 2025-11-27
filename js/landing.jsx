@@ -137,18 +137,27 @@ const BridgeLanding = () => {
   const SCROLL_HEIGHT_MULTIPLIER = 18;
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      const progress =
+      const next =
         docHeight > 0
           ? Math.max(0, Math.min(1, scrollTop / docHeight))
           : 0;
-      setScrollProgress(progress);
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollProgress(next);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -370,7 +379,7 @@ const translateY = 0;
               className="timeline-list"
               ref={timelineListRef}
               style={{
-                transform: `translateY(${timelineScrollY}px)`,
+                transform: `translate3d(0, ${timelineScrollY}px, 0)`,
               }}
             >
               {careerTimeline.map((item, index) => (
