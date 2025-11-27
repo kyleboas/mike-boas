@@ -295,10 +295,12 @@ const BridgeLanding = () => {
           style={{
             transform: `translate(-50%, ${20 * (1 - heroOpacity)}px)`,
             opacity: heroOpacity,
-            pointerEvents: heroOpacity > 0 ? "auto" : "none",
           }}
         >
-          <div className="hero-card">
+          <div
+            className="hero-card"
+            style={{ pointerEvents: heroOpacity > 0 ? "auto" : "none" }}
+          >
             <div className="hero-header-row">
               <div className="hero-text-block">
                 <h1 className="hero-title">MIKE BOAS</h1>
@@ -412,12 +414,12 @@ const BridgeLanding = () => {
         {/* Testimonials */}
         <div
           className="testimonial-section"
-          style={{ 
-            opacity: testimonialOpacity,
-            pointerEvents: testimonialOpacity > 0 ? "auto" : "none",
-          }}
+          style={{ opacity: testimonialOpacity }}
         >
-          <div className="testimonial-wrapper">
+          <div
+            className="testimonial-wrapper"
+            style={{ pointerEvents: testimonialOpacity > 0 ? "auto" : "none" }}
+          >
             {/* Left arrow */}
             <button
               type="button"
@@ -484,7 +486,11 @@ const BridgeLanding = () => {
           </div>
 
           {/* Dots */}
-          <div className="testimonial-dots" aria-label="Select testimonial">
+          <div
+            className="testimonial-dots"
+            aria-label="Select testimonial"
+            style={{ pointerEvents: testimonialOpacity > 0 ? "auto" : "none" }}
+          >
             {testimonials.map((_, idx) => (
               <button
                 key={idx}
@@ -502,12 +508,12 @@ const BridgeLanding = () => {
         {/* CTA */}
         <div
           className="cta-section"
-          style={{ 
-            opacity: ctaOpacity,
-            pointerEvents: ctaOpacity > 0 ? "auto" : "none",
-          }}
+          style={{ opacity: ctaOpacity }}
         >
-          <div className="cta-card interactive-card">
+          <div
+            className="cta-card interactive-card"
+            style={{ pointerEvents: ctaOpacity > 0 ? "auto" : "none" }}
+          >
             <p className="cta-text">
               {"Let's"} build the bridge to your next success story.
             </p>

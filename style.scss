@@ -68,7 +68,7 @@ body {
 /* Generic interactive container override */
 
 .interactive-card {
-  pointer-events: auto;
+  /* pointer-events: auto; -- removed, now controlled by React inline styles */
 }
 
 /* Hero section */
