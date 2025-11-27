@@ -588,10 +588,10 @@ const BridgeLanding = () => {
 
             <div className="cta-footer">
               <div className="cta-icons">
-                <a href="#" className="cta-icon-link">
+                <a href="https://www.linkedin.com/in/g-michael-boas" className="cta-icon-link">
                   <Linkedin width={28} height={28} />
                 </a>
-                <a href="#" className="cta-icon-link">
+                <a href="mailto:contact@mikeboas.net" className="cta-icon-link">
                   <Mail width={28} height={28} />
                 </a>
               </div>
