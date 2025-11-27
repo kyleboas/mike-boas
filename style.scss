@@ -562,10 +562,9 @@ body {
 
 /* Viewport holds one slide width; track slides left/right */
 .testimonial-viewport {
-  overflow: hidden;
+  flex: 1;
   max-width: 48rem;
   width: 100%;
-  display: flex;
   align-items: center;
 }
 
