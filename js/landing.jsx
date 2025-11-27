@@ -134,7 +134,7 @@ const BridgeLanding = () => {
 
   const currentTestimonial = testimonials[activeTestimonial];
 
-  const SCROLL_HEIGHT_MULTIPLIER = 12;
+  const SCROLL_HEIGHT_MULTIPLIER = 18;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -195,9 +195,9 @@ const scale = startScale + (endScale - startScale) * zoomT;
 // no translation at all
 const translateY = 0;
 
-  // Timeline scroll window: items move through between 52% and 78% scroll
-  const TIMELINE_START = 0.52;
-  const TIMELINE_END = 0.78;
+  // Timeline scroll window: items move through between 40% and 92% scroll
+  const TIMELINE_START = 0.40;
+  const TIMELINE_END = 0.92;
   const timelineRange = TIMELINE_END - TIMELINE_START;
 
   const timelineT = clamp(
@@ -371,7 +371,6 @@ const translateY = 0;
               ref={timelineListRef}
               style={{
                 transform: `translateY(${timelineScrollY}px)`,
-                transition: "transform 0.1s linear",
               }}
             >
               {careerTimeline.map((item, index) => (
@@ -438,7 +437,7 @@ const translateY = 0;
         {/* Testimonials */}
         <div
           className="testimonial-section"
-          style={{ opacity: getSectionOpacity(0.88, 0.08) }}
+          style={{ opacity: getSectionOpacity(0.93, 0.06) }}
         >
           <div className="testimonial-wrapper">
             {/* Left arrow */}
@@ -524,7 +523,7 @@ const translateY = 0;
         {/* CTA */}
         <div
           className="cta-section"
-          style={{ opacity: getSectionOpacity(0.9, 0.15) }}
+          style={{ opacity: getSectionOpacity(0.96, 0.06) }}
         >
           <div className="cta-card interactive-card">
             <p className="cta-text">
