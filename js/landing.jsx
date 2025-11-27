@@ -340,8 +340,8 @@ const BridgeLanding = () => {
           <div className="logos-row">
             {[
               {
-                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/IMG_0927.png",
-                alt: "AstraZeneca",
+                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/medcom.png",
+                alt: "Med Communications",
                 class: "logo-image invert-logo",
               },
               {
