@@ -16,6 +16,9 @@ const BridgeHeroOnly = () => {
       : 0
   );
 
+  // Guard so we only run the post transition once
+  const hasLockedForPostRef = useRef(false);
+
   // keep container height = viewport + animation distance
   useEffect(() => {
     const updateHeight = () => {
@@ -100,6 +103,42 @@ const BridgeHeroOnly = () => {
     rafId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafId);
   }, []);
+
+  // Lock scroll only while post fades in at the top
+  useEffect(() => {
+    const POST_TRIGGER_PROGRESS = zoomEnd; // when hero+zoom are done
+    const POST_FADE_DURATION = 1000; // ms – match your CSS transition
+
+    if (
+      !hasLockedForPostRef.current &&
+      scrollProgress >= POST_TRIGGER_PROGRESS
+    ) {
+      hasLockedForPostRef.current = true;
+
+      const article = document.querySelector("article.post, article.page");
+      if (!article) return;
+
+      // Ensure starting opacity/transition for fade-in
+      article.style.opacity = "0";
+      article.style.transition = "opacity 1s ease-in";
+
+      // Snap post to top
+      article.scrollIntoView({ behavior: "auto", block: "start" });
+
+      // Lock scroll
+      document.body.style.overflow = "hidden";
+
+      // Trigger fade-in on next frame
+      requestAnimationFrame(() => {
+        article.style.opacity = "1";
+      });
+
+      // Unlock scroll after fade finishes
+      setTimeout(() => {
+        document.body.style.overflow = "";
+      }, POST_FADE_DURATION);
+    }
+  }, [scrollProgress, zoomEnd]);
 
   return (
     <div
