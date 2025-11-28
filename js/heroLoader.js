@@ -28,6 +28,6 @@ if (!readCookie('visited')) {
   const script = document.createElement('script');
   script.type = 'text/babel';
   script.setAttribute('data-presets', 'env,react');
-  script.src = window.HERO_SCRIPT_PATH || '/js/hero.jsx';
+  script.src = window.HERO_SCRIPT_PATH || '{{ site.baseurl }}/js/hero.jsx';
   document.body.appendChild(script);
 }
