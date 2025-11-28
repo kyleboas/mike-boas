@@ -21,7 +21,7 @@ if (!readCookie('visited')) {
     // Fade in the article content after 1.5 seconds
     setTimeout(() => {
       article.style.opacity = '1';
-    }, 1500);
+    }, 1500); 
   }
 
   // Load and execute hero.jsx
