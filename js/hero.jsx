@@ -1,7 +1,7 @@
 const { useState, useEffect, useRef } = React;
 
 /* ------------------------------------------------------------------
-   Minimal hero + background zoom only
+   Minimal hero + background zoom only (one-shot)
 ------------------------------------------------------------------ */
 
 const BridgeHeroOnly = () => {
@@ -9,9 +9,10 @@ const BridgeHeroOnly = () => {
   const [displayScale, setDisplayScale] = useState(1.8);
   const targetScaleRef = useRef(1.8);
 
+  const [heroDone, setHeroDone] = useState(false); // <— NEW
+
   const HERO_FADE_START = 0.0;
   const HERO_FADE_END = 0.08;
-
   const zoomStart = HERO_FADE_END; // 0.08
   const zoomEnd = 0.14;
 
@@ -44,14 +45,15 @@ const BridgeHeroOnly = () => {
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
-  // Hero opacity (fades out with scroll)
-  const heroOpacity =
-    1 -
-    clamp(
-      (scrollProgress - HERO_FADE_START) / (HERO_FADE_END - HERO_FADE_START),
-      0,
-      1
-    );
+  // Hero opacity (while it still exists)
+  const heroOpacity = heroDone
+    ? 0
+    : 1 -
+      clamp(
+        (scrollProgress - HERO_FADE_START) / (HERO_FADE_END - HERO_FADE_START),
+        0,
+        1
+      );
 
   // Background zoom
   const rawT = (scrollProgress - zoomStart) / (zoomEnd - zoomStart);
@@ -80,40 +82,48 @@ const BridgeHeroOnly = () => {
     return () => cancelAnimationFrame(rafId);
   }, []);
 
-  // Post-at-top, fade-in + scroll lock sequence
+  // Post-at-top, fade-in + scroll lock sequence (one time)
   useEffect(() => {
-    const POST_FADE_DURATION = 1000; // ms – keep in sync with CSS
+    const POST_FADE_DURATION = 1000; // ms – match your CSS
 
-    if (!hasStartedPostTransitionRef.current && scrollProgress >= zoomEnd) {
+    if (
+      !heroDone &&
+      !hasStartedPostTransitionRef.current &&
+      scrollProgress >= zoomEnd
+    ) {
       hasStartedPostTransitionRef.current = true;
 
       const article = document.querySelector("article.post, article.page");
       if (!article) return;
 
-      // 1) Make sure the post is at the very top
+      // Make sure post starts at top
       window.scrollTo({ top: 0, behavior: "auto" });
 
-      // 2) Lock scroll during the post fade-in
+      // Lock scroll during fade-in
       document.body.style.overflow = "hidden";
 
-      // 3) Prepare fade-in on the article
+      // Prepare / trigger fade
       article.style.opacity = "0";
       article.style.transition = "opacity 1s ease-in";
-
-      // Kick the fade on the next frame
       requestAnimationFrame(() => {
         article.style.opacity = "1";
       });
 
-      // 4) Re-enable scrolling after fade finishes
+      // When fade done: unlock scroll + mark hero as done
       setTimeout(() => {
         document.body.style.overflow = "";
+        setHeroDone(true);
       }, POST_FADE_DURATION);
     }
-  }, [scrollProgress, zoomEnd]);
+  }, [scrollProgress, zoomEnd, heroDone]);
+
+  // Once hero is done, render nothing forever
+  if (heroDone) {
+    return null;
+  }
 
   return (
-    // FIXED OVERLAY: hero sits on top of the page, does NOT push the post down
+    // Fixed overlay: always on top while active, never pushes the post down
     <div
       className="page-container"
       style={{
@@ -121,7 +131,7 @@ const BridgeHeroOnly = () => {
         inset: 0,
         width: "100%",
         height: "100vh",
-        pointerEvents: "none", // let content below receive events except where we override
+        pointerEvents: "none",
         zIndex: 9999,
       }}
     >
