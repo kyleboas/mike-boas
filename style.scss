@@ -789,11 +789,13 @@ body {
 }
 
 /* Posts */
- 
+
 .post {
   margin: 20px;
-  margin-top: 60px;
+  margin-top: 0;
   padding-bottom: 200px;
+  opacity: 0;
+  transition: opacity 1s ease-in;
 }
 
 .post-title {
