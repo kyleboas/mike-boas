@@ -72,6 +72,7 @@ const careerTimeline = [
 ------------------------------------------------------------------ */
 const BridgeLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
   const containerRef = useRef(null);
   const timelineViewportRef = useRef(null);
   const timelineListRef = useRef(null);
@@ -162,13 +163,15 @@ const BridgeLanding = () => {
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
-  const heroOpacity =
+  const baseHeroOpacity =
     1 -
     clamp(
       (scrollProgress - HERO_FADE_START) / (HERO_FADE_END - HERO_FADE_START),
       0,
       1
     );
+
+  const heroOpacity = isEmailFocused ? 1 : baseHeroOpacity;
 
   // --- scroll-based zoom for the overlay background ---
   // Zoom starts only after hero has faded out
@@ -320,6 +323,8 @@ const BridgeLanding = () => {
                     type="email"
                     placeholder="your@email.com"
                     className="email-input"
+                    onFocus={() => setIsEmailFocused(true)}
+                    onBlur={() => setIsEmailFocused(false)}
                   />
                   <button className="primary-button">Subscribe</button>
                 </div>
