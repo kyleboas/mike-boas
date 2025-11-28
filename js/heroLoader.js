@@ -13,15 +13,11 @@ if (!readCookie('visited')) {
   }
 
   // Find the article element and set initial opacity to 0
+  // The fade-in is now handled by hero.jsx after the hero+zoom animation completes
   const article = document.querySelector('article.post, article.page');
   if (article) {
     article.style.opacity = '0';
     article.style.transition = 'opacity 1s ease-in';
-
-    // Fade in the article content after 1.5 seconds
-    setTimeout(() => {
-      article.style.opacity = '1';
-    }, 1500); 
   }
 
   // Load and execute hero.jsx
