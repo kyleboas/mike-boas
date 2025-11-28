@@ -101,24 +101,6 @@ const BridgeHeroOnly = () => {
     return () => cancelAnimationFrame(rafId);
   }, []);
 
-  // Lock scroll during hero fade animation
-  useEffect(() => {
-    const isFading = scrollProgress >= HERO_FADE_START && scrollProgress < HERO_FADE_END;
-
-    if (isFading) {
-      // Prevent body scroll during fade
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Restore scroll after fade completes
-      document.body.style.overflow = '';
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [scrollProgress]);
-
   return (
     <div
       className="page-container"
