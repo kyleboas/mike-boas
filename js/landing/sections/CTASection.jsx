@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Calendar, Mail, Linkedin } from "../icons";
+import { useAutoOpacity } from "../scrollHooks.js";
 
-const CTASection = ({ opacity }) => {
+const CTASection = () => {
+  const ref = useRef(null);
+  const opacity = useAutoOpacity(ref);
+
   const handleScheduleClick = () => {
     window.open(
       "https://calendly.com/heyboas/30-minute-zoom-call",
@@ -11,6 +15,7 @@ const CTASection = ({ opacity }) => {
 
   return (
     <section
+      ref={ref}
       className="cta-section"
       style={{
         opacity,

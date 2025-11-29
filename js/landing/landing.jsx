@@ -17,7 +17,6 @@ import {
   ZOOM_START_SCALE,
   ZOOM_END_SCALE,
   clamp,
-  getSectionOpacity,
   useScrollProgress,
   useLerpedValue,
 } from "./scrollHooks.js";
@@ -44,12 +43,6 @@ const BridgeLanding = () => {
   const targetScale = ZOOM_START_SCALE + (ZOOM_END_SCALE - ZOOM_START_SCALE) * zoomT;
   const displayScale = useLerpedValue(targetScale, 0.12);
 
-  // Section opacities
-  const logosOpacity = getSectionOpacity(scrollProgress, 0.18, 0.08);
-  const strategyOpacity = getSectionOpacity(scrollProgress, 0.3, 0.12);
-  const testimonialOpacity = getSectionOpacity(scrollProgress, 0.52, 0.06);
-  const ctaOpacity = getSectionOpacity(scrollProgress, 0.68, 0.06);
-
   return (
     <div
       className="page-container"
@@ -71,19 +64,13 @@ const BridgeLanding = () => {
           onEmailBlur={() => setIsEmailFocused(false)}
         />
 
-        <LogosSection opacity={logosOpacity} />
+        <LogosSection />
 
-        <StrategySection
-          opacity={strategyOpacity}
-          scrollProgress={scrollProgress}
-        />
+        <StrategySection />
 
-        <TestimonialsSection
-          opacity={testimonialOpacity}
-          testimonials={testimonialsData}
-        />
+        <TestimonialsSection testimonials={testimonialsData} />
 
-        <CTASection opacity={ctaOpacity} />
+        <CTASection />
       </div>
     </div>
   );

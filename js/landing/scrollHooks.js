@@ -91,3 +91,27 @@ export const useAutoRotatingIndex = (len, delay, paused) => {
 
   return [index, setIndex];
 };
+
+export const useAutoOpacity = (ref) => {
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // intersectionRatio is 0 → 1 based on how much of the section is visible
+        setOpacity(entry.intersectionRatio);
+      },
+      {
+        // More thresholds = smoother updates
+        threshold: Array.from({ length: 11 }, (_, i) => i / 10),
+      }
+    );
+
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref]);
+
+  return opacity;
+};

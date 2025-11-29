@@ -1,12 +1,19 @@
-import React from "react";
-import { getSectionOpacity } from "../scrollHooks";
+import React, { useRef } from "react";
+import { useAutoOpacity } from "../scrollHooks.js";
 
-const StrategySection = ({ opacity, scrollProgress }) => {
-  const purposeOpacity = getSectionOpacity(scrollProgress, 0.33, 0.12);
-  const philosophyOpacity = getSectionOpacity(scrollProgress, 0.36, 0.12);
+const StrategySection = () => {
+  const ref = useRef(null);
+  const opacity = useAutoOpacity(ref);
+
+  const purposeRef = useRef(null);
+  const purposeOpacity = useAutoOpacity(purposeRef);
+
+  const philosophyRef = useRef(null);
+  const philosophyOpacity = useAutoOpacity(philosophyRef);
 
   return (
     <section
+      ref={ref}
       className="strategy-section"
       style={{
         opacity,
@@ -15,6 +22,7 @@ const StrategySection = ({ opacity, scrollProgress }) => {
     >
       <div className="strategy-sequence">
         <div
+          ref={purposeRef}
           className="strategy-block"
           style={{
             opacity: purposeOpacity,
@@ -34,6 +42,7 @@ const StrategySection = ({ opacity, scrollProgress }) => {
         </div>
 
         <div
+          ref={philosophyRef}
           className="strategy-block"
           style={{
             opacity: philosophyOpacity,

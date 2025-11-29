@@ -1,7 +1,10 @@
-import React from "react";
-import { useAutoRotatingIndex } from "../scrollHooks";
+import React, { useRef } from "react";
+import { useAutoRotatingIndex, useAutoOpacity } from "../scrollHooks";
 
-const TestimonialsSection = ({ opacity, testimonials }) => {
+const TestimonialsSection = ({ testimonials }) => {
+  const ref = useRef(null);
+  const opacity = useAutoOpacity(ref);
+
   const [isPaused, setIsPaused] = React.useState(false);
   const [activeTestimonial, setActiveTestimonial] = useAutoRotatingIndex(
     testimonials.length,
@@ -21,6 +24,7 @@ const TestimonialsSection = ({ opacity, testimonials }) => {
 
   return (
     <section
+      ref={ref}
       className="testimonial-section"
       style={{
         opacity,

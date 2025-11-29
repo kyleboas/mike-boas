@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useAutoOpacity } from "../scrollHooks.js";
 
-const LogosSection = ({ opacity }) => {
+const LogosSection = () => {
+  const ref = useRef(null);
+  const opacity = useAutoOpacity(ref);
+
   const logos = [
     {
       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/medcom.png",
@@ -21,6 +25,7 @@ const LogosSection = ({ opacity }) => {
 
   return (
     <section
+      ref={ref}
       className="logos-section"
       style={{
         opacity,
