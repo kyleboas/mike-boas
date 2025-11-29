@@ -117,15 +117,15 @@ const BridgeLanding = () => {
 
   const currentTestimonial = testimonials[activeTestimonial];
 
-  const SCROLL_HEIGHT_MULTIPLIER = 4;
-
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
     let ticking = false;
 
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const scrollTop = el.scrollTop;
+      const docHeight = el.scrollHeight - el.clientHeight;
       const next =
         docHeight > 0 ? Math.max(0, Math.min(1, scrollTop / docHeight)) : 0;
 
@@ -138,9 +138,9 @@ const BridgeLanding = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    el.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => el.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -279,8 +279,7 @@ const BridgeLanding = () => {
   return (
     <div
       ref={containerRef}
-      className="page-container"
-      style={{ height: `${SCROLL_HEIGHT_MULTIPLIER * 100}vh` }}
+      className="page-container snap-container"
     >
       {/* Scroll-animated background */}
       <div
@@ -290,13 +289,12 @@ const BridgeLanding = () => {
         }}
       />
 
-      {/* Floating content */}
-      <div className="floating-content">
-        {/* Hero Section */}
+      {/* Hero Section */}
+      <section className="snap-section">
         <div
           className="hero-section"
           style={{
-            transform: `translate(-50%, ${20 * (1 - heroOpacity)}px)`,
+            transform: `translateY(${20 * (1 - heroOpacity)}px)`,
             opacity: heroOpacity,
           }}
         >
@@ -332,11 +330,13 @@ const BridgeLanding = () => {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Logos */}
+      {/* Logos */}
+      <section className="snap-section">
         <div
           className="logos-section"
-          style={{ 
+          style={{
             opacity: logosOpacity,
             pointerEvents: logosOpacity > 0 ? "auto" : "none",
           }}
@@ -367,11 +367,13 @@ const BridgeLanding = () => {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Strategy */}
+      {/* Strategy */}
+      <section className="snap-section">
         <div
           className="strategy-section"
-          style={{ 
+          style={{
             opacity: strategyOpacity,
             pointerEvents: strategyOpacity > 0 ? "auto" : "none",
           }}
@@ -415,8 +417,10 @@ const BridgeLanding = () => {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Testimonials */}
+      {/* Testimonials */}
+      <section className="snap-section">
         <div
           className="testimonial-section"
           style={{
@@ -511,8 +515,10 @@ const BridgeLanding = () => {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* CTA */}
+      {/* CTA */}
+      <section className="snap-section">
         <div
           className="cta-section"
           style={{
@@ -556,7 +562,7 @@ const BridgeLanding = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

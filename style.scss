@@ -10,16 +10,21 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
   font-family: 'Inter',
     sans-serif;
   color: #ffffff;
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -40,37 +45,36 @@ body {
   will-change: transform;
 }
 
-/* Page container and floating scroll content */
+/* Page container and scroll-snap */
 
 .page-container {
   position: relative;
   width: 100%;
 }
 
-.floating-content {
-  position: fixed;
+.page-container.snap-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+/* Each section fills the viewport and snaps */
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
   display: flex;
-  inset: 0;
-  z-index: 20;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-bottom: 1.5rem;
-  padding-top: 0px;
-  text-align: center;
-  color: #ffffff;
-  pointer-events: none;
-  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
 }
 
 
 /* Hero section */
 
 .hero-section {
-  position: absolute;
-  left: 50%;
+  position: relative;
   width: 100%;
   max-width: 46rem;
   transition: all 0.7s ease;
@@ -187,13 +191,12 @@ body {
 /* Logos section */
 
 .logos-section {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   width: 100%;
   max-width: 64rem;
   padding: 0 1rem;
   transition: all 0.7s ease;
+  text-align: center;
 }
 
 .section-label {
@@ -246,9 +249,7 @@ body {
 /* Strategy section */
 
 .strategy-section {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   width: 100%;
   max-width: 48rem;
   padding: 0 1rem;
@@ -312,9 +313,7 @@ body {
 /* Timeline */
 
 .timeline-section {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   width: 100%;
   max-width: 64rem;
   transition: all 0.7s ease;
@@ -539,9 +538,7 @@ body {
 /* Testimonial */
 
 .testimonial-section {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   width: 85%;
   max-width: 56rem;
   transition: all 0.7s ease;
@@ -701,9 +698,7 @@ body {
 
 .cta-section {
   background-color: transparent;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   width: 85%;
   max-width: 40rem;
   padding: 0 1rem;
