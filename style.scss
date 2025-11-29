@@ -55,7 +55,10 @@ body {
 .page-container.snap-container {
   height: 100vh;
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
+  /* softened snap */
+  scroll-snap-type: y proximity;
+  /* reduce bounce */
+  overscroll-behavior-y: contain;
   scroll-behavior: auto;
   position: relative;
 }
@@ -70,7 +73,6 @@ body {
   justify-content: center;
   overflow-x: hidden;
 }
-
 
 /* Hero section */
 
