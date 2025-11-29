@@ -253,18 +253,17 @@ const BridgeLanding = () => {
     return () => clearInterval(interval);
   }, [isPaused, testimonials.length]);
 
-  // Standardized section fade durations
-  const SECTION_VISIBLE_DURATION = 0.10; // how long it stays fully visible
+  // Standardized section fade duration
   const SECTION_FADE_LENGTH = 0.05;      // length of fade in/out on each side
 
   const getSectionOpacity = (triggerPoint) => {
     const fadeInStart = triggerPoint - SECTION_FADE_LENGTH;
     const fadeInEnd = triggerPoint;
-    const fadeOutStart = triggerPoint + SECTION_VISIBLE_DURATION;
-    const fadeOutEnd = triggerPoint + SECTION_VISIBLE_DURATION + SECTION_FADE_LENGTH;
+    const fadeOutStart = triggerPoint;
+    const fadeOutEnd = triggerPoint + SECTION_FADE_LENGTH;
 
     if (scrollProgress < fadeInStart || scrollProgress > fadeOutEnd) return 0;
-    if (scrollProgress >= fadeInEnd && scrollProgress <= fadeOutStart) return 1;
+    if (scrollProgress === triggerPoint) return 1;
 
     if (scrollProgress < fadeInEnd) {
       // fade in
