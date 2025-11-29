@@ -117,15 +117,15 @@ const BridgeLanding = () => {
 
   const currentTestimonial = testimonials[activeTestimonial];
 
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+  const SCROLL_HEIGHT_MULTIPLIER = 4;
 
+  useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
-      const scrollTop = el.scrollTop;
-      const docHeight = el.scrollHeight - el.clientHeight;
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const next =
         docHeight > 0 ? Math.max(0, Math.min(1, scrollTop / docHeight)) : 0;
 
@@ -138,9 +138,9 @@ const BridgeLanding = () => {
       }
     };
 
-    el.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => el.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -253,37 +253,34 @@ const BridgeLanding = () => {
     return () => clearInterval(interval);
   }, [isPaused, testimonials.length]);
 
-  // Standardized section fade duration
-  const SECTION_FADE_LENGTH = 0.05;      // length of fade in/out on each side
-
-  const getSectionOpacity = (triggerPoint) => {
-    const fadeInStart = triggerPoint - SECTION_FADE_LENGTH;
+  const getSectionOpacity = (triggerPoint, duration = 0.08) => {
+    const fadeInStart = triggerPoint - 0.04;
     const fadeInEnd = triggerPoint;
-    const fadeOutStart = triggerPoint;
-    const fadeOutEnd = triggerPoint + SECTION_FADE_LENGTH;
+    const fadeOutStart = triggerPoint + duration;
+    const fadeOutEnd = triggerPoint + duration + 0.04;
 
     if (scrollProgress < fadeInStart || scrollProgress > fadeOutEnd) return 0;
-    if (scrollProgress === triggerPoint) return 1;
-
+    if (scrollProgress >= fadeInEnd && scrollProgress <= fadeOutStart) return 1;
     if (scrollProgress < fadeInEnd) {
-      // fade in
       return (scrollProgress - fadeInStart) / (fadeInEnd - fadeInStart);
     }
-
-    // fade out
-    return 1 - (scrollProgress - fadeOutStart) / (fadeOutEnd - fadeOutStart);
+    if (scrollProgress > fadeOutStart) {
+      return 1 - (scrollProgress - fadeOutStart) / (fadeOutEnd - fadeOutStart);
+    }
+    return 0;
   };
 
   // Pre-calculate opacity to control pointer-events
-  const logosOpacity = getSectionOpacity(0.18);
-  const strategyOpacity = getSectionOpacity(0.3);
-  const testimonialOpacity = getSectionOpacity(0.52);
-  const ctaOpacity = getSectionOpacity(0.68);
+  const logosOpacity = getSectionOpacity(0.18, 0.08);
+  const strategyOpacity = getSectionOpacity(0.3, 0.12);
+  const testimonialOpacity = getSectionOpacity(0.52, 0.06);
+  const ctaOpacity = getSectionOpacity(0.68, 0.06);
 
   return (
     <div
       ref={containerRef}
-      className="page-container snap-container"
+      className="page-container"
+      style={{ height: `${SCROLL_HEIGHT_MULTIPLIER * 100}vh` }}
     >
       {/* Scroll-animated background */}
       <div
@@ -293,12 +290,13 @@ const BridgeLanding = () => {
         }}
       />
 
-      {/* Hero Section */}
-      <section className="snap-section">
+      {/* Floating content */}
+      <div className="floating-content">
+        {/* Hero Section */}
         <div
           className="hero-section"
           style={{
-            transform: `translateY(${20 * (1 - heroOpacity)}px)`,
+            transform: `translate(-50%, ${20 * (1 - heroOpacity)}px)`,
             opacity: heroOpacity,
           }}
         >
@@ -334,13 +332,11 @@ const BridgeLanding = () => {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Logos */}
-      <section className="snap-section">
+        {/* Logos */}
         <div
           className="logos-section"
-          style={{
+          style={{ 
             opacity: logosOpacity,
             pointerEvents: logosOpacity > 0 ? "auto" : "none",
           }}
@@ -371,13 +367,11 @@ const BridgeLanding = () => {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* Strategy */}
-      <section className="snap-section">
+        {/* Strategy */}
         <div
           className="strategy-section"
-          style={{
+          style={{ 
             opacity: strategyOpacity,
             pointerEvents: strategyOpacity > 0 ? "auto" : "none",
           }}
@@ -387,7 +381,7 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.33),
+                opacity: getSectionOpacity(0.33, 0.12),
               }}
             >
               <h3 className="strategy-title">Purpose</h3>
@@ -407,7 +401,7 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.36),
+                opacity: getSectionOpacity(0.36, 0.12),
               }}
             >
               <h3 className="strategy-title">Philosophy</h3>
@@ -421,10 +415,8 @@ const BridgeLanding = () => {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Testimonials */}
-      <section className="snap-section">
+        {/* Testimonials */}
         <div
           className="testimonial-section"
           style={{
@@ -519,10 +511,8 @@ const BridgeLanding = () => {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* CTA */}
-      <section className="snap-section">
+        {/* CTA */}
         <div
           className="cta-section"
           style={{
@@ -566,7 +556,7 @@ const BridgeLanding = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
