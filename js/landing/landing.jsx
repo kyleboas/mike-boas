@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import { createRoot } from "react-dom/client";
+// Use global React and ReactDOM
+const { useState } = React;
 
-import HeroSection from "./sections/HeroSection.jsx";
-import LogosSection from "./sections/LogosSection.jsx";
-import StrategySection from "./sections/StrategySection.jsx";
-import TimelineSection from "./sections/TimelineSection.jsx";
-import TestimonialsSection from "./sections/TestimonialsSection.jsx";
-import CTASection from "./sections/CTASection.jsx";
-
-import {
+// Access global components and utilities
+const {
   SCROLL_HEIGHT_MULTIPLIER,
   HERO_FADE_START,
   HERO_FADE_END,
@@ -20,9 +14,13 @@ import {
   getSectionOpacity,
   useScrollProgress,
   useLerpedValue,
-} from "./scrollHooks.js";
+} = window.LandingScrollHooks;
 
-import testimonialsData from "./testimonials-data.json";
+const HeroSection = window.HeroSection;
+const LogosSection = window.LogosSection;
+const StrategySection = window.StrategySection;
+const TestimonialsSection = window.TestimonialsSection;
+const CTASection = window.CTASection;
 
 const BridgeLanding = () => {
   const scrollProgress = useScrollProgress();
@@ -80,7 +78,7 @@ const BridgeLanding = () => {
 
         <TestimonialsSection
           opacity={testimonialOpacity}
-          testimonials={testimonialsData}
+          testimonials={window.testimonialsData}
         />
 
         <CTASection opacity={ctaOpacity} />
@@ -89,5 +87,5 @@ const BridgeLanding = () => {
   );
 };
 
-const root = createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<BridgeLanding />);

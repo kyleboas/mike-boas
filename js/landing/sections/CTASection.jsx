@@ -1,7 +1,7 @@
-import React from "react";
-import { Calendar, Mail, Linkedin } from "../icons";
+// Define CTASection globally
+window.CTASection = ({ opacity }) => {
+  const { Calendar, Mail, Linkedin } = window.LandingIcons;
 
-const CTASection = ({ opacity }) => {
   const handleScheduleClick = () => {
     window.open(
       "https://calendly.com/heyboas/30-minute-zoom-call",
@@ -50,5 +50,3 @@ const CTASection = ({ opacity }) => {
     </section>
   );
 };
-
-export default CTASection;

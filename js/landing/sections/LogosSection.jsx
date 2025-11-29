@@ -1,6 +1,5 @@
-import React from "react";
-
-const LogosSection = ({ opacity }) => {
+// Define LogosSection globally
+window.LogosSection = ({ opacity }) => {
   const logos = [
     {
       src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/medcom.png",
@@ -39,5 +38,3 @@ const LogosSection = ({ opacity }) => {
     </section>
   );
 };
-
-export default LogosSection;

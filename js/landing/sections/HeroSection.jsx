@@ -1,6 +1,5 @@
-import React from "react";
-
-const HeroSection = ({ heroOpacity, onEmailFocus, onEmailBlur }) => (
+// Define HeroSection globally
+window.HeroSection = ({ heroOpacity, onEmailFocus, onEmailBlur }) => (
   <section
     className="hero-section"
     style={{
@@ -40,5 +39,3 @@ const HeroSection = ({ heroOpacity, onEmailFocus, onEmailBlur }) => (
     </div>
   </section>
 );
-
-export default HeroSection;

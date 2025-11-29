@@ -5,10 +5,50 @@ layout: default
 <!-- Cookie utilities -->
 <script src="{{ site.baseurl }}/js/cookies.js"></script>
 
-<!-- React JSX code moved to external file -->
+<!-- Landing page modular components (load in order) -->
+<!-- 1. Scroll hooks and utilities -->
+<script src="{{ site.baseurl }}/js/landing/scrollHooks.js"></script>
+
+<!-- 2. Icons -->
 <script
-    type="text/babel"
-    data-presets="env,react"
-    src="{{ site.baseurl }}/js/landing/landing.jsx"
-  >
-</script>
+  type="text/babel"
+  data-presets="env,react"
+  src="{{ site.baseurl }}/js/landing/icons.jsx"
+></script>
+
+<!-- 3. Testimonials data -->
+<script src="{{ site.baseurl }}/js/landing/testimonials-data.js"></script>
+
+<!-- 4. Section components -->
+<script
+  type="text/babel"
+  data-presets="env,react"
+  src="{{ site.baseurl }}/js/landing/sections/HeroSection.jsx"
+></script>
+<script
+  type="text/babel"
+  data-presets="env,react"
+  src="{{ site.baseurl }}/js/landing/sections/LogosSection.jsx"
+></script>
+<script
+  type="text/babel"
+  data-presets="env,react"
+  src="{{ site.baseurl }}/js/landing/sections/StrategySection.jsx"
+></script>
+<script
+  type="text/babel"
+  data-presets="env,react"
+  src="{{ site.baseurl }}/js/landing/sections/TestimonialsSection.jsx"
+></script>
+<script
+  type="text/babel"
+  data-presets="env,react"
+  src="{{ site.baseurl }}/js/landing/sections/CTASection.jsx"
+></script>
+
+<!-- 5. Main landing page component -->
+<script
+  type="text/babel"
+  data-presets="env,react"
+  src="{{ site.baseurl }}/js/landing/landing.jsx"
+></script>
