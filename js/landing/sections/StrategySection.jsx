@@ -1,9 +1,6 @@
 import React from "react";
-import { getSectionOpacity } from "../scrollHooks";
 
-const StrategySection = ({ opacity, scrollProgress }) => {
-  const purposeOpacity = getSectionOpacity(scrollProgress, 0.33, 0.12);
-  const philosophyOpacity = getSectionOpacity(scrollProgress, 0.36, 0.12);
+const StrategySection = ({ opacity, purposeOpacity, philosophyOpacity }) => {
 
   return (
     <section

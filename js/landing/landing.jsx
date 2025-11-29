@@ -47,6 +47,8 @@ const BridgeLanding = () => {
   // Section opacities
   const logosOpacity = getSectionOpacity(scrollProgress, 0.18, 0.08);
   const strategyOpacity = getSectionOpacity(scrollProgress, 0.3, 0.12);
+  const purposeOpacity = getSectionOpacity(scrollProgress, 0.33, 0.12);
+  const philosophyOpacity = getSectionOpacity(scrollProgress, 0.36, 0.12);
   const testimonialOpacity = getSectionOpacity(scrollProgress, 0.52, 0.06);
   const ctaOpacity = getSectionOpacity(scrollProgress, 0.68, 0.06);
 
@@ -75,7 +77,8 @@ const BridgeLanding = () => {
 
         <StrategySection
           opacity={strategyOpacity}
-          scrollProgress={scrollProgress}
+          purposeOpacity={purposeOpacity}
+          philosophyOpacity={philosophyOpacity}
         />
 
         <TestimonialsSection
