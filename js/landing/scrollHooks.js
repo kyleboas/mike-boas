@@ -1,6 +1,68 @@
 // Use global React hooks
 const { useState, useEffect, useRef } = React;
 
+// ============================================================
+// FADE TIMING CONFIGURATION
+// Edit these values to control when each section fades in/out
+// All values are scroll progress (0 = top, 1 = bottom)
+// ============================================================
+const FADE_CONFIG = {
+  hero: {
+    fadeInStart: 0,      // Already visible at start
+    fadeInEnd: 0,        // No fade-in needed
+    fadeOutStart: 0,     // Start fading immediately on scroll
+    fadeOutEnd: 0.08,    // Fully gone by 8%
+  },
+  logos: {
+    fadeInStart: 0.14,
+    fadeInEnd: 0.18,
+    fadeOutStart: 0.26,
+    fadeOutEnd: 0.30,
+  },
+  strategy: {
+    fadeInStart: 0.26,
+    fadeInEnd: 0.30,
+    fadeOutStart: 0.42,
+    fadeOutEnd: 0.46,
+  },
+  strategyBlock1: {
+    fadeInStart: 0.29,
+    fadeInEnd: 0.33,
+    fadeOutStart: 0.45,
+    fadeOutEnd: 0.49,
+  },
+  strategyBlock2: {
+    fadeInStart: 0.32,
+    fadeInEnd: 0.36,
+    fadeOutStart: 0.48,
+    fadeOutEnd: 0.52,
+  },
+  testimonial: {
+    fadeInStart: 0.48,
+    fadeInEnd: 0.52,
+    fadeOutStart: 0.58,
+    fadeOutEnd: 0.62,
+  },
+  cta: {
+    fadeInStart: 0.64,
+    fadeInEnd: 0.68,
+    fadeOutStart: 0.74,
+    fadeOutEnd: 0.78,
+  },
+};
+
+// Generic opacity calculator - uses config object
+const getOpacity = (progress, config) => {
+  const { fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd } = config;
+
+  if (progress < fadeInStart || progress > fadeOutEnd) return 0;
+  if (progress >= fadeInEnd && progress <= fadeOutStart) return 1;
+  if (progress < fadeInEnd) {
+    return (progress - fadeInStart) / (fadeInEnd - fadeInStart);
+  }
+  return 1 - (progress - fadeOutStart) / (fadeOutEnd - fadeOutStart);
+};
+
 // Expose constants and utilities globally
 window.LandingScrollHooks = {
   SCROLL_HEIGHT_MULTIPLIER: 4,
@@ -12,6 +74,8 @@ window.LandingScrollHooks = {
   ZOOM_END_SCALE: 1.0,
   TIMELINE_START: 0.4,
   TIMELINE_END: 0.9,
+  FADE_CONFIG,
+  getOpacity,
 
   clamp: (v, min, max) => Math.max(min, Math.min(max, v)),
 

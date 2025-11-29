@@ -10,8 +10,9 @@ const {
   ZOOM_END,
   ZOOM_START_SCALE,
   ZOOM_END_SCALE,
+  FADE_CONFIG,
+  getOpacity,
   clamp,
-  getSectionOpacity,
   useScrollProgress,
   useLerpedValue,
 } = window.LandingScrollHooks;
@@ -27,13 +28,7 @@ const BridgeLanding = () => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
 
   // Hero opacity with email focus override
-  const baseHeroOpacity =
-    1 -
-    clamp(
-      (scrollProgress - HERO_FADE_START) / (HERO_FADE_END - HERO_FADE_START),
-      0,
-      1
-    );
+  const baseHeroOpacity = isEmailFocused ? 1 : getOpacity(scrollProgress, FADE_CONFIG.hero);
   const heroOpacity = isEmailFocused ? 1 : baseHeroOpacity;
 
   // Zoom calculation
@@ -42,11 +37,11 @@ const BridgeLanding = () => {
   const targetScale = ZOOM_START_SCALE + (ZOOM_END_SCALE - ZOOM_START_SCALE) * zoomT;
   const displayScale = useLerpedValue(targetScale, 0.12);
 
-  // Section opacities
-  const logosOpacity = getSectionOpacity(scrollProgress, 0.18, 0.08);
-  const strategyOpacity = getSectionOpacity(scrollProgress, 0.3, 0.12);
-  const testimonialOpacity = getSectionOpacity(scrollProgress, 0.52, 0.06);
-  const ctaOpacity = getSectionOpacity(scrollProgress, 0.68, 0.06);
+  // Section opacities using centralized FADE_CONFIG
+  const logosOpacity = getOpacity(scrollProgress, FADE_CONFIG.logos);
+  const strategyOpacity = getOpacity(scrollProgress, FADE_CONFIG.strategy);
+  const testimonialOpacity = getOpacity(scrollProgress, FADE_CONFIG.testimonial);
+  const ctaOpacity = getOpacity(scrollProgress, FADE_CONFIG.cta);
 
   return (
     <div

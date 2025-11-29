@@ -1,7 +1,8 @@
 // Define StrategySection globally
 window.StrategySection = ({ opacity, scrollProgress }) => {
-  const purposeOpacity = window.LandingScrollHooks.getSectionOpacity(scrollProgress, 0.33, 0.12);
-  const philosophyOpacity = window.LandingScrollHooks.getSectionOpacity(scrollProgress, 0.36, 0.12);
+  const { FADE_CONFIG, getOpacity } = window.LandingScrollHooks;
+  const purposeOpacity = getOpacity(scrollProgress, FADE_CONFIG.strategyBlock1);
+  const philosophyOpacity = getOpacity(scrollProgress, FADE_CONFIG.strategyBlock2);
 
   return (
     <section
