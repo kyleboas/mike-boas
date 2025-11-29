@@ -253,28 +253,32 @@ const BridgeLanding = () => {
     return () => clearInterval(interval);
   }, [isPaused, testimonials.length]);
 
-  const getSectionOpacity = (triggerPoint, duration = 0.08) => {
-    const fadeInStart = triggerPoint - 0.04;
+  // Standardized section fade duration
+  const SECTION_FADE_LENGTH = 0.05;      // length of fade in/out on each side
+
+  const getSectionOpacity = (triggerPoint) => {
+    const fadeInStart = triggerPoint - SECTION_FADE_LENGTH;
     const fadeInEnd = triggerPoint;
-    const fadeOutStart = triggerPoint + duration;
-    const fadeOutEnd = triggerPoint + duration + 0.04;
+    const fadeOutStart = triggerPoint;
+    const fadeOutEnd = triggerPoint + SECTION_FADE_LENGTH;
 
     if (scrollProgress < fadeInStart || scrollProgress > fadeOutEnd) return 0;
-    if (scrollProgress >= fadeInEnd && scrollProgress <= fadeOutStart) return 1;
+    if (scrollProgress === triggerPoint) return 1;
+
     if (scrollProgress < fadeInEnd) {
+      // fade in
       return (scrollProgress - fadeInStart) / (fadeInEnd - fadeInStart);
     }
-    if (scrollProgress > fadeOutStart) {
-      return 1 - (scrollProgress - fadeOutStart) / (fadeOutEnd - fadeOutStart);
-    }
-    return 0;
+
+    // fade out
+    return 1 - (scrollProgress - fadeOutStart) / (fadeOutEnd - fadeOutStart);
   };
 
   // Pre-calculate opacity to control pointer-events
-  const logosOpacity = getSectionOpacity(0.18, 0.08);
-  const strategyOpacity = getSectionOpacity(0.3, 0.12);
-  const testimonialOpacity = getSectionOpacity(0.52, 0.06);
-  const ctaOpacity = getSectionOpacity(0.68, 0.06);
+  const logosOpacity = getSectionOpacity(0.18);
+  const strategyOpacity = getSectionOpacity(0.3);
+  const testimonialOpacity = getSectionOpacity(0.52);
+  const ctaOpacity = getSectionOpacity(0.68);
 
   return (
     <div
@@ -383,7 +387,7 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.33, 0.12),
+                opacity: getSectionOpacity(0.33),
               }}
             >
               <h3 className="strategy-title">Purpose</h3>
@@ -403,7 +407,7 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.36, 0.12),
+                opacity: getSectionOpacity(0.36),
               }}
             >
               <h3 className="strategy-title">Philosophy</h3>
