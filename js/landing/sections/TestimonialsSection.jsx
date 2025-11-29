@@ -1,9 +1,10 @@
-import React from "react";
-import { useAutoRotatingIndex } from "../scrollHooks";
+// Use global React hooks
+const { useState } = React;
 
-const TestimonialsSection = ({ opacity, testimonials }) => {
-  const [isPaused, setIsPaused] = React.useState(false);
-  const [activeTestimonial, setActiveTestimonial] = useAutoRotatingIndex(
+// Define TestimonialsSection globally
+window.TestimonialsSection = ({ opacity, testimonials }) => {
+  const [isPaused, setIsPaused] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = window.LandingScrollHooks.useAutoRotatingIndex(
     testimonials.length,
     6000,
     isPaused
@@ -103,5 +104,3 @@ const TestimonialsSection = ({ opacity, testimonials }) => {
     </section>
   );
 };
-
-export default TestimonialsSection;
