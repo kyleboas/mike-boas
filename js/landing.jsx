@@ -1,6 +1,68 @@
 const { useState, useEffect, useRef } = React;
 
 /* ------------------------------------------------------------------
+   FADE TIMING CONFIGURATION
+   Edit these values to control when each section fades in/out
+   All values are scroll progress (0 = top, 1 = bottom)
+------------------------------------------------------------------ */
+const FADE_CONFIG = {
+  hero: {
+    fadeInStart: 0,      // Already visible at start
+    fadeInEnd: 0,        // No fade-in needed
+    fadeOutStart: 0,     // Start fading immediately on scroll
+    fadeOutEnd: 0.08,    // Fully gone by 8%
+  },
+  logos: {
+    fadeInStart: 0.14,
+    fadeInEnd: 0.18,
+    fadeOutStart: 0.26,
+    fadeOutEnd: 0.30,
+  },
+  strategy: {
+    fadeInStart: 0.26,
+    fadeInEnd: 0.30,
+    fadeOutStart: 0.42,
+    fadeOutEnd: 0.46,
+  },
+  strategyBlock1: {
+    fadeInStart: 0.29,
+    fadeInEnd: 0.33,
+    fadeOutStart: 0.45,
+    fadeOutEnd: 0.49,
+  },
+  strategyBlock2: {
+    fadeInStart: 0.32,
+    fadeInEnd: 0.36,
+    fadeOutStart: 0.48,
+    fadeOutEnd: 0.52,
+  },
+  testimonial: {
+    fadeInStart: 0.48,
+    fadeInEnd: 0.52,
+    fadeOutStart: 0.58,
+    fadeOutEnd: 0.62,
+  },
+  cta: {
+    fadeInStart: 0.64,
+    fadeInEnd: 0.68,
+    fadeOutStart: 0.74,
+    fadeOutEnd: 0.78,
+  },
+};
+
+// Generic opacity calculator - uses config object
+const getOpacity = (progress, config) => {
+  const { fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd } = config;
+
+  if (progress < fadeInStart || progress > fadeOutEnd) return 0;
+  if (progress >= fadeInEnd && progress <= fadeOutStart) return 1;
+  if (progress < fadeInEnd) {
+    return (progress - fadeInStart) / (fadeInEnd - fadeInStart);
+  }
+  return 1 - (progress - fadeOutStart) / (fadeOutEnd - fadeOutStart);
+};
+
+/* ------------------------------------------------------------------
    Minimal icon components
 ------------------------------------------------------------------ */
 const IconBase = ({ children, ...rest }) => (
@@ -163,14 +225,7 @@ const BridgeLanding = () => {
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
-  const baseHeroOpacity =
-    1 -
-    clamp(
-      (scrollProgress - HERO_FADE_START) / (HERO_FADE_END - HERO_FADE_START),
-      0,
-      1
-    );
-
+  const baseHeroOpacity = isEmailFocused ? 1 : getOpacity(scrollProgress, FADE_CONFIG.hero);
   const heroOpacity = isEmailFocused ? 1 : baseHeroOpacity;
 
   // --- scroll-based zoom for the overlay background ---
@@ -253,28 +308,11 @@ const BridgeLanding = () => {
     return () => clearInterval(interval);
   }, [isPaused, testimonials.length]);
 
-  const getSectionOpacity = (triggerPoint, duration = 0.08) => {
-    const fadeInStart = triggerPoint - 0.04;
-    const fadeInEnd = triggerPoint;
-    const fadeOutStart = triggerPoint + duration;
-    const fadeOutEnd = triggerPoint + duration + 0.04;
-
-    if (scrollProgress < fadeInStart || scrollProgress > fadeOutEnd) return 0;
-    if (scrollProgress >= fadeInEnd && scrollProgress <= fadeOutStart) return 1;
-    if (scrollProgress < fadeInEnd) {
-      return (scrollProgress - fadeInStart) / (fadeInEnd - fadeInStart);
-    }
-    if (scrollProgress > fadeOutStart) {
-      return 1 - (scrollProgress - fadeOutStart) / (fadeOutEnd - fadeOutStart);
-    }
-    return 0;
-  };
-
-  // Pre-calculate opacity to control pointer-events
-  const logosOpacity = getSectionOpacity(0.18, 0.08);
-  const strategyOpacity = getSectionOpacity(0.3, 0.12);
-  const testimonialOpacity = getSectionOpacity(0.52, 0.06);
-  const ctaOpacity = getSectionOpacity(0.68, 0.06);
+  // Pre-calculate opacity to control pointer-events using centralized FADE_CONFIG
+  const logosOpacity = getOpacity(scrollProgress, FADE_CONFIG.logos);
+  const strategyOpacity = getOpacity(scrollProgress, FADE_CONFIG.strategy);
+  const testimonialOpacity = getOpacity(scrollProgress, FADE_CONFIG.testimonial);
+  const ctaOpacity = getOpacity(scrollProgress, FADE_CONFIG.cta);
 
   return (
     <div
@@ -381,7 +419,7 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.33, 0.12),
+                opacity: getOpacity(scrollProgress, FADE_CONFIG.strategyBlock1),
               }}
             >
               <h3 className="strategy-title">Purpose</h3>
@@ -401,7 +439,7 @@ const BridgeLanding = () => {
             <div
               className="strategy-block"
               style={{
-                opacity: getSectionOpacity(0.36, 0.12),
+                opacity: getOpacity(scrollProgress, FADE_CONFIG.strategyBlock2),
               }}
             >
               <h3 className="strategy-title">Philosophy</h3>
