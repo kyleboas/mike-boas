@@ -8,7 +8,7 @@ const { useState, useEffect, useRef } = React;
 const SCROLL_HEIGHT_MULTIPLIER = 10;
 
 // Fade timing
-const FADE_DURATION = 0.04;
+const FADE_DURATION = 0.04; 
 const HOLD_DURATION = 0.06;
 const GAP_BETWEEN_SECTIONS = 0.02;
 
