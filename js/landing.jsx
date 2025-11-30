@@ -50,7 +50,14 @@ const hero = {
 const logos = createFadeConfig(getNextStart(hero));
 const strategy = createFadeConfig(getNextStart(logos));
 const testimonial = createFadeConfig(getNextStart(strategy));
-const cta = createFadeConfig(getNextStart(testimonial));
+
+const ctaFadeStart = getNextStart(testimonial);
+const cta = {
+  fadeInStart: ctaFadeStart,
+  fadeInEnd: ctaFadeStart + FADE_DURATION,
+  fadeOutStart: 1, // Never fade out
+  fadeOutEnd: 1,
+};
 
 const FADE_CONFIG = {
   hero,
