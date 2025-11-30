@@ -48,7 +48,8 @@ const hero = {
 };
 
 const logos = createFadeConfig(getNextStart(hero));
-const strategy = createFadeConfig(getNextStart(logos));
+const offerings = createFadeConfig(getNextStart(logos));
+const strategy = createFadeConfig(getNextStart(offerings));
 const testimonial = createFadeConfig(getNextStart(strategy));
 
 const ctaFadeStart = getNextStart(testimonial);
@@ -62,6 +63,7 @@ const cta = {
 const FADE_CONFIG = {
   hero,
   logos,
+  offerings,
   strategy,
   testimonial,
   cta,
@@ -326,6 +328,7 @@ const BridgeLanding = () => {
 
   // Section opacities
   const logosOpacity = getOpacity(scrollProgress, FADE_CONFIG.logos);
+  const offeringsOpacity = getOpacity(scrollProgress, FADE_CONFIG.offerings);
   const strategyOpacity = getOpacity(scrollProgress, FADE_CONFIG.strategy);
   const testimonialOpacity = getOpacity(scrollProgress, FADE_CONFIG.testimonial);
   const ctaOpacity = getOpacity(scrollProgress, FADE_CONFIG.cta);
@@ -398,6 +401,40 @@ const BridgeLanding = () => {
                 <img src={logo.src} alt={logo.alt} className={logo.class} />
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Offerings */}
+        <div
+          className="offerings-section"
+          style={{
+            opacity: offeringsOpacity,
+            pointerEvents: offeringsOpacity > 0 ? "auto" : "none",
+          }}
+        >
+          <h1 className="offerings-title">Three Core Offerings</h1>
+
+          <div className="offerings-grid">
+            <div className="offering-card">
+              <h2 className="offering-heading">AI Strategy &amp; Enablement</h2>
+              <p className="offering-text">
+                Navigate AI with confidence. Build AI literacy, readiness, and adoption across medical, commercial, and enterprise teams.
+              </p>
+            </div>
+
+            <div className="offering-card">
+              <h2 className="offering-heading">Medical &amp; Commercial Strategy Advisory</h2>
+              <p className="offering-text">
+                Elevate cross-functional alignment, accelerate launch readiness, and strengthen scientific and strategic execution.
+              </p>
+            </div>
+
+            <div className="offering-card">
+              <h2 className="offering-heading">Executive &amp; Leadership Coaching</h2>
+              <p className="offering-text">
+                Develop self-aware, high-performing leaders and teams who drive meaningful, lasting impact.
+              </p>
+            </div>
           </div>
         </div>
 
