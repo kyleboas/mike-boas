@@ -5,50 +5,43 @@ const { useState, useEffect, useRef } = React;
    Edit these values to control when each section fades in/out
    All values are scroll progress (0 = top, 1 = bottom)
 ------------------------------------------------------------------ */
-const FADE_CONFIG = {
-  hero: {
-    fadeInStart: 0,      // Already visible at start
-    fadeInEnd: 0,        // No fade-in needed
-    fadeOutStart: 0,     // Start fading immediately on scroll
-    fadeOutEnd: 0.08,    // Fully gone by 8%
-  },
-  logos: {
-    fadeInStart: 0.14,
-    fadeInEnd: 0.18,
-    fadeOutStart: 0.26,
-    fadeOutEnd: 0.30,
-  },
-  strategy: {
-    fadeInStart: 0.26,
-    fadeInEnd: 0.30,
-    fadeOutStart: 0.42,
-    fadeOutEnd: 0.46,
-  },
-  strategyBlock1: {
-    fadeInStart: 0.29,
-    fadeInEnd: 0.33,
-    fadeOutStart: 0.45,
-    fadeOutEnd: 0.49,
-  },
-  strategyBlock2: {
-    fadeInStart: 0.32,
-    fadeInEnd: 0.36,
-    fadeOutStart: 0.48,
-    fadeOutEnd: 0.52,
-  },
-  testimonial: {
-    fadeInStart: 0.48,
-    fadeInEnd: 0.52,
-    fadeOutStart: 0.58,
-    fadeOutEnd: 0.62,
-  },
-  cta: {
-    fadeInStart: 0.64,
-    fadeInEnd: 0.68,
-    fadeOutStart: 0.74,
-    fadeOutEnd: 0.78,
-  },
+const FADE_DURATION = 0.08;
+const HOLD_DURATION = 0.10;
+const GAP_BETWEEN_SECTIONS = 0.04;
+
+const createFadeConfig = (fadeInStart) => ({
+  fadeInStart,
+  fadeInEnd: fadeInStart + FADE_DURATION,
+  fadeOutStart: fadeInStart + FADE_DURATION + HOLD_DURATION,
+  fadeOutEnd: fadeInStart + FADE_DURATION + HOLD_DURATION + FADE_DURATION,
+});
+
+const getNextStart = (prev) => prev.fadeOutEnd + GAP_BETWEEN_SECTIONS;
+
+const hero = {
+  fadeInStart: 0,
+  fadeInEnd: 0,
+  fadeOutStart: 0,
+  fadeOutEnd: 0.08,
 };
+
+const logos = createFadeConfig(getNextStart(hero));
+const strategy = createFadeConfig(getNextStart(logos));
+const strategyBlock1 = createFadeConfig(getNextStart(strategy));
+const strategyBlock2 = createFadeConfig(getNextStart(strategyBlock1));
+const testimonial = createFadeConfig(getNextStart(strategyBlock2));
+const cta = createFadeConfig(getNextStart(testimonial));
+
+const FADE_CONFIG = {
+  hero,
+  logos,
+  strategy,
+  strategyBlock1,
+  strategyBlock2,
+  testimonial,
+  cta,
+};
+
 
 // Generic opacity calculator - uses config object
 const getOpacity = (progress, config) => {
@@ -218,10 +211,6 @@ const BridgeLanding = () => {
     window.addEventListener("resize", updateTimelineMaxScroll);
     return () => window.removeEventListener("resize", updateTimelineMaxScroll);
   }, []);
-
-  // Hero fades out immediately on scroll (no fade-in)
-  const HERO_FADE_START = 0.0; // start fading as soon as user scrolls
-  const HERO_FADE_END = 0.08; // fully gone by 8% scroll
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
