@@ -9,7 +9,7 @@ const SCROLL_HEIGHT_MULTIPLIER = 10;
 
 // Fade timing
 const FADE_DURATION = 0.04; 
-const HOLD_DURATION = 0.06;
+const HOLD_DURATION = 0.12;
 const GAP_BETWEEN_SECTIONS = 0.02;
 
 // Zoom animation
