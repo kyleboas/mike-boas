@@ -1,13 +1,35 @@
 const { useState, useEffect, useRef } = React;
 
-/* ------------------------------------------------------------------
-   FADE TIMING CONFIGURATION
-   Edit these values to control when each section fades in/out
-   All values are scroll progress (0 = top, 1 = bottom)
------------------------------------------------------------------- */
+/* ==================================================================
+   CONFIGURATION
+   ================================================================== */
+
+// Scroll behavior
+const SCROLL_HEIGHT_MULTIPLIER = 4;
+
+// Fade timing
 const FADE_DURATION = 0.08;
 const HOLD_DURATION = 0.10;
 const GAP_BETWEEN_SECTIONS = 0.04;
+
+// Zoom animation
+const ZOOM_END_PROGRESS = 0.14;
+const ZOOM_START_SCALE = 1.8;
+const ZOOM_END_SCALE = 1.0;
+
+// Timeline scroll window
+const TIMELINE_START = 0.4;
+const TIMELINE_END = 0.9;
+
+// Animation smoothing
+const LERP_SMOOTHING = 0.12;
+
+// Testimonial auto-advance
+const TESTIMONIAL_INTERVAL_MS = 6000;
+
+/* ==================================================================
+   FADE CONFIG
+   ================================================================== */
 
 const createFadeConfig = (fadeInStart) => ({
   fadeInStart,
@@ -42,8 +64,87 @@ const FADE_CONFIG = {
   cta,
 };
 
+/* ==================================================================
+   DATA
+   ================================================================== */
 
-// Generic opacity calculator - uses config object
+const TESTIMONIALS = [
+  {
+    quote:
+      "Mike brings unique perspective with his extensive background in marketing and sales, which has not only enhanced the visibility and impact of Medical Information across the organization, but also motivated the team to deliver new customer centric digital solutions. Above all, Mike prioritizes people first, ensuring each and every person on the team are empowered to pursue personal development and growth.",
+    name: "Sean Swisher",
+    title: "Senior Director, Global Medical Execution, Respiratory Biologics",
+    company: "AstraZeneca",
+    avatar:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/sean-swisher.jpeg",
+  },
+  {
+    quote:
+      "Michael is a seasoned and innovative Medical Affairs professional and has been at the forefront of some of AZ's most important transformation to digital and Al related content within the medical information and scientific communications space. His strong marketing background also allows to put a true 'customer lens' on all the work his team delivers.",
+    name: "Robert Fogel, MD",
+    title: "VP, Global Medical Affairs",
+    company: "AstraZeneca",
+    avatar:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/robert-fogel.jpeg",
+  },
+  {
+    quote:
+      "What stands out most about Mike is his commitment to empowering the team as individuals, while driving the whole team towards a future vision. As my manager, he understands my strengths, has challenged me to grow, and has supported me when it was needed most.",
+    name: "Amy Fetchko",
+    title: "Senior Director",
+    company: "AstraZeneca",
+    avatar:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/amy-fetchko.jpeg",
+  },
+];
+
+const LOGO_DATA = [
+  {
+    src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/medcom.png",
+    alt: "Med Communications",
+    class: "logo-image invert-logo",
+  },
+  {
+    src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/aingens.gif",
+    alt: "Aingens",
+    class: "logo-image invert-logo",
+  },
+  {
+    src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/thestem.png",
+    alt: "The Stem",
+    class: "logo-image",
+  },
+];
+
+const careerTimeline = [
+  {
+    period: "1991 – 2007",
+    org: "AstraZeneca",
+    yrs: "15 yrs 10 mos",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
+    bullets: [
+      'Created the first hospital "emergency room" strategy focused on improving the use of a Pulmicort Respules (pediatric nebulized asthma treatment)',
+      "Designed the first primary care & hospital sales force focused on improving the use of Pulmicort Respules (pediatric nebulized asthma treatment)",
+      "First District Sales Manager (DSM) on the National DSM Effectiveness Team",
+    ],
+  },
+  {
+    role: "BS, Finance",
+    org: "Penn State",
+    logo:
+      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/penn-state.png",
+    summary: "Bachelor of Science - BS, Finance",
+    bullets: ["Brandywine Campus Mens Soccer Team", "Acacia Fraternity"],
+  },
+];
+
+/* ==================================================================
+   UTILITIES
+   ================================================================== */
+
+const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
 const getOpacity = (progress, config) => {
   const { fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd } = config;
 
@@ -55,9 +156,16 @@ const getOpacity = (progress, config) => {
   return 1 - (progress - fadeOutStart) / (fadeOutEnd - fadeOutStart);
 };
 
-/* ------------------------------------------------------------------
-   Minimal icon components
------------------------------------------------------------------- */
+const calculateZoomScale = (scrollProgress) => {
+  const zoomStart = FADE_CONFIG.hero.fadeOutEnd;
+  const t = clamp((scrollProgress - zoomStart) / (ZOOM_END_PROGRESS - zoomStart), 0, 1);
+  return ZOOM_START_SCALE + (ZOOM_END_SCALE - ZOOM_START_SCALE) * t;
+};
+
+/* ==================================================================
+   ICONS
+   ================================================================== */
+
 const IconBase = ({ children, ...rest }) => (
   <svg
     viewBox="0 0 24 24"
@@ -96,35 +204,10 @@ const Linkedin = (props) => (
   </IconBase>
 );
 
-/* ------------------------------------------------------------------
-   Career timeline data
------------------------------------------------------------------- */
-const careerTimeline = [
-  {
-    period: "1991 – 2007",
-    org: "AstraZeneca",
-    yrs: "15 yrs 10 mos",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/astrazeneca.png",
-    bullets: [
-      'Created the first hospital "emergency room" strategy focused on improving the use of a Pulmicort Respules (pediatric nebulized asthma treatment)',
-      "Designed the first primary care & hospital sales force focused on improving the use of Pulmicort Respules (pediatric nebulized asthma treatment)",
-      "First District Sales Manager (DSM) on the National DSM Effectiveness Team",
-    ],
-  },
-  {
-    role: "BS, Finance",
-    org: "Penn State",
-    logo:
-      "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/penn-state.png",
-    summary: "Bachelor of Science - BS, Finance",
-    bullets: ["Brandywine Campus Mens Soccer Team", "Acacia Fraternity"],
-  },
-];
+/* ==================================================================
+   MAIN COMPONENT
+   ================================================================== */
 
-/* ------------------------------------------------------------------
-   Main component
------------------------------------------------------------------- */
 const BridgeLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -132,48 +215,20 @@ const BridgeLanding = () => {
   const timelineViewportRef = useRef(null);
   const timelineListRef = useRef(null);
   const [timelineMaxScroll, setTimelineMaxScroll] = useState(0);
-  const [displayY, setDisplayY] = useState(0);
+
+  // Use refs for animated values to avoid triggering re-renders
+  const overlayRef = useRef(null);
+  const displayScaleRef = useRef(ZOOM_START_SCALE);
+  const displayYRef = useRef(0);
+  const targetScaleRef = useRef(ZOOM_START_SCALE);
   const targetYRef = useRef(0);
-  const [displayScale, setDisplayScale] = useState(1.8);
-  const targetScaleRef = useRef(1.8);
 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const testimonials = [
-    {
-      quote:
-        "Mike brings unique perspective with his extensive background in marketing and sales, which has not only enhanced the visibility and impact of Medical Information across the organization, but also motivated the team to deliver new customer centric digital solutions. Above all, Mike prioritizes people first, ensuring each and every person on the team are empowered to pursue personal development and growth.",
-      name: "Sean Swisher",
-      title: "Senior Director, Global Medical Execution, Respiratory Biologics",
-      company: "AstraZeneca",
-      avatar:
-        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/sean-swisher.jpeg",
-    },
-    {
-      quote:
-        "Michael is a seasoned and innovative Medical Affairs professional and has been at the forefront of some of AZ's most important transformation to digital and Al related content within the medical information and scientific communications space. His strong marketing background also allows to put a true 'customer lens' on all the work his team delivers.",
-      name: "Robert Fogel, MD",
-      title: "VP, Global Medical Affairs",
-      company: "AstraZeneca",
-      avatar:
-        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/robert-fogel.jpeg",
-    },
-    {
-      quote:
-        "What stands out most about Mike is his commitment to empowering the team as individuals, while driving the whole team towards a future vision. As my manager, he understands my strengths, has challenged me to grow, and has supported me when it was needed most.",
-      name: "Amy Fetchko",
-      title: "Senior Director",
-      company: "AstraZeneca",
-      avatar:
-        "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/testimonials/amy-fetchko.jpeg",
-    },
-  ];
+  const currentTestimonial = TESTIMONIALS[activeTestimonial];
 
-  const currentTestimonial = testimonials[activeTestimonial];
-
-  const SCROLL_HEIGHT_MULTIPLIER = 4;
-
+  // Scroll progress tracking
   useEffect(() => {
     let ticking = false;
 
@@ -182,7 +237,7 @@ const BridgeLanding = () => {
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
       const next =
-        docHeight > 0 ? Math.max(0, Math.min(1, scrollTop / docHeight)) : 0;
+        docHeight > 0 ? clamp(scrollTop / docHeight, 0, 1) : 0;
 
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -198,6 +253,7 @@ const BridgeLanding = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Timeline max scroll calculation
   useEffect(() => {
     const updateTimelineMaxScroll = () => {
       if (!timelineViewportRef.current || !timelineListRef.current) return;
@@ -212,75 +268,42 @@ const BridgeLanding = () => {
     return () => window.removeEventListener("resize", updateTimelineMaxScroll);
   }, []);
 
-  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  // Calculate target values
+  const heroOpacity = isEmailFocused ? 1 : getOpacity(scrollProgress, FADE_CONFIG.hero);
+  const targetScale = calculateZoomScale(scrollProgress);
 
-  const baseHeroOpacity = isEmailFocused ? 1 : getOpacity(scrollProgress, FADE_CONFIG.hero);
-  const heroOpacity = isEmailFocused ? 1 : baseHeroOpacity;
-
-  // --- scroll-based zoom for the overlay background ---
-  // Zoom starts only after hero has faded out
-  const zoomStart = HERO_FADE_END; // e.g. 0.08
-  const zoomEnd = 0.14;
-
-  const rawT = (scrollProgress - zoomStart) / (zoomEnd - zoomStart);
-  const zoomT = Math.max(0, Math.min(1, rawT));
-
-  // zoom range
-  const startScale = 1.8; // close-in framing
-  const endScale = 1.0; // fully zoomed out
-  const scale = startScale + (endScale - startScale) * zoomT;
-
-  // no translation at all
-  const translateY = 0;
-
-  // Update target scale whenever scroll changes
-  useEffect(() => {
-    targetScaleRef.current = scale;
-  }, [scale]);
-
-  // Lerping animation loop for smooth zoom effect
-  useEffect(() => {
-    let rafId;
-    const SCALE_SMOOTHING = 0.12; // Higher = smoother but slower; lower = snappier
-
-    const animate = () => {
-      setDisplayScale(
-        (prev) => prev + (targetScaleRef.current - prev) * SCALE_SMOOTHING
-      );
-      rafId = requestAnimationFrame(animate);
-    };
-
-    rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
-
-  // Timeline scroll window: items move through between 40% and 90% scroll
-  const TIMELINE_START = 0.4;
-  const TIMELINE_END = 0.9;
   const timelineRange = TIMELINE_END - TIMELINE_START;
-
   const timelineT = clamp(
     (scrollProgress - TIMELINE_START) / timelineRange,
     0,
     1
   );
-
   const timelineScrollY = -timelineMaxScroll * timelineT;
 
-  // Update target position whenever scroll changes
+  // Update target refs when scroll changes
   useEffect(() => {
+    targetScaleRef.current = targetScale;
     targetYRef.current = timelineScrollY;
-  }, [timelineScrollY]);
+  }, [targetScale, timelineScrollY]);
 
-  // Lerping animation loop for smooth trailing motion
+  // Combined RAF loop for smooth animations (eliminates ~120 setState calls/second)
   useEffect(() => {
     let rafId;
-    const SMOOTHING_FACTOR = 0.12; // Higher = smoother but slower; lower = snappier
+    const EPSILON = 0.0001;
 
     const animate = () => {
-      setDisplayY(
-        (prev) => prev + (targetYRef.current - prev) * SMOOTHING_FACTOR
-      );
+      // Update display values with smoothing
+      displayScaleRef.current += (targetScaleRef.current - displayScaleRef.current) * LERP_SMOOTHING;
+      displayYRef.current += (targetYRef.current - displayYRef.current) * LERP_SMOOTHING;
+
+      // Apply transforms directly to DOM (no state updates = no re-renders)
+      if (overlayRef.current) {
+        overlayRef.current.style.transform = `scale(${displayScaleRef.current})`;
+      }
+      if (timelineListRef.current) {
+        timelineListRef.current.style.transform = `translateY(${displayYRef.current}px)`;
+      }
+
       rafId = requestAnimationFrame(animate);
     };
 
@@ -288,16 +311,17 @@ const BridgeLanding = () => {
     return () => cancelAnimationFrame(rafId);
   }, []);
 
+  // Testimonial auto-rotation
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 6000); // 6 seconds per slide
+      setActiveTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
+    }, TESTIMONIAL_INTERVAL_MS);
 
     return () => clearInterval(interval);
-  }, [isPaused, testimonials.length]);
+  }, [isPaused]);
 
-  // Pre-calculate opacity to control pointer-events using centralized FADE_CONFIG
+  // Section opacities
   const logosOpacity = getOpacity(scrollProgress, FADE_CONFIG.logos);
   const strategyOpacity = getOpacity(scrollProgress, FADE_CONFIG.strategy);
   const testimonialOpacity = getOpacity(scrollProgress, FADE_CONFIG.testimonial);
@@ -309,13 +333,8 @@ const BridgeLanding = () => {
       className="page-container"
       style={{ height: `${SCROLL_HEIGHT_MULTIPLIER * 100}vh` }}
     >
-      {/* Scroll-animated background */}
-      <div
-        className="overlay"
-        style={{
-          transform: `scale(${displayScale})`,
-        }}
-      />
+      {/* Scroll-animated background - transform applied via RAF */}
+      <div ref={overlayRef} className="overlay" />
 
       {/* Floating content */}
       <div className="floating-content">
@@ -363,7 +382,7 @@ const BridgeLanding = () => {
         {/* Logos */}
         <div
           className="logos-section"
-          style={{ 
+          style={{
             opacity: logosOpacity,
             pointerEvents: logosOpacity > 0 ? "auto" : "none",
           }}
@@ -371,23 +390,7 @@ const BridgeLanding = () => {
           <h3 className="section-label">Trusted By Industry Leaders</h3>
 
           <div className="logos-row">
-            {[
-              {
-                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/medcom.png",
-                alt: "Med Communications",
-                class: "logo-image invert-logo",
-              },
-              {
-                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/aingens.gif",
-                alt: "Aingens",
-                class: "logo-image invert-logo",
-              },
-              {
-                src: "https://raw.githubusercontent.com/kyleboas/mike-boas/refs/heads/main/_assets/logos/thestem.png",
-                alt: "The Stem",
-                class: "logo-image",
-              },
-            ].map((logo, idx) => (
+            {LOGO_DATA.map((logo, idx) => (
               <div key={idx} className="logo-card">
                 <img src={logo.src} alt={logo.alt} className={logo.class} />
               </div>
@@ -398,7 +401,7 @@ const BridgeLanding = () => {
         {/* Strategy */}
         <div
           className="strategy-section"
-          style={{ 
+          style={{
             opacity: strategyOpacity,
             pointerEvents: strategyOpacity > 0 ? "auto" : "none",
           }}
@@ -460,8 +463,8 @@ const BridgeLanding = () => {
               className="testimonial-nav testimonial-nav-left"
               onClick={() =>
                 setActiveTestimonial(
-                  (activeTestimonial - 1 + testimonials.length) %
-                    testimonials.length
+                  (activeTestimonial - 1 + TESTIMONIALS.length) %
+                    TESTIMONIALS.length
                 )
               }
             >
@@ -480,7 +483,7 @@ const BridgeLanding = () => {
                   transform: `translateX(-${activeTestimonial * 100}%)`,
                 }}
               >
-                {testimonials.map((t, idx) => (
+                {TESTIMONIALS.map((t, idx) => (
                   <div className="testimonial-slide" key={idx}>
                     <div className="testimonial-card interactive-card">
                       <p className="testimonial-text">"{t.quote}"</p>
@@ -511,7 +514,7 @@ const BridgeLanding = () => {
               className="testimonial-nav testimonial-nav-right"
               onClick={() =>
                 setActiveTestimonial(
-                  (activeTestimonial + 1) % testimonials.length
+                  (activeTestimonial + 1) % TESTIMONIALS.length
                 )
               }
             >
@@ -525,7 +528,7 @@ const BridgeLanding = () => {
             aria-label="Select testimonial"
             style={{ pointerEvents: testimonialOpacity > 0 ? "auto" : "none" }}
           >
-            {testimonials.map((_, idx) => (
+            {TESTIMONIALS.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
