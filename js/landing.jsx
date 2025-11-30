@@ -54,7 +54,7 @@ const testimonial = createFadeConfig(getNextStart(strategy));
 const ctaFadeStart = getNextStart(testimonial);
 const cta = {
   fadeInStart: ctaFadeStart,
-  fadeInEnd: ctaFadeStart + FADE_DURATION,
+  fadeInEnd: Math.min(ctaFadeStart + FADE_DURATION, 1.0), // Cap at 1.0 to ensure full opacity at bottom
   fadeOutStart: 1, // Never fade out
   fadeOutEnd: 1,
 };
