@@ -323,7 +323,10 @@ const BridgeLanding = () => {
 
   // Section opacities
   const logosOpacity = getOpacity(scrollProgress, FADE_CONFIG.logos);
-  const strategyOpacity = getOpacity(scrollProgress, FADE_CONFIG.strategy);
+  const strategyOpacity = Math.max(
+    getOpacity(scrollProgress, FADE_CONFIG.strategyBlock1),
+    getOpacity(scrollProgress, FADE_CONFIG.strategyBlock2)
+  );
   const testimonialOpacity = getOpacity(scrollProgress, FADE_CONFIG.testimonial);
   const ctaOpacity = getOpacity(scrollProgress, FADE_CONFIG.cta);
 
