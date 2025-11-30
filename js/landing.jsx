@@ -15,7 +15,7 @@ const GAP_BETWEEN_SECTIONS = 0.02;
 // Zoom animation
 const ZOOM_END_PROGRESS = 0.14;
 const ZOOM_START_SCALE = 1.8;
-const ZOOM_END_SCALE = 1.0;
+const ZOOM_END_SCALE = 1.0; 
 
 // Timeline scroll window
 const TIMELINE_START = 0.4;
