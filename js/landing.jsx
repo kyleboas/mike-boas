@@ -49,17 +49,13 @@ const hero = {
 
 const logos = createFadeConfig(getNextStart(hero));
 const strategy = createFadeConfig(getNextStart(logos));
-const strategyBlock1 = createFadeConfig(getNextStart(strategy));
-const strategyBlock2 = createFadeConfig(getNextStart(strategyBlock1));
-const testimonial = createFadeConfig(getNextStart(strategyBlock2));
+const testimonial = createFadeConfig(getNextStart(strategy));
 const cta = createFadeConfig(getNextStart(testimonial));
 
 const FADE_CONFIG = {
   hero,
   logos,
   strategy,
-  strategyBlock1,
-  strategyBlock2,
   testimonial,
   cta,
 };
@@ -323,10 +319,7 @@ const BridgeLanding = () => {
 
   // Section opacities
   const logosOpacity = getOpacity(scrollProgress, FADE_CONFIG.logos);
-  const strategyOpacity = Math.max(
-    getOpacity(scrollProgress, FADE_CONFIG.strategyBlock1),
-    getOpacity(scrollProgress, FADE_CONFIG.strategyBlock2)
-  );
+  const strategyOpacity = getOpacity(scrollProgress, FADE_CONFIG.strategy);
   const testimonialOpacity = getOpacity(scrollProgress, FADE_CONFIG.testimonial);
   const ctaOpacity = getOpacity(scrollProgress, FADE_CONFIG.cta);
 
@@ -411,12 +404,7 @@ const BridgeLanding = () => {
         >
           <div className="strategy-sequence">
             {/* 1 */}
-            <div
-              className="strategy-block"
-              style={{
-                opacity: getOpacity(scrollProgress, FADE_CONFIG.strategyBlock1),
-              }}
-            >
+            <div className="strategy-block">
               <h3 className="strategy-title">Purpose</h3>
               <p className="strategy-subheading">
                 Elevate human potential and impact
@@ -431,12 +419,7 @@ const BridgeLanding = () => {
             </div>
 
             {/* 2 */}
-            <div
-              className="strategy-block"
-              style={{
-                opacity: getOpacity(scrollProgress, FADE_CONFIG.strategyBlock2),
-              }}
-            >
+            <div className="strategy-block">
               <h3 className="strategy-title">Philosophy</h3>
               <p className="strategy-subheading">People Before Projects</p>
               <p className="strategy-text">
