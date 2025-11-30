@@ -8,9 +8,9 @@ const { useState, useEffect, useRef } = React;
 const SCROLL_HEIGHT_MULTIPLIER = 20;
 
 // Fade timing
-const FADE_DURATION = 0.08;
-const HOLD_DURATION = 0.10;
-const GAP_BETWEEN_SECTIONS = 0.04;
+const FADE_DURATION = 0.04;
+const HOLD_DURATION = 0.06;
+const GAP_BETWEEN_SECTIONS = 0.02;
 
 // Zoom animation
 const ZOOM_END_PROGRESS = 0.14;
