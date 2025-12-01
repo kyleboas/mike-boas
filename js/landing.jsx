@@ -4,8 +4,7 @@ const { useState, useEffect, useRef } = React;
    CONFIGURATION
    ================================================================== */
 
-// Scroll behavior
-const SCROLL_HEIGHT_MULTIPLIER = 13; 
+// Scroll behavior (calculated dynamically based on fade timing)
 
 // Fade timing
 const FADE_DURATION = 0.06; 
@@ -337,7 +336,7 @@ const BridgeLanding = () => {
     <div
       ref={containerRef}
       className="page-container"
-      style={{ height: `${SCROLL_HEIGHT_MULTIPLIER * 100}vh` }}
+      style={{ height: `${Math.round(10 / FADE_CONFIG.testimonial.fadeOutEnd) * 100}vh` }}
     >
       {/* Scroll-animated background - transform applied via RAF */}
       <div ref={overlayRef} className="overlay" />
