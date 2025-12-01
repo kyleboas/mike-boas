@@ -5,7 +5,7 @@ const { useState, useEffect, useRef } = React;
    ================================================================== */
 
 // Scroll behavior
-const SCROLL_HEIGHT_MULTIPLIER = 9;
+const SCROLL_HEIGHT_MULTIPLIER = 13;
 
 // Fade timing
 const FADE_DURATION = 0.06; 
