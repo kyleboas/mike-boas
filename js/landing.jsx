@@ -68,6 +68,12 @@ const FADE_CONFIG = {
   cta,
 };
 
+// Calculate the end of all animations to ensure page is long enough
+const ANIMATION_END = Math.max(
+  FADE_CONFIG.cta.fadeInEnd,
+  FADE_CONFIG.cta.fadeOutEnd
+);
+
 /* ==================================================================
    DATA
    ================================================================== */
@@ -336,7 +342,7 @@ const BridgeLanding = () => {
     <div
       ref={containerRef}
       className="page-container"
-      style={{ height: `${Math.round(10 / FADE_CONFIG.testimonial.fadeOutEnd) * 100}vh` }}
+      style={{ height: `${Math.round(10 / ANIMATION_END) * 100}vh` }}
     >
       {/* Scroll-animated background - transform applied via RAF */}
       <div ref={overlayRef} className="overlay" />
